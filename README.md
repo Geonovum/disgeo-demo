@@ -1,4 +1,7 @@
 # disgeo-demo
+
+[![Join the chat at https://gitter.im/disgeo-demo/community](https://badges.gitter.im/disgeo-demo/community.svg)](https://gitter.im/disgeo-demo/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Repository voor het ontwikkelen van een demonstrator Gebouwen en Wegen voor het project Doorontwikkeling in Samenhang.
 
 [[Gitter kanaal](https://gitter.im/disgeo-demo/community#)]
