@@ -1,6 +1,8 @@
 # disgeo-demo
 Repository voor het ontwikkelen van een demonstrator Gebouwen en Wegen voor het project Doorontwikkeling in Samenhang.
 
+[[Gitter kanaal](https://gitter.im/disgeo-demo/community#)]
+
 ## Doel en resultaat
 
 Het ministerie van BZK beoogt met het traject Doorontwikkeling in Samenhang (DiS Geo) meer samenhang te krijgen in het stelsel van geo(basis)registraties waarbij de focus ligt op semantische harmonisatie van registraties en informatiemodellen, en alternatieve methoden van gegevensuitwisseling en bijhouding (meer centraal, minder kopiëren). 
