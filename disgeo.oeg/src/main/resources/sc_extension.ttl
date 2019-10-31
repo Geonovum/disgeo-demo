@@ -1,0 +1,743 @@
+@prefix afn: <http://jena.hpl.hp.com/ARQ/function#> .
+@prefix backspin: <http://topbraid.org/backspin#> .
+@prefix charts: <http://uispin.org/charts#> .
+@prefix concept_banken: <http://data.stelselvanbasisregistraties.nl/banken/id/concept/> .
+@prefix concept_brp: <http://data.stelselvanbasisregistraties.nl/brp/id/concept/> .
+@prefix concept_cor: <http://data.stelselvanbasisregistraties.nl/cor/id/concept/> .
+@prefix concept_depositogarantiestelsel: <http://data.stelselvanbasisregistraties.nl/depositogarantiestelsel/id/concept/> .
+@prefix concept_hr: <http://data.stelselvanbasisregistraties.nl/hr/id/concept/> .
+@prefix concept_pensioenfondsen: <http://data.stelselvanbasisregistraties.nl/pensioenfondsen/id/concept/> .
+@prefix concept_polis: <http://data.stelselvanbasisregistraties.nl/polis/id/concept/> .
+@prefix concept_verzekeraars: <http://data.stelselvanbasisregistraties.nl/verzekeraars/id/concept/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcam: <http://purl.org/dc/dcam/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix def: <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/def#> .
+@prefix downloads: <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/downloads#> .
+@prefix evnconstraints: <http://topbraid.org/spin/evnconstraints#> .
+@prefix evnimport: <http://evn.topbraidlive.org/uispin/evnimport#> .
+@prefix evnprojects: <http://evn.topbraidlive.org/evnprojects#> .
+@prefix evnui: <http://evn.topbraidlive.org/ui#> .
+@prefix extjs: <http://uispin.com/extjs#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix frbr: <http://vocab.org/frbr/core#> .
+@prefix gegeven_banken: <http://data.stelselvanbasisregistraties.nl/banken/id/gegevenselement/> .
+@prefix gegeven_brp: <http://data.stelselvanbasisregistraties.nl/brp/id/gegevenselement/> .
+@prefix gegeven_cor: <http://data.stelselvanbasisregistraties.nl/cor/id/gegevenselement/> .
+@prefix gegeven_depositogarantiestelsel: <http://data.stelselvanbasisregistraties.nl/depositogarantiestelsel/id/gegevenselement/> .
+@prefix gegeven_hr: <http://data.stelselvanbasisregistraties.nl/hr/id/gegevenselement/> .
+@prefix gegeven_pensioenfondsen: <http://data.stelselvanbasisregistraties.nl/pensioenfondsen/id/gegevenselement/> .
+@prefix gegeven_polis: <http://data.stelselvanbasisregistraties.nl/polis/id/gegevenselement/> .
+@prefix gegeven_verzekeraars: <http://data.stelselvanbasisregistraties.nl/verzekeraars/id/gegevenselement/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix html: <http://uispin.org/html#> .
+@prefix integrate: <http://data.ihlz.nl/id/dataset/integrate#> .
+@prefix isaCore: <http://data.europa.eu/core-vocabularies/> .
+@prefix jfn: <java:com.hp.hpl.jena.sparql.function.library.> .
+@prefix lingvo: <http://www.lingvoj.org/ontology#> .
+@prefix lode: <http://linkedevents.org/ontology/> .
+@prefix msg0: <http://web.resource.org/cc/> .
+@prefix nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#> .
+@prefix ns3: <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/def#> .
+@prefix olca: <http://www.lingvoj.org/olca#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix owlrl: <http://topbraid.org/spin/owlrl#> .
+@prefix pf: <http://jena.hpl.hp.com/ARQ/property#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix regelgeving: <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/regelgeving/> .
+@prefix sc: <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/def#> .
+@prefix schema: <http://schema.org/> .
+@prefix search: <http://topbraid.org/search#> .
+@prefix sharepoint: <http://topbraid.org/sharepoint#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix skosapp: <http://topbraid.org/skos/skosapp.ui#> .
+@prefix skosspin: <http://topbraid.org/spin/skosspin#> .
+@prefix skostemplate: <http://topbraid.org/spin/skostemplates#> .
+@prefix sm: <http://topbraid.org/sparqlmotion#> .
+@prefix sm2wsdl: <http://topbraid.org/sparqlmotion/sm2wsdl.sms#> .
+@prefix smf: <http://topbraid.org/sparqlmotionfunctions#> .
+@prefix sml: <http://topbraid.org/sparqlmotionlib#> .
+@prefix sp: <http://spinrdf.org/sp#> .
+@prefix spellCheck: <http://evn.topbraidlive.org/static/scripts/spellcheck-report#> .
+@prefix spif: <http://spinrdf.org/spif#> .
+@prefix spin: <http://spinrdf.org/spin#> .
+@prefix spinmap: <http://spinrdf.org/spinmap#> .
+@prefix spinmapl: <http://topbraid.org/spin/spinmapl#> .
+@prefix spl: <http://spinrdf.org/spl#> .
+@prefix spr: <http://spinrdf.org/spr#> .
+@prefix spra: <http://spinrdf.org/spra#> .
+@prefix swa: <http://topbraid.org/swa#> .
+@prefix swon: <http://uispin.org/swon#> .
+@prefix tables: <http://topbraid.org/tables#> .
+@prefix tablesmap: <http://topbraid.org/spin/tablesmap#> .
+@prefix tagger: <http://evn.topbraidlive.org/tagger#> .
+@prefix tbcgeo: <http://www.topbraidcomposer.org/owl/2006/07/tbcgeo.owl#> .
+@prefix tbl: <http://topbraidlive.org/functions#> .
+@prefix teamwork: <http://topbraid.org/teamwork#> .
+@prefix tops: <http://www.topbraid.org/tops#> .
+@prefix ui: <http://uispin.org/ui#> .
+@prefix uix: <http://topbraidlive.org/uix#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix wot: <http://xmlns.com/wot/0.1/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+#---------------------------------------------------------------------------------------------
+#  Triples to create new relations between the SC and the not SC objects
+#---------------------------------------------------------------------------------------------
+
+<http://data.stelselvanbasisregistraties.nl/bag/id/concept/Nummeraanduiding> sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/MonumentRelatering_Nummeraanduiding-Nummeraanduiding> .
+
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/MonumentRelatering_Nummeraanduiding-Nummeraanduiding>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Nummeraanduiding> ;
+  sc:naam "Monumentrelatering" ;
+  sc:relatie "Monument" ;
+  sc:toegankelijkheid "Openbaar" ;
+  dcterms:source "Wet basisregistraties adressen en gebouwen, artikel 1" ;
+  rdfs:label "Monumentrelatering" ;
+  skos:prefLabel "Monumentrelatering" ;
+  skos:related <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Rijksmonument> .
+  
+#---------------------------------------------------------------------------------------------
+#  RCE
+#---------------------------------------------------------------------------------------------
+
+<http://data.stelselvanbasisregistraties.nl/bag/id/concept/Rijksmonument> 
+  rdf:type sc:Begrip ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonumentnummer-Rijksmonument> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonumentnaam-Rijksmonument>;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonumenttype-Rijksmonument>;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonument_cbs-Rijksmonument>;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonument_oorspronkelijke_functie-Rijksmonument>;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonument_subcategorie-Rijksmonument>;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonument_hoofdcategorie-Rijksmonument>;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonument_cultuurhistorisch_type-Rijksmonument>;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonument_beginbouwjaar-Rijksmonument>;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonument_eindbouwjaar-Rijksmonument>;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonument_url-Rijksmonument>;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonument_situering-Rijksmonument>;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonumentstatus-Rijksmonument>;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonument_adresseerbaarobject_relatering-Rijksmonument>;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonument_nummeraanduiding_relatering-Rijksmonument>;
+  sc:definitie "Monumenten zijn historische gebouwen, archeologische vindplaatsen of door mensen aangelegde groene structuren, zoals parken. Deze worden beschermd door de rijksoverheid, provincie of gemeente vanwege hun cultuurhistorische karakter."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Cultureel Erfgoed" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Rijksmonument" ;
+  sc:populatie "De registratie bevat alle geregistreerde monumenten in Nederland." ;
+  sc:relatie "Adresseerbaarobject, Nummeraanduiding" ;
+  sc:toegankelijkheid "Openbaar" ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Rijksmonument" ;
+  skos:prefLabel "Rijksmonument" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonumentnummer-Rijksmonument>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Rijksmonument> ;
+  sc:definitie "Rijksmonument nummer."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Cultureel Erfgoed" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Rijkmonument nummer" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle geregistreerde monumenten in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Rijkmonument nummer" ;
+  skos:prefLabel "Rijkmonument nummer" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonumentnaam-Rijksmonument>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Rijksmonument> ;
+  sc:definitie "Rijksmonument naam."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Cultureel Erfgoed" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Rijksmonument naam" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle geregistreerde monumenten in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Rijkmonument naam" ;
+  skos:prefLabel "Rijkmonument naam" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonumenttype-Rijksmonument>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Rijksmonument> ;
+  sc:definitie "Rijksmonument type."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Cultureel Erfgoed" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Rijksmonument type" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle geregistreerde monumenten in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Rijkmonument type" ;
+  skos:prefLabel "Rijkmonument type" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonument_cbs-Rijksmonument>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Rijksmonument> ;
+  sc:definitie "Rijksmonument CBS categorie."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Cultureel Erfgoed" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Rijksmonument CBS categorie" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle geregistreerde monumenten in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Rijkmonument CBS categorie" ;
+  skos:prefLabel "Rijkmonument CBS categorie" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonument_oorspronkelijke_functie-Rijksmonument>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Rijksmonument> ;
+  sc:definitie "Rijksmonument oorspronkelijke functie."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Cultureel Erfgoed" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Rijksmonument oorspronkelijke functie" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle geregistreerde monumenten in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Rijksmonument oorspronkelijke functie" ;
+  skos:prefLabel "Rijksmonument oorspronkelijke functie" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonument_subcategorie-Rijksmonument>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Rijksmonument> ;
+  sc:definitie "Rijksmonument subcategorie."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Cultureel Erfgoed" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Rijksmonument subcategorie" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle geregistreerde monumenten in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Rijksmonument subcategorie" ;
+  skos:prefLabel "Rijksmonument subcategorie" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonument_hoofdcategorie-Rijksmonument>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Rijksmonument> ;
+  sc:definitie "Rijksmonument hoofdcategorie."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Cultureel Erfgoed" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Rijksmonument hoofdcategorie" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle geregistreerde monumenten in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Rijksmonument hoofdcategorie" ;
+  skos:prefLabel "Rijksmonument hoofdcategorie" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonument_cultuurhistorisch_type-Rijksmonument>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Rijksmonument> ;
+  sc:definitie "Rijksmonument type cultuurhistorisch object."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Cultureel Erfgoed" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Rijksmonument type cultuurhistorisch object" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle geregistreerde monumenten in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Rijksmonument type cultuurhistorisch object" ;
+  skos:prefLabel "Rijksmonument type cultuurhistorisch object" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonument_beginbouwjaar-Rijksmonument>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Rijksmonument> ;
+  sc:definitie "Rijksmonument beginbouwjaar."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Cultureel Erfgoed" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Rijksmonument beginbouwjaar" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle geregistreerde monumenten in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Rijksmonument beginbouwjaar" ;
+  skos:prefLabel "Rijksmonument beginbouwjaar" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonument_eindbouwjaar-Rijksmonument>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Rijksmonument> ;
+  sc:definitie "Rijksmonument eindbouwjaar."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Cultureel Erfgoed" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Rijksmonument eindbouwjaar" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle geregistreerde monumenten in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Rijksmonument eindbouwjaar" ;
+  skos:prefLabel "Rijksmonument eindbouwjaar" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonument_url-Rijksmonument>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Rijksmonument> ;
+  sc:definitie "Rijksmonument url."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Cultureel Erfgoed" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Rijksmonument url" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle geregistreerde monumenten in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Rijksmonument url" ;
+  skos:prefLabel "Rijksmonument url" .
+
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonument_situering-Rijksmonument>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Rijksmonument> ;
+  sc:definitie "Rijksmonument situering."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Cultureel Erfgoed" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Rijksmonument situering" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle geregistreerde monumenten in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Rijksmonument situering" ;
+  skos:prefLabel "Rijksmonument situering" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonumentstatus-Rijksmonument>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Rijksmonument> ;
+  sc:definitie "Rijksmonument status."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Cultureel Erfgoed" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Rijksmonument status" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle geregistreerde monumenten in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Rijksmonument status" ;
+  skos:prefLabel "Rijksmonument status" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonument_adresseerbaarobject_relatering-Rijksmonument>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Rijksmonument> ;
+  sc:definitie "Rijksmonument adresseerbaarobject relatering."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Cultureel Erfgoed" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Rijksmonument adresseerbaarobject relatering" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle geregistreerde monumenten in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Rijksmonument adresseerbaarobject relatering" ;
+  skos:prefLabel "Rijksmonument adresseerbaarobject relatering" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Rijksmonument_nummeraanduiding_relatering-Rijksmonument>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Rijksmonument> ;
+  sc:definitie "Rijksmonument nummeraanduiding relatering."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Cultureel Erfgoed" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Rijksmonument nummeraanduiding relatering" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle geregistreerde monumenten in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Rijksmonument nummeraanduiding relatering" ;
+  skos:prefLabel "Rijksmonument nummeraanduiding relatering" .
+  
+#---------------------------------------------------------------------------------------------
+#  NWB
+#---------------------------------------------------------------------------------------------
+
+<http://data.stelselvanbasisregistraties.nl/bag/id/concept/Wegvak> 
+  rdf:type sc:Begrip ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvakid-Wegvak> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_begindatum-Wegvak> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_wegnummer-Wegvak> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_rijrichting-Wegvak> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_straatnaam-Wegvak> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_woonplaatsnaam-Wegvak> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_wegbeheerder-Wegvak> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_dienstnaam-Wegvak> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_wegtypering-Wegvak> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_inhaalverbod-Wegvak> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_wegnr_wegenlijst-Wegvak> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_wegnummer_hectometerpaal-Wegvak> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_hectometerpaal> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_kunstwerk> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_maximumSnelheid-Wegvak> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_maximumSnelheid_begintijd-Wegvak> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_maximumSnelheid_eindtijd-Wegvak> ;
+  sc:definitie "Wegvak data."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Wegvak" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  sc:relatie "hectormeterpaal" ;
+  sc:toegankelijkheid "Openbaar" ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Wegvak" ;
+  skos:prefLabel "Wegvak" .
+ 
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_inhaalverbod-Wegvak> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Wegvak> ;
+  sc:definitie "Wegvak inhaalverbod."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Wegvak inhaalverbod" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Wegvak inhaalverbod" ;
+  skos:prefLabel "Wegvak inhaalverbod" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_maximumSnelheid_begintijd-Wegvak> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Wegvak> ;
+  sc:definitie "Wegvak maximum snelheid begintijd."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Wegvak maximum snelheid begintijd" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Wegvak maximum snelheid begintijd" ;
+  skos:prefLabel "Wegvak maximum snelheid begintijd" .
+
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_maximumSnelheid_eindtijd-Wegvak> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Wegvak> ;
+  sc:definitie "Wegvak maximum snelheid eindtijd."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Wegvak maximum snelheid eindtijd" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Wegvak maximum snelheid eindtijd" ;
+  skos:prefLabel "Wegvak maximum snelheid eindtijd" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvakid-Wegvak>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Wegvak> ;
+  sc:definitie "Wegvak id."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Wegvak id" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Wegvak id" ;
+  skos:prefLabel "Wegvak id" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_begindatum-Wegvak>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Wegvak> ;
+  sc:definitie "Wegvak begin datum."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Wegvak begin datum" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Wegvak begin datum" ;
+  skos:prefLabel "Wegvak begin datum" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_wegnummer-Wegvak>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Wegvak> ;
+  sc:definitie "Wegvak wegnummer."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Wegvak wegnummer" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Wegvak wegnummer" ;
+  skos:prefLabel "Wegvak wegnummer" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_rijrichting-Wegvak>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Wegvak> ;
+  sc:definitie "Wegvak rijrichting."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Wegvak rijrichting" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Wegvak rijrichting" ;
+  skos:prefLabel "Wegvak rijrichting" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_straatnaam-Wegvak>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Wegvak> ;
+  sc:definitie "Wegvak straatnaam."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Wegvak straatnaam" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Wegvak straatnaam" ;
+  skos:prefLabel "Wegvak straatnaam" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_wegbeheerder-Wegvak>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Wegvak> ;
+  sc:definitie "Wegvak wegbeheerder."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Wegvak wegbeheerder" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Wegvak wegbeheerder" ;
+  skos:prefLabel "Wegvak wegbeheerder" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_dienstnaam-Wegvak>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Wegvak> ;
+  sc:definitie "Wegvak dienstnaam."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Wegvak dienstnaam" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Wegvak dienstnaam" ;
+  skos:prefLabel "Wegvak dienstnaam" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_wegtypering-Wegvak>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Wegvak> ;
+  sc:definitie "Wegvak wegtypering."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Wegvak wegtypering" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Wegvak wegtypering" ;
+  skos:prefLabel "Wegvak wegtypering" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_wegnr_wegenlijst-Wegvak>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Wegvak> ;
+  sc:definitie "Wegvak wegnummer wegenlijst."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Wegvak wegnummer wegenlijst" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Wegvak wegnummer wegenlijst" ;
+  skos:prefLabel "Wegvak wegnummer wegenlijst" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_wegnummer_hectometerpaal-Wegvak>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Wegvak> ;
+  sc:definitie "Wegvak wegnummer hectometerpaal."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Wegvak wegnummer hectometerpaal" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Wegvak wegnummer hectometerpaal" ;
+  skos:prefLabel "Wegvak wegnummer hectometerpaal" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_hectometerpaal>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Wegvak> ;
+  sc:definitie "Wegvak hectometerpaal."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Wegvak hectometerpaal" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Wegvak hectometerpaal" ;
+  skos:prefLabel "Wegvak hectometerpaal" ;
+  skos:related <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Hectometerpaal> .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_kunstwerk>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Wegvak> ;
+  sc:definitie "Wegvak kunstwerk."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Wegvak kunstwerk" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Wegvak kunstwerk" ;
+  skos:prefLabel "Wegvak kunstwerk" ;
+  skos:related <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Kunstwerk> .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_maximumSnelheid-Wegvak> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Wegvak> ;
+  sc:definitie "Wegvak maximum snelheid."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Wegvak maximum snelheid" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Wegvak maximum snelheid" ;
+  skos:prefLabel "Wegvak maximum snelheid" . 
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/concept/Hectometerpaal>
+  rdf:type sc:Begrip ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Hectometrering-Hectometerpaal> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Afstand-Hectometerpaal> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Zijde-Hectometerpaal> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvakid-Hectometerpaal> ;
+  sc:definitie "Wegvak data."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Wegvak" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  sc:relatie "hectormeterpaal" ;
+  sc:toegankelijkheid "Openbaar" ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Wegvak" ;
+  skos:prefLabel "Wegvak" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Hectometrering-Hectometerpaal>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Hectometerpaal> ;
+  sc:definitie "Hectometrering."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Hectometrering" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Hectometrering" ;
+  skos:prefLabel "Hectometrering" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Afstand-Hectometerpaal>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Hectometerpaal> ;
+  sc:definitie "Afstand."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Afstand" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Afstand" ;
+  skos:prefLabel "Afstand" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Zijde-Hectometerpaal>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Hectometerpaal> ;
+  sc:definitie "Zijde."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Zijde" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Zijde" ;
+  skos:prefLabel "Zijde" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvakid-Hectometerpaal>
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Hectometerpaal> ;
+  sc:definitie "Wegvak id."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Wegvak id" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Wegvak id" ;
+  skos:prefLabel "Wegvak id" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/concept/Kunstwerk> 
+  rdf:type sc:Begrip ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Kunstwerk_type-Kunstwerk> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Kunstwerk_omschrijving-Kunstwerk> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Kunstwerk_hoofdrijbaan-Kunstwerk>  ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Kunstwerk_wegvak-Kunstwerk> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Kunstwerk_doorrijhoogte-Kunstwerk>  ;
+  sc:definitie "Wegvak data."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Kunstwerk" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  sc:relatie "Kunstwerk" ;
+  sc:toegankelijkheid "Openbaar" ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Kunstwerk" ;
+  skos:prefLabel "Kunstwerk" .
+ 
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Kunstwerk_type-Kunstwerk> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Kunstwerk> ;
+  sc:definitie "Kunstwerk gekoppeld aan wegvak."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Kunstwerk type" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Kunstwerk type" ;
+  skos:prefLabel "Kunstwerk type" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Kunstwerk_omschrijving-Kunstwerk> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Kunstwerk> ;
+  sc:definitie "Kunstwerk Omschrijving."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Kunstwerk Omschrijving" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Kunstwerk Omschrijving" ;
+  skos:prefLabel "Kunstwerk Omschrijving" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Kunstwerk_hoofdrijbaan-Kunstwerk> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Kunstwerk> ;
+  sc:definitie "Kunstwerk gelegen in hoofdrijbaan."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Kunstwerk hoofdrijbaan" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Kunstwerk hoofdrijbaan" ;
+  skos:prefLabel "Kunstwerk hoofdrijbaan" .
+
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Kunstwerk_wegvak-Kunstwerk> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Kunstwerk> ;
+  sc:definitie "Kunstwerk wegvak."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Kunstwerk wegvak" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Kunstwerk wegvak" ;
+  skos:prefLabel "Kunstwerk wegvak" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Kunstwerk_wegvak-Kunstwerk> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Kunstwerk> ;
+  sc:definitie "Kunstwerk wegvak."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Kunstwerk wegvak" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Kunstwerk wegvak" ;
+  skos:prefLabel "Kunstwerk wegvak" .
+  
+<http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Kunstwerk_doorrijhoogte-Kunstwerk> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Kunstwerk> ;
+  sc:definitie "Kunstwerk doorrijhoogte."^^rdf:XMLLiteral ;
+  sc:eigenaar "Rijksdienst voor het Wegverkeer" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Kunstwerk doorrijhoogte" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle wegvakken in Nederland." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Kunstwerk doorrijhoogte" ;
+  skos:prefLabel "Kunstwerk doorrijhoogte" .
