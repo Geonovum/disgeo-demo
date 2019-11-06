@@ -16,6 +16,8 @@ import javax.ws.rs.core.UriInfo;
 import org.apache.http.ParseException;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.ResIterator;
+import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
 
@@ -82,8 +84,10 @@ public class DisgeoService {
 		if(ds != null) {
 			//System.out.println(ds.getAccessUrl());
 			result = RmlMapper.convertResult(Util.queryRestfullService(pathParams, ds.getHeaders(), ds.getAccessUrl()), ds.getTripleMapping(true), ds.getFormat());
-			while(result.listSubjects().hasNext()) {
-				result.add(OrchestrationModel.queryRelatedConcepts(restConcept, result, result.listSubjects().next()));
+			ResIterator ri = result.listSubjects();
+			while(ri.hasNext()) {
+				Resource subject = ri.next().asResource();
+				result.add(OrchestrationModel.queryRelatedConcepts(restConcept, result, subject));
 			}
 		}
 		

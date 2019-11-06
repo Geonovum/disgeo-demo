@@ -171,10 +171,6 @@ disds:bag rdf:type dcat:Dataset ;
 				rr:objectMap [ carml:multiReference "$._links.pandrelateringen[*].href" ];
 			] ;
 			rr:predicateObjectMap [
-				rr:predicate <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Aanduiding_nevenadressen_Verblijfsobject-Verblijfsobject>;
-				rr:objectMap [ rml:reference "$._links.nevenadres[*].href" ];
-			];
-			rr:predicateObjectMap [
 				rr:predicate <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Aanduiding_hoofdadres_Verblijfsobject-Verblijfsobject>;
 				rr:objectMap [ rml:reference "$._links.hoofdadres.href" ];
 			] ;
