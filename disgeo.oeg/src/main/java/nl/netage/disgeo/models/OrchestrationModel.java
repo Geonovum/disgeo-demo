@@ -1,9 +1,11 @@
 package nl.netage.disgeo.models;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.http.client.ClientProtocolException;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.NodeIterator;
@@ -13,16 +15,50 @@ import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.ResourceFactory;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.rdf.model.StmtIterator;
-import org.apache.jena.riot.Lang;
-import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.vocabulary.RDF;
 import org.apache.jena.vocabulary.SKOS;
+import org.locationtech.jts.geom.Geometry;
+import org.locationtech.jts.io.geojson.GeoJsonWriter;
 
 import nl.netage.disgeo.configuration.Configuration;
 import nl.netage.disgeo.util.Util;
 import nl.netage.disgeo.vocab.SC;
 
 public class OrchestrationModel {
+	
+	public static Model queryGeoRelatedConcepts(String uri, Model result, Resource next, Geometry geom) throws Exception {
+		Model m = ModelFactory.createDefaultModel();
+		//Objects to which the current object refers
+		NodeIterator ni = Configuration.configurationModel.listObjectsOfProperty(ResourceFactory.createResource(uri), m.createProperty("http://www.opengis.net/def/function/geosparql/relate"));
+		while(ni.hasNext()) {
+			Resource geoRelatedConcept = ni.next().asResource();
+			DataService ds = Configuration.getDataServiceForClass(geoRelatedConcept.getURI());
+			if(ds != null) {
+				if(ds.hasGeoParam()) {	
+					GeoJsonWriter writer = new GeoJsonWriter();
+					m.add(RmlMapper.convertResult(
+							Util.queryPostRestfullService(new HashMap<String, String>(), new ArrayList<String>(), writer.write(geom).toString(), ds.getAccessUrl()), 
+							ds.getTripleMapping(false), ds.getFormat()));
+					
+					Resource baseSubject = null;
+					ArrayList<Resource> nearbySubjects = new ArrayList<Resource>();
+					ResIterator ri = result.listSubjectsWithProperty(RDF.type, result.createResource(uri));
+					while(ri.hasNext()) {
+						baseSubject = ri.next();
+					}
+					
+					ri = m.listSubjectsWithProperty(RDF.type, result.createResource(geoRelatedConcept.getURI()));
+					while(ri.hasNext()) {
+						nearbySubjects.add(ri.next());
+					}
+					
+					for(int i=0;i<nearbySubjects.size();i++)
+						m.add(baseSubject, m.createProperty("http://www.opengis.net/def/function/geosparql/nearby"), nearbySubjects.get(i));
+				}
+			}
+		}
+		return m;
+	}
 
 	public static Model queryRelatedConcepts(String uri, Model result, Resource previousSubject) throws Exception {
 		Model m = ModelFactory.createDefaultModel();
@@ -31,7 +67,7 @@ public class OrchestrationModel {
 		while(ni.hasNext()) {
 			Resource conceptAttribuut = ni.next().asResource();
 			StmtIterator si = conceptAttribuut.listProperties(SKOS.related);
-			System.out.println(conceptAttribuut.asNode().toString());
+			//System.out.println(conceptAttribuut.asNode().toString());
 			while(si.hasNext()) {
 				Statement s = si.next();
 
@@ -55,7 +91,7 @@ public class OrchestrationModel {
 									Model blockResult = ModelFactory.createDefaultModel();
 									blockResult = (Util.replaceValuesWithIdentifiers(
 											RmlMapper.convertResult(
-													Util.queryRestfullService(new HashMap<String, String>(), ds.getHeaders(), value)
+													Util.queryGetRestfullService(new HashMap<String, String>(), ds.getHeaders(), value)
 													, ds.getTripleMapping(false), ds.getFormat())
 											, urlProperty, result, valueNode));
 									
@@ -86,8 +122,9 @@ public class OrchestrationModel {
 							}
 
 							Model blockResult = ModelFactory.createDefaultModel();
-							String apiResult = Util.queryRestfullService(pathParams, ds.getHeaders(), ds.getAccessUrl());
+							String apiResult = Util.queryGetRestfullService(pathParams, ds.getHeaders(), ds.getAccessUrl());
 							if(apiResult != null) {
+								try {
 								blockResult = RmlMapper.convertResult(apiResult, ds.getTripleMapping(false), ds.getFormat());
 								ResIterator ri = blockResult.listSubjects();
 								while(ri.hasNext()) {
@@ -96,6 +133,9 @@ public class OrchestrationModel {
 										m.add(previousSubject, ResourceFactory.createProperty(s.getSubject().toString()), resultSubject);
 										m.add(blockResult);
 									}
+								}
+								}catch(Exception e) {
+									
 								}
 							}
 							System.out.println("-------------------------------");

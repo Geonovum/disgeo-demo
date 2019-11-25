@@ -32,6 +32,7 @@
 @prefix gegeven_polis: <http://data.stelselvanbasisregistraties.nl/polis/id/gegevenselement/> .
 @prefix gegeven_verzekeraars: <http://data.stelselvanbasisregistraties.nl/verzekeraars/id/gegevenselement/> .
 @prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix geof: <http://www.opengis.net/def/function/geosparql/>
 @prefix html: <http://uispin.org/html#> .
 @prefix integrate: <http://data.ihlz.nl/id/dataset/integrate#> .
 @prefix isaCore: <http://data.europa.eu/core-vocabularies/> .
@@ -741,3 +742,175 @@
   dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
   rdfs:label "Kunstwerk doorrijhoogte" ;
   skos:prefLabel "Kunstwerk doorrijhoogte" .
+
+#---------------------------------------------------------------------------------------------
+#  LRKP
+#---------------------------------------------------------------------------------------------
+<http://data.stelselvanbasisregistraties.nl/bag/id/concept/Verblijfsobject> geof:relate <http://data.stelselvanbasisregistraties.nl/lrkp/id/concept/Kinderopvang> .
+
+<http://data.stelselvanbasisregistraties.nl/lrkp/id/concept/Kinderopvang> 
+  rdf:type sc:Begrip ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_identificatie-Kinderopvang> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_type-Kinderopvang> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_naam-Kinderopvang> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_kind_plaatsen-Kinderopvang> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_adres-Kinderopvang> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_postcode-Kinderopvang> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_woonplaats-Kinderopvang> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_naam_houder-Kinderopvang> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_telefoon-Kinderopvang> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_emailadres-Kinderopvang> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_website-Kinderopvang> ;
+  sc:definitie "Landelijke regsiter kinderdagverblijven en peuterspeelzalen data."^^rdf:XMLLiteral ;
+  sc:eigenaar "DUO" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Kinderopvang" ;
+  sc:populatie "De registratie bevat alle goedgekeurde kinderopvang instellingen." ;
+  sc:relatie "" ;
+  sc:toegankelijkheid "Openbaar" ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Kinderopvang" ;
+  skos:prefLabel "kinderopvang" .
+
+<http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_identificatie-Kinderopvang> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/lrkp/id/concept/Kinderopvang> ;
+  sc:definitie "Kinderopvang identificatie."^^rdf:XMLLiteral ;
+  sc:eigenaar "DUO" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Kinderopvang identificatie" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle goedgekeurde kinderopvang instellingen." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Kinderopvang identificatie" ;
+  skos:prefLabel "Kinderopvang identificatie" .
+ 
+<http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_type-Kinderopvang> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/lrkp/id/concept/Kinderopvang> ;
+  sc:definitie "Kinderopvang type."^^rdf:XMLLiteral ;
+  sc:eigenaar "DUO" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Kinderopvang type" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle goedgekeurde kinderopvang instellingen." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Kinderopvang type" ;
+  skos:prefLabel "Kinderopvang type" .
+
+<http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_naam-Kinderopvang> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/lrkp/id/concept/Kinderopvang> ;
+  sc:definitie "Kinderopvang type."^^rdf:XMLLiteral ;
+  sc:eigenaar "DUO" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Kinderopvang naam" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle goedgekeurde kinderopvang instellingen." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Kinderopvang naam" ;
+  skos:prefLabel "Kinderopvang naam"  .
+
+<http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_kind_plaatsen-Kinderopvang> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/lrkp/id/concept/Kinderopvang> ;
+  sc:definitie "Kinderopvang kind plaatsen."^^rdf:XMLLiteral ;
+  sc:eigenaar "DUO" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Kinderopvang kind plaatsen" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle goedgekeurde kinderopvang instellingen." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Kinderopvang kind plaatsen" ;
+  skos:prefLabel "Kinderopvang kind plaatsen"  .
+
+<http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_adres-Kinderopvang> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/lrkp/id/concept/Kinderopvang> ;
+  sc:definitie "Kinderopvang adres."^^rdf:XMLLiteral ;
+  sc:eigenaar "DUO" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Kinderopvang adres" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle goedgekeurde kinderopvang instellingen." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Kinderopvang adres" ;
+  skos:prefLabel "Kinderopvang adres"  .
+
+<http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_postcode-Kinderopvang> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/lrkp/id/concept/Kinderopvang> ;
+  sc:definitie "Kinderopvang postcode."^^rdf:XMLLiteral ;
+  sc:eigenaar "DUO" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Kinderopvang postcode" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle goedgekeurde kinderopvang instellingen." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Kinderopvang postcode" ;
+  skos:prefLabel "Kinderopvang postcode"  .
+
+<http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_woonplaats-Kinderopvang> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/lrkp/id/concept/Kinderopvang> ;
+  sc:definitie "Kinderopvang woonplaats."^^rdf:XMLLiteral ;
+  sc:eigenaar "DUO" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Kinderopvang woonplaats" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle goedgekeurde kinderopvang instellingen." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Kinderopvang woonplaats" ;
+  skos:prefLabel "Kinderopvang woonplaats"  .
+
+<http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_naam_houder-Kinderopvang> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/lrkp/id/concept/Kinderopvang> ;
+  sc:definitie "Kinderopvang Naam houder."^^rdf:XMLLiteral ;
+  sc:eigenaar "DUO" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Kinderopvang Naam houder" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle goedgekeurde kinderopvang instellingen." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Kinderopvang Naam houder" ;
+  skos:prefLabel "Kinderopvang Naam houder"  .
+
+<http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_telefoon-Kinderopvang> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/lrkp/id/concept/Kinderopvang> ;
+  sc:definitie "Kinderopvang telefoon."^^rdf:XMLLiteral ;
+  sc:eigenaar "DUO" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Kinderopvang telefoon" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle goedgekeurde kinderopvang instellingen." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Kinderopvang telefoon" ;
+  skos:prefLabel "Kinderopvang telefoon"  .
+
+<http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_emailadres-Kinderopvang> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/lrkp/id/concept/Kinderopvang> ;
+  sc:definitie "Kinderopvang emailadres."^^rdf:XMLLiteral ;
+  sc:eigenaar "DUO" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Kinderopvang emailadres" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle goedgekeurde kinderopvang instellingen." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Kinderopvang emailadres" ;
+  skos:prefLabel "Kinderopvang emailadres"  .
+
+<http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_website-Kinderopvang> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/lrkp/id/concept/Kinderopvang> ;
+  sc:definitie "Kinderopvang website."^^rdf:XMLLiteral ;
+  sc:eigenaar "DUO" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Kinderopvang website" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle goedgekeurde kinderopvang instellingen." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Kinderopvang website" ;
+  skos:prefLabel "Kinderopvang website"  .

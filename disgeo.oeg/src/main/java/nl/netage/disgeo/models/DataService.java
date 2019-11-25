@@ -114,6 +114,15 @@ public class DataService {
 		return false;
 	}
 	
+	public boolean hasGeoParam() {
+		for(int i=0;i<this.getParams().size();i++) {
+			if(this.getParams().get(i).getType().equals("http://temp.netage.nl/GeoParam")) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public String returnApiCallParam() {
 		for(int i=0;i<this.getParams().size();i++) {
 			if(this.getParams().get(i).getType().equals("http://temp.netage.nl/ApiCall")) {

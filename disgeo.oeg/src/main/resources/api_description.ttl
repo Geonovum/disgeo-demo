@@ -12,6 +12,8 @@ prefix ql: <http://semweb.mmlab.be/ns/ql#>
 prefix carml: <http://carml.taxonic.com/carml/> 
 prefix skos: <http://www.w3.org/2004/02/skos/core#>
 prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix geo: <http://www.opengis.net/ont/geosparql#>
+prefix geof: <http://www.opengis.net/def/function/geosparql/>
 
 disds:bag rdf:type dcat:Dataset ;
 	dcat:distribution [
@@ -171,10 +173,43 @@ disds:bag rdf:type dcat:Dataset ;
 				rr:objectMap [ carml:multiReference "$._links.pandrelateringen[*].href" ];
 			] ;
 			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Aanduiding_nevenadressen_Verblijfsobject-Verblijfsobject>;
+				rr:objectMap [ rml:reference "$._links.nevenadres.href" ];
+			] ;
+			rr:predicateObjectMap [
 				rr:predicate <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Aanduiding_hoofdadres_Verblijfsobject-Verblijfsobject>;
 				rr:objectMap [ rml:reference "$._links.hoofdadres.href" ];
 			] ;
-		  ] ;
+			rr:predicateObjectMap [
+				rr:predicate geo:hasGeometry;
+				rr:objectMap [ rr:parentTriplesMap [
+						rml:logicalSource [
+							rml:source [
+							a carml:Stream ;
+							] ;
+							rml:referenceFormulation ql:JSONPath ;
+							rml:iterator "$" ;
+						] ;	
+						rr:subjectMap [
+    						rr:template "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/{identificatiecode}/geo";
+							rr:class geo:Geometry;
+  						];
+						rr:predicateObjectMap [
+								rr:predicate geo:asWKT ;
+								rr:objectMap [ rr:template "POINT({$._embedded.geometrie.coordinates[0]} {$._embedded.geometrie.coordinates[1]})";
+								rr:datatype geo:wktLiteral ;
+							];
+						] ;
+						rr:predicateObjectMap [
+								rr:predicate geo:crs ;
+								rr:objectMap [ rml:reference "$._embedded.geometrie.crs.properties.name";
+								rr:datatype xsd:string ;
+							];
+						] ;
+					] ;
+				] ;
+			] ;
+		] ;
 		   temp:rmlMapping [ 
 			a rr:TriplesMap ;
 			a temp:MultipleObjects ;
@@ -212,6 +247,29 @@ disds:bag rdf:type dcat:Dataset ;
 			rr:predicateObjectMap [
 				rr:predicate <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Aanduiding_hoofdadres_Verblijfsobject-Verblijfsobject>;
 				rr:objectMap [ rml:reference "$._links.hoofdadres.href" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate geo:hasGeometry;
+				rr:objectMap [ rr:parentTriplesMap [
+						rml:logicalSource [
+							rml:source [
+							a carml:Stream ;
+							] ;
+							rml:referenceFormulation ql:JSONPath ;
+							rml:iterator "$" ;
+						] ;	
+						rr:subjectMap [
+    						rr:template "http://bag.basisregistraties.overheid.nl/bag/id/verblijfsobject/{identificatiecode}/geo";
+							rr:class geo:Geometry;
+  						];
+						rr:predicateObjectMap [
+								rr:predicate geo:asWKT ;
+								rr:objectMap [ rr:template "POINT({$._embedded.geometrie.coordinates[0]} {$._embedded.geometrie.coordinates[1]})";
+								rr:datatype geo:wktLiteral ;
+							];
+						] ;
+					] ;
+				] ;
 			] ;
 		  ] ;
 		] ;
@@ -316,7 +374,7 @@ disds:bag rdf:type dcat:Dataset ;
 			a temp:API;
 			temp:param [ 
 				a temp:PathParam;
-				skos:related <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvlakid-Wegvlak> ;
+				skos:related <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvakid-Wegvak> ;
 				rdfs:label "id"
 			] ;
 		  ] ;
@@ -332,7 +390,7 @@ disds:bag rdf:type dcat:Dataset ;
 				rml:iterator "$" ;
 			] ;
 			rr:subjectMap [
-				rr:template "http://data.disgeo.nl/nwb/id/wegvlak/{wvk_id}";
+				rr:template "http://data.disgeo.nl/nwb/id/wegvak/{wvk_id}";
 				rr:class <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Wegvak>;
 			];
 			rr:predicateObjectMap [
@@ -479,7 +537,7 @@ disds:bag rdf:type dcat:Dataset ;
 			];
 			rr:predicateObjectMap [
 				rr:predicate <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Kunstwerk_wegvak-Kunstwerk>;
-				rr:objectMap [ rr:template "http://data.disgeo.nl/nwb/id/wegvlak/{wvk_id}" ];
+				rr:objectMap [ rr:template "http://data.disgeo.nl/nwb/id/wegvak/{wvk_id}" ];
 			] ;
 			rr:predicateObjectMap [
 				rr:predicate <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Kunstwerk_type-Kunstwerk>;
@@ -500,6 +558,84 @@ disds:bag rdf:type dcat:Dataset ;
 			rr:predicateObjectMap [
 				rr:predicate <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Kunstwerk_hoofdrijbaan-Kunstwerk>;
 				rr:objectMap [ rml:reference "invent_oms" ];
+			] ;
+		  ] ;
+		] ;
+	  ] .
+
+	disds:lrkp rdf:type dcat:Dataset ;
+	dcat:distribution [
+		rdf:type dcat:Distribution ;
+		dct:title "RDF representatie van LRKP API calls"@nl ;
+		dcat:accessService [
+		  rdf:type dcat:DataService ;
+		  dct:format [ rdfs:label "json" ] ;
+		  dct:title "Landelijke register Kinderopvang en Peuterspeelzalen"@nl ;
+		  dct:endpointDescription [
+			a temp:API;
+			temp:param [ 
+				a temp:GeoParam;
+				rdfs:label "geometrie"
+			] ;
+		  ] ;
+		  dctterms:isReferencedBy <http://data.stelselvanbasisregistraties.nl/lrkp/id/concept/Kinderopvang>;
+		  dcat:accessURL "http://localhost:8080/api/lrkp/kdv/{id}" ;
+		  temp:rmlMapping [ 
+			a rr:TriplesMap;
+			rml:logicalSource [
+				rml:source [
+				  a carml:Stream ;
+				] ;
+				rml:referenceFormulation ql:JSONPath ;
+				rml:iterator "$" ;
+			] ;
+			rr:subjectMap [
+				rr:template "http://data.disgeo.nl/lrkp/id/{lrk_id}";
+				rr:class <http://data.stelselvanbasisregistraties.nl/lrkp/id/concept/Kinderopvang> ;
+			];
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_identificatie-Kinderopvang>;
+				rr:objectMap [ rml:reference "lrk_id" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_type-Kinderopvang>;
+				rr:objectMap [ rml:reference "type_oko" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_naam-Kinderopvang> ;
+				rr:objectMap [ rml:reference "actuele_naam_oko" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_kind_plaatsen-Kinderopvang> ;
+				rr:objectMap [ rml:reference "aantal_kindplaatsen" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_adres-Kinderopvang> ;
+				rr:objectMap [ rml:reference "opvanglocatie_adres" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_postcode-Kinderopvang> ;
+				rr:objectMap [ rml:reference "opvanglocatie_postcode" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_woonplaats-Kinderopvang> ;
+				rr:objectMap [ rml:reference "opvanglocatie_woonplaats" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_naam_houder-Kinderopvang> ;
+				rr:objectMap [ rml:reference "naam_houder" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_telefoon-Kinderopvang> ;
+				rr:objectMap [ rml:reference "contact_telefoon" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_emailadres-Kinderopvang> ;
+				rr:objectMap [ rml:reference "contact_emailadres" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_website-Kinderopvang> ;
+				rr:objectMap [ rml:reference "contact_website" ];
 			] ;
 		  ] ;
 		] ;

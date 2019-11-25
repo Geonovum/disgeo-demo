@@ -20,6 +20,10 @@ import org.apache.jena.rdf.model.ResIterator;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.riot.Lang;
 import org.apache.jena.riot.RDFDataMgr;
+import org.apache.jena.vocabulary.RDF;
+import org.eclipse.rdf4j.model.vocabulary.GEOF;
+import org.locationtech.jts.geom.Geometry;
+import org.locationtech.jts.io.WKTReader;
 
 import nl.netage.disgeo.configuration.Configuration;
 import nl.netage.disgeo.models.DataService;
@@ -46,23 +50,23 @@ public class DisgeoService {
 		StringWriter out = new StringWriter();
 		Model result = ModelFactory.createDefaultModel();
 		Configuration.passedObjects = ModelFactory.createDefaultModel();
-		
+
 		DataService ds = Configuration.getDataServiceForClass("http://data.stelselvanbasisregistraties.nl/bag/id/concept/Pand");
 		HashMap<String, String> pathParams = new HashMap<String, String>();
 		pathParams.put("id", id);
 		if(ds != null) {
-			result = RmlMapper.convertResult(Util.queryRestfullService(pathParams, ds.getHeaders(), ds.getAccessUrl()), ds.getTripleMapping(true), ds.getFormat());
+			result = RmlMapper.convertResult(Util.queryGetRestfullService(pathParams, ds.getHeaders(), ds.getAccessUrl()), ds.getTripleMapping(true), ds.getFormat());
 			result.add(OrchestrationModel.queryRelatedConcepts(restConcept, result, result.listSubjects().next()));
 		}
-				
+
 		RDFDataMgr.write(out, result, Lang.JSONLD);
-		
+
 		System.out.print("Sending data ("+result.size()+")! \n\n");
 		builder = Response.ok(out.toString());
 		adjustResponse(builder);
 		return builder.build();		
 	}
-	
+
 	@GET
 	@Path("verblijfsobject/{id}")
 	@Produces({ "application/ld+json" })
@@ -76,29 +80,29 @@ public class DisgeoService {
 		String restConcept = "http://data.stelselvanbasisregistraties.nl/bag/id/concept/Verblijfsobject";
 		StringWriter out = new StringWriter();
 		Model result = ModelFactory.createDefaultModel();
-		
+
 		DataService ds = Configuration.getDataServiceForClass(restConcept);
 		HashMap<String, String> pathParams = new HashMap<String, String>();
 		pathParams.put("id", id);
-		
+
 		if(ds != null) {
 			//System.out.println(ds.getAccessUrl());
-			result = RmlMapper.convertResult(Util.queryRestfullService(pathParams, ds.getHeaders(), ds.getAccessUrl()), ds.getTripleMapping(true), ds.getFormat());
+			result = RmlMapper.convertResult(Util.queryGetRestfullService(pathParams, ds.getHeaders(), ds.getAccessUrl()), ds.getTripleMapping(true), ds.getFormat());
 			ResIterator ri = result.listSubjects();
 			while(ri.hasNext()) {
 				Resource subject = ri.next().asResource();
 				result.add(OrchestrationModel.queryRelatedConcepts(restConcept, result, subject));
 			}
 		}
-		
+
 		RDFDataMgr.write(out, result, Lang.JSONLD);
-		
+
 		System.out.print("Sending data ("+result.size()+")! \n\n");
 		builder = Response.ok(out.toString());
 		adjustResponse(builder);
 		return builder.build();		
 	}
-	
+
 	@GET
 	@Path("wegvak/{id}")
 	@Produces({ "application/ld+json" })
@@ -119,7 +123,8 @@ public class DisgeoService {
 		
 		if(ds != null) {
 			//System.out.println(ds.getAccessUrl());
-			result = RmlMapper.convertResult(Util.queryRestfullService(pathParams, ds.getHeaders(), ds.getAccessUrl()), ds.getTripleMapping(true), ds.getFormat());
+			System.out.println(Util.queryGetRestfullService(pathParams, ds.getHeaders(), ds.getAccessUrl()));
+			result = RmlMapper.convertResult(Util.queryGetRestfullService(pathParams, ds.getHeaders(), ds.getAccessUrl()), ds.getTripleMapping(true), ds.getFormat());
 			result.add(OrchestrationModel.queryRelatedConcepts(restConcept, result, result.listSubjects().next()));
 		}
 		
@@ -130,8 +135,54 @@ public class DisgeoService {
 		adjustResponse(builder);
 		return builder.build();		
 	}
-	
-	
+
+
+	//	
+	//	GEO relatie vraag (categorie 2)
+	//	
+
+	@GET
+	@Path("/geo/verblijfsobject/{id}")
+	@Produces({ "application/ld+json" })
+	public Response getVboGeo(
+			@Context UriInfo uriInfo,
+			@Context Request request,
+			@PathParam("id") String id) throws Exception{
+
+		ResponseBuilder builder = Response.ok();
+		System.out.println("id: "+ id);
+		String restConcept = "http://data.stelselvanbasisregistraties.nl/bag/id/concept/Verblijfsobject";
+		StringWriter out = new StringWriter();
+		Model result = ModelFactory.createDefaultModel();
+
+		DataService ds = Configuration.getDataServiceForClass(restConcept);
+		HashMap<String, String> pathParams = new HashMap<String, String>();
+		pathParams.put("id", id);
+
+		if(ds != null) {
+			result = RmlMapper.convertResult(Util.queryGetRestfullService(pathParams, ds.getHeaders(), ds.getAccessUrl()), ds.getTripleMapping(true), ds.getFormat());		
+
+			ResIterator ri = result.listSubjectsWithProperty(RDF.type, result.createResource("http://www.opengis.net/ont/geosparql#Geometry"));
+			Resource geoSubject = ri.next().asResource();
+
+			String wktLiteral = geoSubject.getProperty(result.createProperty("http://www.opengis.net/ont/geosparql#asWKT")).getObject().asLiteral().getString();
+			String crs = geoSubject.getProperty(result.createProperty("http://www.opengis.net/ont/geosparql#crs")).getObject().asLiteral().getString();
+
+			WKTReader wktr = new WKTReader();
+			Geometry point = wktr.read(wktLiteral);
+			Geometry searchArea = Util.createCircle(point.getCoordinate(), 500);
+			System.out.println(searchArea.toText());
+
+			result.add(OrchestrationModel.queryGeoRelatedConcepts(restConcept, result, result.listSubjects().next(), searchArea));
+		}
+		RDFDataMgr.write(out, result, Lang.JSONLD);
+
+		System.out.print("Sending data ("+result.size()+")! \n\n");
+		builder = Response.ok(out.toString());
+		adjustResponse(builder);
+		return builder.build();		
+	}
+
 	public void adjustResponse(ResponseBuilder builder) {
 		CacheControl cc = new CacheControl();
 		cc.setMaxAge(86400);
