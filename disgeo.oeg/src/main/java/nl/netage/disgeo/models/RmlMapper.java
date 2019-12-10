@@ -29,7 +29,7 @@ public class RmlMapper {
 	public static Model convertResult(String result, Model tripleMapping, String format) throws Exception {
 		StringWriter sw = new StringWriter();
 		RDFDataMgr.write(sw, tripleMapping, Lang.TTL);
-		//System.out.println(result);
+
 		Set<TriplesMap> mapping =
 				RmlMappingLoader
 				.build()

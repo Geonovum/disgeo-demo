@@ -16,6 +16,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.ResourceFactory;
@@ -42,6 +43,24 @@ public class Util {
 		} 
 	} 
 	
+	public static Model addPrefixes() {
+		Model m = ModelFactory.createDefaultModel();
+		m.setNsPrefix("rdfs","http://www.w3.org/2000/01/rdf-schema#");
+		m.setNsPrefix("geo","http://www.opengis.net/ont/geosparql#");
+		m.setNsPrefix("dc","http://purl.org/dc/terms/");
+		m.setNsPrefix("geof", "http://www.opengis.net/def/function/geosparql/");
+		m.setNsPrefix("sc","http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/");
+		m.setNsPrefix("cbs", "http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/");
+		m.setNsPrefix("rrgs", "http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/");
+		m.setNsPrefix("lrkp", "http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/");
+		m.setNsPrefix("nwb", "http://data.stelselvanbasisregistraties.nl/nwb/id/gegevenselement/");
+		m.setNsPrefix("rce", "http://data.stelselvanbasisregistraties.nl/rce/id/gegevenselement/");
+		m.setNsPrefix("duo", "http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/");
+		
+		m.setNsPrefixes(Model.Extended);
+		return m;
+	}
+	
 	public static String queryPostRestfullService(HashMap<String, String> pathParams, ArrayList<String> headers, String data, String accessUrl) throws ClientProtocolException, IOException {
 		String endpoint = Util.fillParamsToAccessUrl(pathParams, accessUrl);
 		System.out.println(endpoint);
@@ -60,16 +79,16 @@ public class Util {
 			try (CloseableHttpResponse response = httpClient.execute(postRequest)) {
 
 				// Get HttpResponse Status
-				System.out.println(response.getStatusLine().toString());
+//				System.out.println(response.getStatusLine().toString());
 
 				HttpEntity entity = response.getEntity();
 				Header contentType = entity.getContentType();
-				System.out.println(contentType);
+//				System.out.println(contentType);
 
 				if (entity != null) {
 					// return it as a String
 					String result = EntityUtils.toString(entity);
-					//System.out.println(result);
+					System.out.println(result);
 					return result;
 				}
 
@@ -98,16 +117,16 @@ public class Util {
 			try (CloseableHttpResponse response = httpClient.execute(getRequest)) {
 
 				// Get HttpResponse Status
-				System.out.println(response.getStatusLine().toString());
+//				System.out.println(response.getStatusLine().toString());
 
 				HttpEntity entity = response.getEntity();
 				Header contentType = entity.getContentType();
-				System.out.println(contentType);
+//				System.out.println(contentType);
 
 				if (entity != null) {
 					// return it as a String
 					String result = EntityUtils.toString(entity);
-					//System.out.println(result);
+//					System.out.println(result);
 					return result;
 				}
 

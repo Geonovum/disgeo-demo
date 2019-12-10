@@ -14,6 +14,7 @@ prefix skos: <http://www.w3.org/2004/02/skos/core#>
 prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 prefix geo: <http://www.opengis.net/ont/geosparql#>
 prefix geof: <http://www.opengis.net/def/function/geosparql/>
+prefix sf: <http://www.opengis.net/ont/sf/>
 
 disds:bag rdf:type dcat:Dataset ;
 	dcat:distribution [
@@ -453,6 +454,29 @@ disds:bag rdf:type dcat:Dataset ;
 				rr:predicate <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_wegnummer_hectometerpaal-Wegvak>;
 				rr:objectMap [ rml:reference "$.wegnr_hmp" ];
 			] ;
+			rr:predicateObjectMap [
+				rr:predicate geo:hasGeometry;
+				rr:objectMap [ rr:parentTriplesMap [
+						rml:logicalSource [
+							rml:source [
+							a carml:Stream ;
+							] ;
+							rml:referenceFormulation ql:JSONPath ;
+							rml:iterator "$" ;
+						] ;	
+						rr:subjectMap [
+    						rr:template "http://data.disgeo.nl/nwb/id/wegvak/{wvk_id}/geo";
+							rr:class geo:Geometry;
+  						];
+						rr:predicateObjectMap [
+								rr:predicate geo:asWKT ;
+								rr:objectMap [ rml:reference "$.wkt";
+								rr:datatype geo:wktLiteral ;
+							];
+						] ;
+					] ;
+				] ;
+			] ;
 		  ] ;
 		] ;
 	  ] ;
@@ -574,7 +598,7 @@ disds:bag rdf:type dcat:Dataset ;
 		  dct:endpointDescription [
 			a temp:API;
 			temp:param [ 
-				a temp:GeoParam;
+				a sf:Polygon;
 				rdfs:label "geometrie"
 			] ;
 		  ] ;
@@ -636,6 +660,447 @@ disds:bag rdf:type dcat:Dataset ;
 			rr:predicateObjectMap [
 				rr:predicate <http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/Kinderopvang_website-Kinderopvang> ;
 				rr:objectMap [ rml:reference "contact_website" ];
+			] ;
+		  ] ;
+		] ;
+	  ] .
+
+	disds:duo rdf:type dcat:Dataset ;
+	dcat:distribution [
+		rdf:type dcat:Distribution ;
+		dct:title "RDF representatie van DUO API calls"@nl ;
+		dcat:accessService [
+		  rdf:type dcat:DataService ;
+		  dct:format [ rdfs:label "json" ] ;
+		  dct:title "Landelijke dataset basis onderwijs"@nl ;
+		  dct:endpointDescription [
+			a temp:API;
+			temp:param [ 
+				a sf:Polygon;
+				rdfs:label "geometrie"
+			] ;
+		  ] ;
+		  dctterms:isReferencedBy <http://data.stelselvanbasisregistraties.nl/duo/id/concept/Basisschool>;
+		  dcat:accessURL "http://localhost:8080/api/duo/bo/{brinnummer}/{vestigingsnummer}" ;
+		  temp:rmlMapping [ 
+			a rr:TriplesMap;
+			rml:logicalSource [
+				rml:source [
+				  a carml:Stream ;
+				] ;
+				rml:referenceFormulation ql:JSONPath ;
+				rml:iterator "$" ;
+			] ;
+			rr:subjectMap [
+				rr:template "http://data.disgeo.nl/duo/id/{brin_nummer}/{vestigingsnummer}";
+				rr:class <http://data.stelselvanbasisregistraties.nl/duo/id/concept/Basisschool> ;
+			];
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_brinnummer-Basisonderwijs>;
+				rr:objectMap [ rml:reference "brin_nummer" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_vestigingsnummer-Basisonderwijs>;
+				rr:objectMap [ rml:reference "vestigingsnummer" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_vestigingsnaam-Basisonderwijs> ;
+				rr:objectMap [ rml:reference "vestigingsnaam" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_huisnummer-Basisonderwijs> ;
+				rr:objectMap [ rml:reference "huisnummer_toevoeging" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_straatnaam-Basisonderwijs> ;
+				rr:objectMap [ rml:reference "straatnaam" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_plaatsnaam-Basisonderwijs> ;
+				rr:objectMap [ rml:reference "plaatsnaam" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_denominatie-Basisonderwijs> ;
+				rr:objectMap [ rml:reference "denominatie" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_telefoonnummer-Basisonderwijs> ;
+				rr:objectMap [ rml:reference "telefoonnummer" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_internetadres-Basisonderwijs> ;
+				rr:objectMap [ rml:reference "internetadres" ];
+			] ;
+		  ] ;
+		] ;
+	  ] .
+
+	disds:rrgs rdf:type dcat:Dataset ;
+	dcat:distribution [
+		rdf:type dcat:Distribution ;
+		dct:title "RDF representatie van RRGS API calls"@nl ;
+		dcat:accessService [
+		  rdf:type dcat:DataService ;
+		  dct:format [ rdfs:label "json" ] ;
+		  dct:title "RRGS Bedrijven"@nl ;
+		  dct:endpointDescription [
+			a temp:API;
+			temp:param [ 
+				a sf:Polygon;
+				rdfs:label "geometrie"
+			] ;
+		  ] ;
+		  dctterms:isReferencedBy <http://data.stelselvanbasisregistraties.nl/rrgs/id/concept/RRGSBedrijf>;
+		  dcat:accessURL "http://localhost:8080/api/rrgs/bedrijven/{rrgs_id}" ;
+		  temp:rmlMapping [ 
+			a rr:TriplesMap;
+			rml:logicalSource [
+				rml:source [
+				  a carml:Stream ;
+				] ;
+				rml:referenceFormulation ql:JSONPath ;
+				rml:iterator "$" ;
+			] ;
+			rr:subjectMap [
+				rr:template "http://data.disgeo.nl/rrgs/id/{rrgs_id}";
+				rr:class <http://data.stelselvanbasisregistraties.nl/rrgs/id/concept/RRGSBedrijf> ;
+			];
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_bevoegde_gemeente-RRGS>;
+				rr:objectMap [ rml:reference "bevoegd_ge" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_wm_vergunning-RRGS>;
+				rr:objectMap [ rml:reference "wm_vergunn" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_postcode-RRGS> ;
+				rr:objectMap [ rml:reference "postcode" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_gemeente-RRGS> ;
+				rr:objectMap [ rml:reference "gemeente" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_plaats-RRGS> ;
+				rr:objectMap [ rml:reference "plaats" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_huisnummer-RRGS> ;
+				rr:objectMap [ rml:reference "huisnummer" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_straat-RRGS> ;
+				rr:objectMap [ rml:reference "straat" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_url-RRGS> ;
+				rr:objectMap [ rml:reference "url"; rr:termType rr:IRI ; ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_reden_opname-RRGS> ;
+				rr:objectMap [ rml:reference "reden_opna" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_naam_inrichting-RRGS> ;
+				rr:objectMap [ rml:reference "naam_inric" ];
+			] ;
+		  ] ;
+		] ;
+	  ] .
+
+
+	disds:kwetsbareObjecten rdf:type dcat:Dataset ;
+	dcat:distribution [
+		rdf:type dcat:Distribution ;
+		dct:title "RDF representatie van RRGS Kwetsbare objecten API calls"@nl ;
+		dcat:accessService [
+		  rdf:type dcat:DataService ;
+		  dct:format [ rdfs:label "json" ] ;
+		  dct:title "RRGS Kwetsbare Objecten"@nl ;
+		  dct:endpointDescription [
+			a temp:API;
+			temp:param [ 
+				a sf:Polygon;
+				rdfs:label "geometrie"
+			] ;
+		  ] ;
+		  dctterms:isReferencedBy <http://data.stelselvanbasisregistraties.nl/rrgs/id/concept/KwetsbaarObject>;
+		  dcat:accessURL "http://localhost:8080/api/rrgs/kwestbaarobjecten/{rot_code}" ;
+		  temp:rmlMapping [ 
+			a rr:TriplesMap;
+			rml:logicalSource [
+				rml:source [
+				  a carml:Stream ;
+				] ;
+				rml:referenceFormulation ql:JSONPath ;
+				rml:iterator "$" ;
+			] ;
+			rr:subjectMap [
+				rr:template "http://data.disgeo.nl/rrgs/id/{rot_code}";
+				rr:class <http://data.stelselvanbasisregistraties.nl/rrgs/id/concept/KwetsbaarObject> ;
+			];
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_kwetsbaarobject_code-RRGS>;
+				rr:objectMap [ rml:reference "rot_code" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_aantal_aanwezigen-RRGS>;
+				rr:objectMap [ rml:reference "aantal_aan" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_omschrijving-RRGS> ;
+				rr:objectMap [ rml:reference "omschrijvi" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_locatie_omschrijving-RRGS> ;
+				rr:objectMap [ rml:reference "omschrij_1" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_naam-RRGS> ;
+				rr:objectMap [ rml:reference "rot_naam" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_plaatsnaam-RRGS> ;
+				rr:objectMap [ rml:reference "plaats" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_postcode-RRGS> ;
+				rr:objectMap [ rml:reference "postcode" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_toevoeging-RRGS> ;
+				rr:objectMap [ rml:reference "toevoeging" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_huisnummer-RRGS> ;
+				rr:objectMap [ rml:reference "huisnummer" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_straatnaam-RRGS> ;
+				rr:objectMap [ rml:reference "straat" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_bagid-RRGS> ;
+				rr:objectMap [ rml:reference "aobjectid" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_url-RRGS> ;
+				rr:objectMap [ rml:reference "url"; rr:termType rr:IRI ;  ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_aantal_bouwlagen-RRGS> ;
+				rr:objectMap [ rml:reference "aantal_bou" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_type-RRGS> ;
+				rr:objectMap [ rml:reference "type" ];
+			] ;
+		  ] ;
+		] ;
+	  ] .
+
+	disds:WijkenEnBuurten rdf:type dcat:Dataset ;
+	dcat:distribution [
+		rdf:type dcat:Distribution ;
+		dct:title "RDF representatie van de Wijken Buurten Kaart 2018"@nl ;
+		dcat:accessService [
+		  rdf:type dcat:DataService ;
+		  dct:format [ rdfs:label "json" ] ;
+		  dct:title "Wijken en buurten kaart 2018"@nl ;
+		  dct:endpointDescription [
+			a temp:API;
+			temp:param [ 
+				a sf:Point;
+				rdfs:label "geometrie"
+			] ;
+		  ] ;
+		  dctterms:isReferencedBy <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt>;
+		  dcat:accessURL "http://localhost:8080/api/cbs/buurten/{buurt_code}" ;
+		  temp:rmlMapping [ 
+			a rr:TriplesMap;
+			rml:logicalSource [
+				rml:source [
+				  a carml:Stream ;
+				] ;
+				rml:referenceFormulation ql:JSONPath ;
+				rml:iterator "$" ;
+			] ;
+			rr:subjectMap [
+				rr:template "http://data.disgeo.nl/cbs/id/{bu_code}";
+				rr:class <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+			];
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_buurt_code-CBS>;
+				rr:objectMap [ rml:reference "bu_code" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_buurt_naam-CBS>;
+				rr:objectMap [ rml:reference "bu_naam" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_gemeente_naam-CBS> ;
+				rr:objectMap [ rml:reference "gm_naam" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_adressen_dichtheid-CBS> ;
+				rr:objectMap [ rml:reference "oad" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_stedelijkheid-CBS> ;
+				rr:objectMap [ rml:reference "sted" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_aantal_inwoners-CBS> ;
+				rr:objectMap [ rml:reference "aant_inw" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_aantal_mannen-CBS> ;
+				rr:objectMap [ rml:reference "aant_man" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_aantal_vrouwen-CBS> ;
+				rr:objectMap [ rml:reference "aant_vrouw";  ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_personen_tot_15-CBS> ;
+				rr:objectMap [ rml:reference "p_00_14_jr" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_personen_van_15_tot_25-CBS> ;
+				rr:objectMap [ rml:reference "p_15_24_jr" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_personen_van_25_tot_45-CBS> ;
+				rr:objectMap [ rml:reference "p_25_44_jr" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_personen_van_45_tot_65-CBS> ;
+				rr:objectMap [ rml:reference "p_45_64_jr" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_personen_65_ouder-CBS> ;
+				rr:objectMap [ rml:reference "p_65_eo_jr" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Ongehuwd-CBS> ;
+				rr:objectMap [ rml:reference "p_ongehuwd" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Gehuwd-CBS> ;
+				rr:objectMap [ rml:reference "p_gehuwd" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Gescheiden-CBS> ;
+				rr:objectMap [ rml:reference "p_gescheid" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Geboorte_totaal-CBS> ;
+				rr:objectMap [ rml:reference "geboo_tot" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Sterfte_totaal-CBS> ;
+				rr:objectMap [ rml:reference "sterft_tot" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_aantal_huishouden-CBS> ;
+				rr:objectMap [ rml:reference "aantal_hh" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Westerse_immigrant-CBS> ;
+				rr:objectMap [ rml:reference "p_west_al" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Niet_Westerse_immigrant-CBS> ;
+				rr:objectMap [ rml:reference "p_n_w_al" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Woningvoorraad-CBS> ;
+				rr:objectMap [ rml:reference "woningen" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_gemiddelde_woningwaarde-CBS> ;
+				rr:objectMap [ rml:reference "woz" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_leegstaande_woningen-CBS> ;
+				rr:objectMap [ rml:reference "p_leegsw" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_bewoonde_woningen-CBS> ;
+				rr:objectMap [ rml:reference "p_bewndw" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_diefstal-CBS> ;
+				rr:objectMap [ rml:reference "g_wodief" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_vernieling-CBS> ;
+				rr:objectMap [ rml:reference "g_vernoo" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Geweld-CBS> ;
+				rr:objectMap [ rml:reference "g_gewsek" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_ziekenhuis-CBS> ;
+				rr:objectMap [ rml:reference "af_ziek_i" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_supermarkt-CBS> ;
+				rr:objectMap [ rml:reference "af_superm" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_warenhuis-CBS> ;
+				rr:objectMap [ rml:reference "af_warenh" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_cafe-CBS> ;
+				rr:objectMap [ rml:reference "af_cafe" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_cafetaria-CBS> ;
+				rr:objectMap [ rml:reference "af_caftar" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_restaurant-CBS> ;
+				rr:objectMap [ rml:reference "af_restau" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_hotel-CBS> ;
+				rr:objectMap [ rml:reference "af_hotel" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_treinstation-CBS> ;
+				rr:objectMap [ rml:reference "af_treinst" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_zwembad-CBS> ;
+				rr:objectMap [ rml:reference "af_zwemb" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_kunstijsbaan-CBS> ;
+				rr:objectMap [ rml:reference "af_ijsbaan" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_bioscoop-CBS> ;
+				rr:objectMap [ rml:reference "af_bios" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_sauna-CBS> ;
+				rr:objectMap [ rml:reference "af_sauna" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_zonnebank-CBS> ;
+				rr:objectMap [ rml:reference "af_zonbnk" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_attractie-CBS> ;
+				rr:objectMap [ rml:reference "af_attrac" ];
+			] ;
+			rr:predicateObjectMap [
+				rr:predicate <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_brandweerkazerne-CBS> ;
+				rr:objectMap [ rml:reference "af_brandw" ];
 			] ;
 		  ] ;
 		] ;

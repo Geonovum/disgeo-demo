@@ -116,11 +116,32 @@ public class DataService {
 	
 	public boolean hasGeoParam() {
 		for(int i=0;i<this.getParams().size();i++) {
-			if(this.getParams().get(i).getType().equals("http://temp.netage.nl/GeoParam")) {
+			if(this.getParams().get(i).getType().equals("http://www.opengis.net/ont/sf/Polygon")) {
+				return true;
+			}
+			else if(this.getParams().get(i).getType().equals("http://www.opengis.net/ont/sf/Point")) {
+				return true;
+			}
+			else if(this.getParams().get(i).getType().equals("http://www.opengis.net/ont/sf/Line")) {
 				return true;
 			}
 		}
 		return false;
+	}
+	
+	public String geoGeoParam() {
+		for(int i=0;i<this.getParams().size();i++) {
+			if(this.getParams().get(i).getType().equals("http://www.opengis.net/ont/sf/Polygon")) {
+				return this.getParams().get(i).getType();
+			}
+			else if(this.getParams().get(i).getType().equals("http://www.opengis.net/ont/sf/Point")) {
+				return this.getParams().get(i).getType();
+			}
+			else if(this.getParams().get(i).getType().equals("http://www.opengis.net/ont/sf/Line")) {
+				return this.getParams().get(i).getType();
+			}
+		}
+		return null;
 	}
 	
 	public String returnApiCallParam() {

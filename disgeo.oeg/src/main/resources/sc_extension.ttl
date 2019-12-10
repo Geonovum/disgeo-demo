@@ -32,7 +32,7 @@
 @prefix gegeven_polis: <http://data.stelselvanbasisregistraties.nl/polis/id/gegevenselement/> .
 @prefix gegeven_verzekeraars: <http://data.stelselvanbasisregistraties.nl/verzekeraars/id/gegevenselement/> .
 @prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
-@prefix geof: <http://www.opengis.net/def/function/geosparql/>
+@prefix geof: <http://www.opengis.net/def/function/geosparql/> .
 @prefix html: <http://uispin.org/html#> .
 @prefix integrate: <http://data.ihlz.nl/id/dataset/integrate#> .
 @prefix isaCore: <http://data.europa.eu/core-vocabularies/> .
@@ -95,6 +95,11 @@
 #---------------------------------------------------------------------------------------------
 
 <http://data.stelselvanbasisregistraties.nl/bag/id/concept/Nummeraanduiding> sc:attribuut <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/MonumentRelatering_Nummeraanduiding-Nummeraanduiding> .
+<http://data.stelselvanbasisregistraties.nl/bag/id/concept/Verblijfsobject> geof:relate <http://data.stelselvanbasisregistraties.nl/lrkp/id/concept/Kinderopvang> .
+<http://data.stelselvanbasisregistraties.nl/bag/id/concept/Verblijfsobject> geof:relate <http://data.stelselvanbasisregistraties.nl/duo/id/concept/Basisschool> .
+<http://data.stelselvanbasisregistraties.nl/bag/id/concept/Verblijfsobject> geof:relate <http://data.stelselvanbasisregistraties.nl/rrgs/id/concept/RRGSBedrijf> .
+<http://data.stelselvanbasisregistraties.nl/bag/id/concept/Verblijfsobject> geof:relate <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> .
+<http://data.stelselvanbasisregistraties.nl/bag/id/concept/Wegvak> geof:relate <http://data.stelselvanbasisregistraties.nl/rrgs/id/concept/KwetsbaarObject> .
 
 <http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/MonumentRelatering_Nummeraanduiding-Nummeraanduiding>
   rdf:type sc:Gegevenselement ;
@@ -746,7 +751,6 @@
 #---------------------------------------------------------------------------------------------
 #  LRKP
 #---------------------------------------------------------------------------------------------
-<http://data.stelselvanbasisregistraties.nl/bag/id/concept/Verblijfsobject> geof:relate <http://data.stelselvanbasisregistraties.nl/lrkp/id/concept/Kinderopvang> .
 
 <http://data.stelselvanbasisregistraties.nl/lrkp/id/concept/Kinderopvang> 
   rdf:type sc:Begrip ;
@@ -914,3 +918,1305 @@
   dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
   rdfs:label "Kinderopvang website" ;
   skos:prefLabel "Kinderopvang website"  .
+
+  #------------------------------------------------------------
+  # DUO
+  #------------------------------------------------------------
+
+<http://data.stelselvanbasisregistraties.nl/lrkp/id/concept/Basisschool> 
+  rdf:type sc:Begrip ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_brinnummer-Basisonderwijs> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_vestigingsnummer-Basisonderwijs> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_vestigingsnaam-Basisonderwijs> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_huisnummer-Basisonderwijs> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_straatnaam-Basisonderwijs> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_postcode-Basisonderwijs> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_plaatsnaam-Basisonderwijs> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_denominatie-Basisonderwijs> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_telefoonnummer-Basisonderwijs> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_internetadres-Basisonderwijs> ;
+  sc:definitie "Landelijke regsiter basis onderwijs."^^rdf:XMLLiteral ;
+  sc:eigenaar "DUO" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Basisonderwijs" ;
+  sc:populatie "De registratie bevat alle basis onderwijs instellingen." ;
+  sc:relatie "" ;
+  sc:toegankelijkheid "Openbaar" ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Basisonderwijs" ;
+  skos:prefLabel "Basisonderwijs" .
+
+<http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_brinnummer-Basisonderwijs> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/duo/id/concept/Basisschool> ;
+  sc:definitie "Basisonderwijs brinnummer."^^rdf:XMLLiteral ;
+  sc:eigenaar "DUO" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Basisonderwijs brinnummer" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle basis onderwijs instellingen." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Basisonderwijs brinnummer" ;
+  skos:prefLabel "Basisonderwijs brinnummer" .
+
+<http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_vestigingsnummer-Basisonderwijs> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/duo/id/concept/Basisschool> ;
+  sc:definitie "Basisonderwijs vestigingsnummer."^^rdf:XMLLiteral ;
+  sc:eigenaar "DUO" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Basisonderwijs vestigingsnummer" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle basis onderwijs instellingen." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Basisonderwijs vestigingsnummer" ;
+  skos:prefLabel "Basisonderwijs vestigingsnummer" .
+
+<http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_vestigingsnaam-Basisonderwijs> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/duo/id/concept/Basisschool> ;
+  sc:definitie "Basisonderwijs vestigingsnaam."^^rdf:XMLLiteral ;
+  sc:eigenaar "DUO" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Basisonderwijs vestigingsnaam" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle basis onderwijs instellingen." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Basisonderwijs vestigingsnaam" ;
+  skos:prefLabel "Basisonderwijs vestigingsnaam" .
+
+<http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_straatnaam-Basisonderwijs> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/duo/id/concept/Basisschool> ;
+  sc:definitie "Basisonderwijs straatnaam."^^rdf:XMLLiteral ;
+  sc:eigenaar "DUO" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Basisonderwijs straatnaam" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle basis onderwijs instellingen." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Basisonderwijs straatnaam" ;
+  skos:prefLabel "Basisonderwijs straatnaam" .
+
+<http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_huisnummer-Basisonderwijs> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/duo/id/concept/Basisschool> ;
+  sc:definitie "Basisonderwijs huisnummer."^^rdf:XMLLiteral ;
+  sc:eigenaar "DUO" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Basisonderwijs huisnummer" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle basis onderwijs instellingen." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Basisonderwijs huisnummer" ;
+  skos:prefLabel "Basisonderwijs huisnummer" .
+
+<http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_postcode-Basisonderwijs> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/duo/id/concept/Basisschool> ;
+  sc:definitie "Basisonderwijs postcode."^^rdf:XMLLiteral ;
+  sc:eigenaar "DUO" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Basisonderwijs postcode" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle basis onderwijs instellingen." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Basisonderwijs postcode" ;
+  skos:prefLabel "Basisonderwijs postcode" .
+
+<http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_plaatsnaam-Basisonderwijs> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/duo/id/concept/Basisschool> ;
+  sc:definitie "Basisonderwijs plaatsnaam."^^rdf:XMLLiteral ;
+  sc:eigenaar "DUO" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Basisonderwijs plaatsnaam" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle basis onderwijs instellingen." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Basisonderwijs plaatsnaam" ;
+  skos:prefLabel "Basisonderwijs plaatsnaam" .
+
+<http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_denominatie-Basisonderwijs> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/duo/id/concept/Basisschool> ;
+  sc:definitie "Basisonderwijs denominatie."^^rdf:XMLLiteral ;
+  sc:eigenaar "DUO" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Basisonderwijs denominatie" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle basis onderwijs instellingen." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Basisonderwijs denominatie" ;
+  skos:prefLabel "Basisonderwijs denominatie" .
+
+<http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_telefoonnummer-Basisonderwijs> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/duo/id/concept/Basisschool> ;
+  sc:definitie "Basisonderwijs telefoonnummer."^^rdf:XMLLiteral ;
+  sc:eigenaar "DUO" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Basisonderwijs telefoonnummer" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle basis onderwijs instellingen." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Basisonderwijs telefooonnummer" ;
+  skos:prefLabel "Basisonderwijs telefoonnummer" .
+
+<http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/Basisonderwijs_internetadres-Basisonderwijs> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/duo/id/concept/Basisschool> ;
+  sc:definitie "Basisonderwijs internetadres."^^rdf:XMLLiteral ;
+  sc:eigenaar "DUO" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Basisonderwijs internetadres" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle basis onderwijs instellingen." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Basisonderwijs internetadres" ;
+  skos:prefLabel "Basisonderwijs internetadres" .
+
+#------------------------------------------------------------
+# RRGS
+#------------------------------------------------------------
+
+<http://data.stelselvanbasisregistraties.nl/rrgs/id/concept/RRGSBedrijf>
+  rdf:type sc:Begrip ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_bevoegde_gemeente-RRGS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_wm_vergunning-RRGS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_postcode-RRGS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_gemeente-RRGS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_plaats-RRGS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_huisnummer-RRGS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_straat-RRGS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_url-RRGS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_reden_opname-RRGS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_naam_inrichting-RRGS> ;
+  sc:definitie "Register Risicosituaties Gevaarlijke Stoffen."^^rdf:XMLLiteral ;
+  sc:eigenaar "RRGS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "RRGS Bedrijven" ;
+  sc:populatie "De registratie bevat alle bedrijven die als risicovol wordt beschouwd." ;
+  sc:relatie "" ;
+  sc:toegankelijkheid "Openbaar" ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "RRGS Bedrijven" ;
+  skos:prefLabel "RRGS Bedrijven" .
+
+<http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_bevoegde_gemeente-RRGS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/rrgs/id/concept/RRGSBedrijf> ;
+  sc:definitie "Bevoegde Gemeente."^^rdf:XMLLiteral ;
+  sc:eigenaar "RRGS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Bevoegde Gemeente" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle bedrijven die als risicovol wordt beschouwd." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Bevoegde Gemeente" ;
+  skos:prefLabel "Bevoegde Gemeente" .
+
+<http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_wm_vergunning-RRGS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/rrgs/id/concept/RRGSBedrijf> ;
+  sc:definitie "WM vergunning"^^rdf:XMLLiteral ;
+  sc:eigenaar "RRGS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "WM vergunning" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle bedrijven die als risicovol wordt beschouwd." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "WM vergunning" ;
+  skos:prefLabel "WM vergunning" .
+
+<http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_postcode-RRGS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/rrgs/id/concept/RRGSBedrijf> ;
+  sc:definitie "postcode"^^rdf:XMLLiteral ;
+  sc:eigenaar "RRGS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "postcode" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle bedrijven die als risicovol wordt beschouwd." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "postcode" ;
+  skos:prefLabel "postcode" .
+
+<http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_gemeente-RRGS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/rrgs/id/concept/RRGSBedrijf> ;
+  sc:definitie "gemeente"^^rdf:XMLLiteral ;
+  sc:eigenaar "RRGS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "gemeente" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle bedrijven die als risicovol wordt beschouwd." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "gemeente" ;
+  skos:prefLabel "gemeente" .
+
+<http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_plaats-RRGS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/rrgs/id/concept/RRGSBedrijf> ;
+  sc:definitie "plaats"^^rdf:XMLLiteral ;
+  sc:eigenaar "RRGS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "plaats" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle bedrijven die als risicovol wordt beschouwd." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "plaats" ;
+  skos:prefLabel "plaats" .
+
+<http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_huisnummer-RRGS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/rrgs/id/concept/RRGSBedrijf> ;
+  sc:definitie "huisnummer"^^rdf:XMLLiteral ;
+  sc:eigenaar "RRGS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "huisnummer" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle bedrijven die als risicovol wordt beschouwd." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "huisnummer" ;
+  skos:prefLabel "huisnummer" .
+
+<http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_straat-RRGS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/rrgs/id/concept/RRGSBedrijf> ;
+  sc:definitie "straat"^^rdf:XMLLiteral ;
+  sc:eigenaar "RRGS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "straat" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle bedrijven die als risicovol wordt beschouwd." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "straat" ;
+  skos:prefLabel "straat" .
+
+<http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_url-RRGS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/rrgs/id/concept/RRGSBedrijf> ;
+  sc:definitie "url"^^rdf:XMLLiteral ;
+  sc:eigenaar "RRGS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "url" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle bedrijven die als risicovol wordt beschouwd." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "url" ;
+  skos:prefLabel "url" .
+
+<http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_reden_opname-RRGS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/rrgs/id/concept/RRGSBedrijf> ;
+  sc:definitie "reden opname"^^rdf:XMLLiteral ;
+  sc:eigenaar "RRGS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "reden opname" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle bedrijven die als risicovol wordt beschouwd." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "reden opname" ;
+  skos:prefLabel "reden opname" .
+
+<http://data.stelselvanbasisregistraties.nl/duo/id/gegevenselement/RRGS_naam_inrichting-RRGS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/rrgs/id/concept/RRGSBedrijf> ;
+  sc:definitie "Naam inrichting"^^rdf:XMLLiteral ;
+  sc:eigenaar "RRGS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Naam inrichting" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle bedrijven die als risicovol wordt beschouwd." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Naam inrichting" ;
+  skos:prefLabel "Naam inrichting" .
+
+#------------------------------------------------------------
+# CBS
+#------------------------------------------------------------
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt>
+  rdf:type sc:Begrip ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_buurt_code-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_buurt_naam-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_gemeente_naam-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_adressen_dichtheid-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_stedelijkheid-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_aantal_inwoners-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_aantal_mannen-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_aantal_vrouwen-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_personen_tot_15-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_personen_van_15_tot_25-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_personen_van_25_tot_45-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_personen_van_45_tot_65-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_personen_65_ouder-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Ongehuwd-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Gehuwd-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Gescheiden-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Geboorte_totaal-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Sterfte_totaal-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Bevolkingsdichtheid-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_aantal_huishouden-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Westerse_immigrant-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Niet_Westerse_immigrant-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Woningvoorraad-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_gemiddelde_woningwaarde-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_leegstaande_woningen-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_bewoonde_woningen-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_diefstal-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_vernieling-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Geweld-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_huisartsenpraktijk-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_apotheek-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_ziekenhuis-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_supermarkt-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_warenhuis-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_cafe-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_cafetaria-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_restaurant-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_hotel-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_kinderdagverblijf-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_buitenschoolse_opvang-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_basisschool-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_voortgezet_onderwijs-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_treinstation-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_bibliotheek-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_zwembad-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_kunstijsbaan-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_podiumkunsten-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_poppodium-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_bioscoop-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_sauna-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_zonnebank-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_attractie-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_brandweerkazerne-CBS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_museum-CBS> ;
+  sc:definitie "CBS wijken en buurten kaart."^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "CBS Buurten" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  sc:relatie "" ;
+  sc:toegankelijkheid "Openbaar" ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "CBS Buurten" ;
+  skos:prefLabel "CBS Buurten" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_buurt_code-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """Voor de codering van de binnen wijken onderscheiden buurten is een code van acht
+posities opgenomen. Gemeentecode (4) + wijkcode (2) + buurtcode (2)."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Buurt code" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Buurt code" ;
+  skos:prefLabel "Buurt code" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_buurt_naam-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie "De buurtnaam is opgegeven door de gemeente die hiervan eigenaar is."^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Buurt naam" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Buurt naam" ;
+  skos:prefLabel "Buurt naam" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_gemeente_naam-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie "De naam van de bestuurlijke gemeente. Deze naam volgt de officiële schrijfwijze."^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Gemeente naam" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Gemeente naam" ;
+  skos:prefLabel "Gemeente naam" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_adressen_dichtheid-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie "Omgevingsadressen dichtheid per vierkante kilometer."^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Omgevingsadressen dichtheid" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Omgevingsadressen dichtheid" ;
+  skos:prefLabel "Omgevingsadressen dichtheid" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_stedelijkheid-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """Het gemiddeld aantal adressen van een buurt, wijk of gemeente per vierkante kilometer binnen een cirkel met een straal van één kilometer op 1 januari van het betreffende jaar."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Stedelijkheid" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Stedelijkheid" ;
+  skos:prefLabel "Stedelijkheid" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_aantal_inwoners-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie "Aantal inwoners."^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Aantal inwoners" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Aantal inwoners" ;
+  skos:prefLabel "Aantal inwoners" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_aantal_mannen-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie "Aantal mannen."^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Aantal mannen" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Aantal mannen" ;
+  skos:prefLabel "Aantal mannen" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_aantal_vrouwen-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie "Aantal vrouwen."^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Aantal vrouwen" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Aantal vrouwen" ;
+  skos:prefLabel "Aantal vrouwen" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_personen_tot_15-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie "Percentage personen tot 15 jaar."^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Percentage personen tot 15 jaar" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Percentage personen tot 15 jaar" ;
+  skos:prefLabel "Percentage personen tot 15 jaar" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_personen_van_15_tot_25-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie "Percentage personen van 15 tot 25 jaar."^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Percentage personen van 15 tot 25 jaar" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Percentage personen van 15 tot 25 jaar" ;
+  skos:prefLabel "Percentage personen van 15 tot 25 jaar" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_personen_van_25_tot_45-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie "Percentage personen van 25 tot 45 jaar."^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Percentage personen van 25 tot 45 jaar" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Percentage personen van 25 tot 45 jaar" ;
+  skos:prefLabel "Percentage personen van 25 tot 45 jaar" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_personen_van_45_tot_65-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie "Percentage personen van 45 tot 65 jaar."^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Percentage personen van 45 tot 65 jaar" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Percentage personen van 45 tot 65 jaar" ;
+  skos:prefLabel "Percentage personen van 45 tot 65 jaar" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_personen_65_ouder-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie "Percentage personen van 65 jaar en ouder."^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Percentage personen van 65 jaar en ouder" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Percentage personen van 65 jaar en ouder" ;
+  skos:prefLabel "Percentage personen van 65 jaar en ouder" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Ongehuwd-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """Het aantal inwoners dat op 1 januari ongehuwd is. De burgerlijke staat ‘ongehuwd’ geeft aan dat een persoon nog nooit een huwelijk heeft gesloten of een geregistreerd partnerschap is aangegaan."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Ongehuwde personen" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Ongehuwde personen" ;
+  skos:prefLabel "Ongehuwde personen" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Gehuwd-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """Het aantal inwoners dat op 1 januari gehuwd is. De burgerlijke staat ‘gehuwd’ ontstaat na sluiting van een huwelijk of het aangaan van een geregistreerd partnerschap. Tot de gehuwden worden ook personen gerekend die gescheiden zijn van tafel en bed, want zij blijven formeel gehuwd."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Gehuwde personen" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Gehuwde personen" ;
+  skos:prefLabel "Gehuwde personen" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Gescheiden-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """Het aantal inwoners dat op 1 januari gescheiden is. De burgerlijke staat ‘gescheiden’ ontstaat na ontbinding van een huwelijk door echtscheiding of na ontbinding van een geregistreerd partnerschap anders dan door het overlijden van de partner. Personen die gescheiden zijn van tafel en bed worden tot de gehuwden gerekend."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Gescheiden personen" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Gescheiden personen" ;
+  skos:prefLabel "Gescheiden personen" .
+  
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Geboorte_totaal-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """Het aantal levendgeborenen van 1 januari tot en met 31 december van het betreffende jaar. Levendgeborenen zijn kinderen die na geboorte enig teken van leven hebben vertoond, ongeacht de zwangerschapsduur."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Geboorte totaal" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Geboorte totaal" ;
+  skos:prefLabel "Geboorte totaal" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Sterfte_totaal-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """Alle overledenen van 1 januari tot en met 31 december van het betreffende jaar waarbij een bevoegde arts een overlijdensakte heeft ondertekend."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Sterfte totaal" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Sterfte totaal" ;
+  skos:prefLabel "Sterfte totaal" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Bevolkingsdichtheid-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """Het (niet afgeronde) aantal inwoners op 1 januari gedeeld door de (niet afgeronde) landoppervlakte. Wanneer een buurt minder dan 10 inwoners telt, is dit gegeven geheimgehouden (.)."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Bevolkingsdichtheid km2" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Bevolkingsdichtheid" ;
+  skos:prefLabel "Bevolkingsdichtheid" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_aantal_huishouden-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie "Het aantal particuliere huishoudens op 1 januari."^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Aantal huishoudens" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Aantal huishoudens" ;
+  skos:prefLabel "Aantal huishoudens" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Westerse_immigrant-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """Het aantal personen met een migratieachtergrond met een westerse herkomst op 1 januari, uitgedrukt in hele procenten van het aantal inwoners. Het betreft personen met een migratieachtergrond met als herkomstgroepering een van de landen in de werelddelen Europa (exclusief Turkije), Noord-Amerika en Oceanië of Indonesië of Japan."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Percentage Westerse immigranten" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Percentage Westerse immigranten" ;
+  skos:prefLabel "Percentage Westerse immigranten" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Niet_Westerse_immigrant-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie ""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Percentage niet Westerse immigranten" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Percentage niet Westerse immigranten" ;
+  skos:prefLabel "Percentage niet Westerse immigranten" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Woningvoorraad-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """Het totale aantal woningen op 1 januari van het desbetreffende jaar. Een woning is een verblijfsobject met minimaal een woonfunctie en eventueel één of meer andere gebruiksfuncties."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Woningvoorraad" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Woningvoorraad" ;
+  skos:prefLabel "Woningvoorraad" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_gemiddelde_woningwaarde-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """De gemiddelde waarde onroerende zaken van woonobjecten gebaseerd op de Wet Waardering Onroerende Zaken (WOZ-waarde). Voor de bepaling van de gemiddelde woningwaarde wordt alleen gebruik gemaakt van die WOZ-objecten omschreven als woningen dienend tot hoofdverblijf (WOZ-objectcode 10) en woningen met praktijkruimte (WOZ-objectcode 11) met een waarde groter dan nul euro.."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Gemiddelde woningwaarde" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Gemiddelde woningwaarde" ;
+  skos:prefLabel "Gemiddelde woningwaarde" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_leegstaande_woningen-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """Het aantal leegstaande woningen is vermeld als percentage van de totale woningvoorraad en wordt alleen vermeld bij minimaal 20 woningen."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Percentage leegstaande woningen" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Percentage leegstaande woningen" ;
+  skos:prefLabel "Percentage leegstaande woningen" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_bewoonde_woningen-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """Het aantal bewoonde woningen is vermeld als percentage van de totale woningvoorraad en wordt alleen vermeld bij minimaal 20 woningen."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Percentage bewoonde woningen" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Percentage bewoonde woningen" ;
+  skos:prefLabel "Percentage bewoonde woningen" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_diefstal-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """Deze regel geeft het totaal weer van ‘Diefstal/inbraak uit woning’ en ‘Diefstal/inbraak uit schuur/garage/tuinhuis’."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Diefstal per 1000 inwoners" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Diefstal" ;
+  skos:prefLabel "Diefstal" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_vernieling-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie "Vernieling/misdrijf tegen openbare orde per 1000 inwoners."^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Vernieling per 1000 inwoners" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Vernieling" ;
+  skos:prefLabel "Vernieling" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Geweld-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie "Gewelds- en seksuele misdrijven per 1000 inwoners."^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Geweld per 1000 inwoners" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Geweld" ;
+  skos:prefLabel "Geweld" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_huisartsenpraktijk-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie "Huisartsenpraktijk: Pand of ruimte waarin een of meer huisartsen (samen) werken."^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Huisartsenpraktijk" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Afstand tot huisartsenpraktijk" ;
+  skos:prefLabel "Afstand tot huisartsenpraktijk" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_apotheek-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """De gemiddelde afstand van alle inwoners in een gebied tot de dichtstbijzijnde apotheek of apotheekhoudende huisarts, berekend over de weg."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Afstand tot Apotheek" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Afstand tot Apotheek" ;
+  skos:prefLabel "Afstand tot Apotheek" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_ziekenhuis-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """De gemiddelde afstand van alle inwoners in een gebied tot het dichtstbijzijnde ziekenhuis, berekend over de weg."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Afstand tot Ziekenhuis" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Afstand tot Ziekenhuis" ;
+  skos:prefLabel "Afstand tot Ziekenhuis" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_supermarkt-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """De gemiddelde afstand van alle inwoners in een gebied tot de dichtstbijzijnde grote supermarkt, berekend over de weg."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Afstand tot Supermarkt" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Afstand tot Supermarkt" ;
+  skos:prefLabel "Afstand tot Supermarkt" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_warenhuis-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """De gemiddelde afstand van alle inwoners in een gebied tot de dichtstbijzijnde warenhuis, berekend over de weg."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Afstand tot warenhuis" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Afstand tot warenhuis" ;
+  skos:prefLabel "Afstand tot warenhuis" .
+  
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_cafe-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """De gemiddelde afstand van alle inwoners in een gebied tot het dichtstbijzijnde café, koffiehuis, coffeeshop, discotheek, seks/nachtclub of partycentrum, berekend over de weg."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Afstand tot Café" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Afstand tot Café" ;
+  skos:prefLabel "Afstand tot Café" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_cafetaria-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """De gemiddelde afstand van alle inwoners in een gebied tot het dichtstbijzijnde cafetaria, fastfoodrestaurant, grillroom/shoarmazaak, lunchroom, pannenkoekenhuis of ijssalon, berekend over de weg."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Afstand tot Cafetaria" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Afstand tot Cafetaria" ;
+  skos:prefLabel "Afstand tot Cafetaria" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_restaurant-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """De gemiddelde afstand van alle inwoners in een gebied tot de dichtstbijzijnde restaurant, café-restaurant of afhaal/thuisbezorging, berekend over de weg."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Afstand tot restaurant" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Afstand tot restaurant" ;
+  skos:prefLabel "Afstand tot restaurant" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_hotel-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """De gemiddelde afstand van alle inwoners in een gebied tot het dichtstbijzijnde hotel, berekend over de weg."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Afstand tot hotel" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Afstand tot hotel" ;
+  skos:prefLabel "Afstand tot hotel" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_kinderdagverblijf-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """De gemiddelde afstand van alle inwoners in een gebied tot het dichtstbijzijnde kinderdagverblijf, berekend over de weg."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Afstand tot kinderdagverblijf" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Afstand tot kinderdagverblijf" ;
+  skos:prefLabel "Afstand tot kinderdagverblijf" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_buitenschoolse_opvang-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """De gemiddelde afstand van alle inwoners in een gebied tot de dichtstbijzijnde buitenschoolse opvang, berekend over de weg. Hier worden kinderen in de basisschoolleeftijd voor en/of na schooltijd, tijdens studie- en adv-dagen van leraren en in de vakanties opgevangen."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Afstand tot buitenschoolse opvang" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Afstand tot buitenschoolse opvang" ;
+  skos:prefLabel "Afstand tot buitenschoolse opvang" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_basisschool-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """De gemiddelde afstand van alle inwoners in een gebied tot de dichtstbijzijnde basisschool, berekend over de weg."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Afstand tot basisschool" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Afstand tot basisschool" ;
+  skos:prefLabel "Afstand tot basisschool" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_voortgezet_onderwijs-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """De gemiddelde afstand van alle inwoners in een gebied tot de dichtstbijzijnde VMBO, HAVO of VWO school, berekend over de weg. Dit zijn scholen waar leerlingen door de overheid bekostigde voltijd voortgezet onderwijs kunnen volgen. Praktijkonderwijsscholen en speciale scholen zijn niet meegenomen."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Afstand tot voortgezet onderwijs" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Afstand tot voortgezet onderwijs" ;
+  skos:prefLabel "Afstand tot voortgezet onderwijs" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_treinstation-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """De gemiddelde afstand van alle inwoners in een gebied tot het dichtstbijzijnde treinstation, berekend over de weg."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Afstand tot treinstation" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Afstand tot treinstation" ;
+  skos:prefLabel "Afstand tot treinstation" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_bibliotheek-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """De gemiddelde afstand van alle inwoners in een gebied tot de dichtstbijzijnde bibliotheek, berekend over de weg. Bibliotheken en hun vestigingen zoals deze zijn opgenomen in de database G!DS. Opgenomen zijn de vestigingen en de servicepunten. De miniservicepunten, zelfbedieningsbibliotheken en de bibliobussen zijn niet opgenomen."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Afstand tot bibliotheek" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Afstand tot bibliotheek" ;
+  skos:prefLabel "Afstand tot bibliotheek" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_zwembad-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """De gemiddelde afstand van alle inwoners in een gebied tot het dichtstbijzijnde zwembad, berekend over de weg."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Afstand tot zwembad" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Afstand tot zwembad" ;
+  skos:prefLabel "Afstand tot zwembad" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_kunstijsbaan-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """De gemiddelde afstand van alle inwoners in een gebied tot de dichtstbijzijnde schaatsbaan van kunstijs, geopend tijdens het winterseizoen, berekend over de weg."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Afstand tot kunstijsbaan" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Afstand tot kunstijsbaan" ;
+  skos:prefLabel "Afstand tot kunstijsbaan" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_podiumkunsten-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """De gemiddelde afstand van alle inwoners in een gebied tot de dichtstbijzijnde locaties van schouwburgen, concertgebouwen, buurtcentra of poppodia, berekend over de weg. Festivals en locaties met podiumkunsten als nevenactiviteit worden hierbij niet opgenomen."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Afstand tot podiumkunsten" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Afstand tot podiumkunsten" ;
+  skos:prefLabel "Afstand tot podiumkunsten" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_poppodium-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """De gemiddelde afstand van alle inwoners in een gebied tot het dichtstbijzijnde poppodium, berekend over de weg. Festivals en locaties met podiumkunsten als nevenactiviteit worden hierbij niet opgenomen."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Afstand tot poppodium" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Afstand tot poppodium" ;
+  skos:prefLabel "Afstand tot poppodium" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_bioscoop-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """De gemiddelde afstand van alle inwoners in een gebied tot de dichtstbijzijnde bioscoop, berekend over de weg."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Afstand tot bioscoop" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Afstand tot bioscoop" ;
+  skos:prefLabel "Afstand tot bioscoop" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_sauna-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """De gemiddelde afstand van alle inwoners in een gebied tot de dichtstbijzijnde sauna, berekend over de weg."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Afstand tot Sauna" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Afstand tot Sauna" ;
+  skos:prefLabel "Afstand tot Sauna" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_zonnebank-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """De gemiddelde afstand van alle inwoners in een gebied tot de dichtstbijzijnde zonnebank, berekend over de weg."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Afstand tot zonnebank" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Afstand tot zonnebank" ;
+  skos:prefLabel "Afstand tot zonnebank" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_attractie-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """De gemiddelde afstand van alle inwoners in een gebied tot de dichtstbijzijnde pretpark, dierentuin of binnenspeeltuin, berekend over de weg."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Afstand tot attractie" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Afstand tot attractie" ;
+  skos:prefLabel "Afstand tot attractie" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_brandweerkazerne-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """De gemiddelde afstand van alle inwoners in een gebied tot de dichtstbijzijnde brandweerkazerne, berekend over de weg. Exclusief locaties van blusboten."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Afstand tot brandweerkazerne" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Afstand tot brandweerkazerne" ;
+  skos:prefLabel "Afstand tot brandweerkazerne" .
+
+<http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/CBS_Afstand_museum-CBS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/cbs/id/concept/Buurt> ;
+  sc:definitie """De gemiddelde afstand van alle inwoners in een gebied tot de dichtstbijzijnde museum, berekend over de weg."""^^rdf:XMLLiteral ;
+  sc:eigenaar "CBS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Afstand tot museum" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle buurten met betreffende CBS factoren." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Afstand tot museum" ;
+  skos:prefLabel "Afstand tot museum" .
+
+#------------------------------------------------------------
+# RRGS kwetbare objecten
+#------------------------------------------------------------
+
+<http://data.stelselvanbasisregistraties.nl/RRGS/id/concept/KwetsbaarObject>
+  rdf:type sc:Begrip ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_kwetsbaarobject_code-RRGS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_aantal_aanwezigen-RRGS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_omschrijving-RRGS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_locatie_omschrijving-RRGS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_naam-RRGS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_plaatsnaam-RRGS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_postcode-RRGS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_toevoeging-RRGS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_huisnummer-RRGS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_straatnaam-RRGS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_bagid-RRGS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_url-RRGS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_aantal_bouwlagen-RRGS> ;
+  sc:attribuut <http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_type-RRGS> ;
+  sc:definitie "RRGS Kwetsbare Objecten."^^rdf:XMLLiteral ;
+  sc:eigenaar "RRGS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "RRGS Kwetsbare objecten" ;
+  sc:populatie "De registratie bevat alle kwetsbare objecten." ;
+  sc:relatie "" ;
+  sc:toegankelijkheid "Openbaar" ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "RRGS Kwetsbare Objecten" ;
+  skos:prefLabel "RRGS Kwetsbare Objecten" .
+
+<http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_kwetsbaarobject_code-RRGS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/RRGS/id/concept/KwetsbaarObject> ;
+  sc:definitie "De registratie bevat alle kwetsbare objecten."^^rdf:XMLLiteral ;
+  sc:eigenaar "RRGS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Kwetsbaar object code" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle kwetsbare objecten." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Kwetsbaarobject code" ;
+  skos:prefLabel "Kwetsbaarobject code" .
+
+<http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_aantal_aanwezigen-RRGS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/RRGS/id/concept/KwetsbaarObject> ;
+  sc:definitie "De registratie bevat alle kwetsbare objecten."^^rdf:XMLLiteral ;
+  sc:eigenaar "RRGS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Aantal aanwezigen" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle kwetsbare objecten." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Aantal aanwezigen" ;
+  skos:prefLabel "Aantal aanwezigen" .
+
+<http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_omschrijving-RRGS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/RRGS/id/concept/KwetsbaarObject> ;
+  sc:definitie "De registratie bevat alle kwetsbare objecten."^^rdf:XMLLiteral ;
+  sc:eigenaar "RRGS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Omschrijving" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle kwetsbare objecten." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Omschrijving" ;
+  skos:prefLabel "Omschrijving" .
+
+<http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_locatie_omschrijving-RRGS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/RRGS/id/concept/KwetsbaarObject> ;
+  sc:definitie "De registratie bevat alle kwetsbare objecten."^^rdf:XMLLiteral ;
+  sc:eigenaar "RRGS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Locatie Omschrijving" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle kwetsbare objecten." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Locatie Omschrijving" ;
+  skos:prefLabel "Locatie Omschrijving" .
+
+<http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_naam-RRGS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/RRGS/id/concept/KwetsbaarObject> ;
+  sc:definitie "De registratie bevat alle kwetsbare objecten."^^rdf:XMLLiteral ;
+  sc:eigenaar "RRGS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "naam" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle kwetsbare objecten." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "naam" ;
+  skos:prefLabel "naam" .
+
+<http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_plaatsnaam-RRGS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/RRGS/id/concept/KwetsbaarObject> ;
+  sc:definitie "De registratie bevat alle kwetsbare objecten."^^rdf:XMLLiteral ;
+  sc:eigenaar "RRGS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Plaatsnaam" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle kwetsbare objecten." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Plaatsnaam" ;
+  skos:prefLabel "Plaatsnaam" .
+
+<http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_postcode-RRGS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/RRGS/id/concept/KwetsbaarObject> ;
+  sc:definitie "De registratie bevat alle kwetsbare objecten."^^rdf:XMLLiteral ;
+  sc:eigenaar "RRGS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Postcode" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle kwetsbare objecten." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Postcode" ;
+  skos:prefLabel "Postcode" .
+
+<http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_toevoeging-RRGS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/RRGS/id/concept/KwetsbaarObject> ;
+  sc:definitie "De registratie bevat alle kwetsbare objecten."^^rdf:XMLLiteral ;
+  sc:eigenaar "RRGS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "toevoeging" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle kwetsbare objecten." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "toevoeging" ;
+  skos:prefLabel "toevoeging" .
+
+<http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_huisnummer-RRGS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/RRGS/id/concept/KwetsbaarObject> ;
+  sc:definitie "De registratie bevat alle kwetsbare objecten."^^rdf:XMLLiteral ;
+  sc:eigenaar "RRGS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Huisnummer" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle kwetsbare objecten." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Huisnummer" ;
+  skos:prefLabel "Huisnummer" .  
+
+<http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_straatnaam-RRGS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/RRGS/id/concept/KwetsbaarObject> ;
+  sc:definitie "De registratie bevat alle kwetsbare objecten."^^rdf:XMLLiteral ;
+  sc:eigenaar "RRGS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Straatnaam" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle kwetsbare objecten." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Straatnaam" ;
+  skos:prefLabel "Straatnaam" .  
+
+<http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_bagid-RRGS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/RRGS/id/concept/KwetsbaarObject> ;
+  sc:definitie "De registratie bevat alle kwetsbare objecten."^^rdf:XMLLiteral ;
+  sc:eigenaar "RRGS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "BAG vbo id" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle kwetsbare objecten." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "BAG vbo id" ;
+  skos:prefLabel "BAG vbo id" .  
+
+<http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_url-RRGS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/RRGS/id/concept/KwetsbaarObject> ;
+  sc:definitie "De registratie bevat alle kwetsbare objecten."^^rdf:XMLLiteral ;
+  sc:eigenaar "RRGS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Rapport url" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle kwetsbare objecten." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Rapport url" ;
+  skos:prefLabel "Rapport url" .  
+
+<http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_aantal_bouwlagen-RRGS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/RRGS/id/concept/KwetsbaarObject> ;
+  sc:definitie "De registratie bevat alle kwetsbare objecten."^^rdf:XMLLiteral ;
+  sc:eigenaar "RRGS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Aantal bouwlagen" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle kwetsbare objecten." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Aantal bouwlagen" ;
+  skos:prefLabel "Aantal bouwlagen" .  
+
+<http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_type-RRGS> 
+  rdf:type sc:Gegevenselement ;
+  sc:attribuutVan <http://data.stelselvanbasisregistraties.nl/RRGS/id/concept/KwetsbaarObject> ;
+  sc:definitie "De registratie bevat alle kwetsbare objecten."^^rdf:XMLLiteral ;
+  sc:eigenaar "RRGS" ;
+  sc:herkomst "Custom Netage API"^^rdf:XMLLiteral ;
+  sc:naam "Type" ;
+  sc:toegankelijkheid "Openbaar" ;
+  sc:populatie "De registratie bevat alle kwetsbare objecten." ;
+  dcterms:isPartOf <http://data.stelselvanbasisregistraties.nl/stelselcatalogus/id/dataset/sc> ;
+  rdfs:label "Type" ;
+  skos:prefLabel "Type" .  
+

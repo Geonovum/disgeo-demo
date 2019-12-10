@@ -1,11 +1,9 @@
 package nl.netage.disgeo.models;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.http.client.ClientProtocolException;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.NodeIterator;
@@ -15,9 +13,13 @@ import org.apache.jena.rdf.model.Resource;
 import org.apache.jena.rdf.model.ResourceFactory;
 import org.apache.jena.rdf.model.Statement;
 import org.apache.jena.rdf.model.StmtIterator;
+import org.apache.jena.riot.Lang;
+import org.apache.jena.riot.RDFDataMgr;
 import org.apache.jena.vocabulary.RDF;
 import org.apache.jena.vocabulary.SKOS;
 import org.locationtech.jts.geom.Geometry;
+import org.locationtech.jts.io.ParseException;
+import org.locationtech.jts.io.WKTReader;
 import org.locationtech.jts.io.geojson.GeoJsonWriter;
 
 import nl.netage.disgeo.configuration.Configuration;
@@ -26,20 +28,25 @@ import nl.netage.disgeo.vocab.SC;
 
 public class OrchestrationModel {
 	
-	public static Model queryGeoRelatedConcepts(String uri, Model result, Resource next, Geometry geom) throws Exception {
+	public static Model queryGeoRelatedConcepts(String uri, Model result, Resource next) throws ParseException  {
 		Model m = ModelFactory.createDefaultModel();
 		//Objects to which the current object refers
 		NodeIterator ni = Configuration.configurationModel.listObjectsOfProperty(ResourceFactory.createResource(uri), m.createProperty("http://www.opengis.net/def/function/geosparql/relate"));
 		while(ni.hasNext()) {
 			Resource geoRelatedConcept = ni.next().asResource();
+			System.out.println("Related "+geoRelatedConcept.getURI());
 			DataService ds = Configuration.getDataServiceForClass(geoRelatedConcept.getURI());
 			if(ds != null) {
 				if(ds.hasGeoParam()) {	
+					Geometry geom = handleGeom(result, ds.geoGeoParam());
 					GeoJsonWriter writer = new GeoJsonWriter();
+					try {
 					m.add(RmlMapper.convertResult(
 							Util.queryPostRestfullService(new HashMap<String, String>(), new ArrayList<String>(), writer.write(geom).toString(), ds.getAccessUrl()), 
 							ds.getTripleMapping(false), ds.getFormat()));
-					
+					}catch(Exception e) {
+						e.printStackTrace();
+					}
 					Resource baseSubject = null;
 					ArrayList<Resource> nearbySubjects = new ArrayList<Resource>();
 					ResIterator ri = result.listSubjectsWithProperty(RDF.type, result.createResource(uri));
@@ -58,6 +65,28 @@ public class OrchestrationModel {
 			}
 		}
 		return m;
+	}
+
+	private static Geometry handleGeom(Model result, String geoType) throws ParseException {
+		ResIterator ri = result.listSubjectsWithProperty(RDF.type, result.createResource("http://www.opengis.net/ont/geosparql#Geometry"));
+		Resource geoSubject = ri.next().asResource();
+
+		String wktLiteral = geoSubject.getProperty(result.createProperty("http://www.opengis.net/ont/geosparql#asWKT")).getObject().asLiteral().getString();
+		//String crs = geoSubject.getProperty(result.createProperty("http://www.opengis.net/ont/geosparql#crs")).getObject().asLiteral().getString();
+
+		WKTReader wktr = new WKTReader();
+		Geometry objectGeom = wktr.read(wktLiteral);
+		Geometry searchGeom = null;			
+		
+		if(geoType.equals("http://www.opengis.net/ont/sf/Polygon")) {
+			searchGeom = Util.createCircle(objectGeom.getCentroid().getCoordinate(), 500);
+			System.out.println(searchGeom.toText());
+		}else if(geoType.equals("http://www.opengis.net/ont/sf/Point")) {
+			searchGeom = objectGeom;
+			System.out.println(searchGeom.toText());
+		}
+		
+		return searchGeom;
 	}
 
 	public static Model queryRelatedConcepts(String uri, Model result, Resource previousSubject) throws Exception {
@@ -103,10 +132,6 @@ public class OrchestrationModel {
 						}
 							 
 						}else {
-
-							System.out.println("-------------------------------");
-							System.out.println(ds.getAccessUrl());
-
 							HashMap<String, String> pathParams = new HashMap<String, String>();
 							for(int i=0;i<ds.getParams().size();i++) {
 								if(ds.getParams().get(i).getType().equals("http://temp.netage.nl/PathParam")) {
@@ -138,8 +163,6 @@ public class OrchestrationModel {
 									
 								}
 							}
-							System.out.println("-------------------------------");
-
 						}
 					}else{
 						System.out.println("No dataservice found for: "+s.getObject().toString());

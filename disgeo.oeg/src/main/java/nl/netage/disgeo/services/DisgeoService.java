@@ -59,6 +59,7 @@ public class DisgeoService {
 			result.add(OrchestrationModel.queryRelatedConcepts(restConcept, result, result.listSubjects().next()));
 		}
 
+		result.add(Util.addPrefixes());
 		RDFDataMgr.write(out, result, Lang.JSONLD);
 
 		System.out.print("Sending data ("+result.size()+")! \n\n");
@@ -84,7 +85,6 @@ public class DisgeoService {
 		DataService ds = Configuration.getDataServiceForClass(restConcept);
 		HashMap<String, String> pathParams = new HashMap<String, String>();
 		pathParams.put("id", id);
-
 		if(ds != null) {
 			//System.out.println(ds.getAccessUrl());
 			result = RmlMapper.convertResult(Util.queryGetRestfullService(pathParams, ds.getHeaders(), ds.getAccessUrl()), ds.getTripleMapping(true), ds.getFormat());
@@ -95,6 +95,7 @@ public class DisgeoService {
 			}
 		}
 
+		result.add(Util.addPrefixes());
 		RDFDataMgr.write(out, result, Lang.JSONLD);
 
 		System.out.print("Sending data ("+result.size()+")! \n\n");
@@ -128,6 +129,7 @@ public class DisgeoService {
 			result.add(OrchestrationModel.queryRelatedConcepts(restConcept, result, result.listSubjects().next()));
 		}
 		
+		result.add(Util.addPrefixes());
 		RDFDataMgr.write(out, result, Lang.JSONLD);
 		
 		System.out.print("Sending data ("+result.size()+")! \n\n");
@@ -160,21 +162,42 @@ public class DisgeoService {
 		pathParams.put("id", id);
 
 		if(ds != null) {
-			result = RmlMapper.convertResult(Util.queryGetRestfullService(pathParams, ds.getHeaders(), ds.getAccessUrl()), ds.getTripleMapping(true), ds.getFormat());		
-
-			ResIterator ri = result.listSubjectsWithProperty(RDF.type, result.createResource("http://www.opengis.net/ont/geosparql#Geometry"));
-			Resource geoSubject = ri.next().asResource();
-
-			String wktLiteral = geoSubject.getProperty(result.createProperty("http://www.opengis.net/ont/geosparql#asWKT")).getObject().asLiteral().getString();
-			String crs = geoSubject.getProperty(result.createProperty("http://www.opengis.net/ont/geosparql#crs")).getObject().asLiteral().getString();
-
-			WKTReader wktr = new WKTReader();
-			Geometry point = wktr.read(wktLiteral);
-			Geometry searchArea = Util.createCircle(point.getCoordinate(), 500);
-			System.out.println(searchArea.toText());
-
-			result.add(OrchestrationModel.queryGeoRelatedConcepts(restConcept, result, result.listSubjects().next(), searchArea));
+			result = RmlMapper.convertResult(Util.queryGetRestfullService(pathParams, ds.getHeaders(), ds.getAccessUrl()), ds.getTripleMapping(true), ds.getFormat());	
+			result.add(OrchestrationModel.queryGeoRelatedConcepts(restConcept, result, result.listSubjects().next()));
 		}
+		result.add(Util.addPrefixes());
+		RDFDataMgr.write(out, result, Lang.JSONLD);
+
+		System.out.print("Sending data ("+result.size()+")! \n\n");
+		builder = Response.ok(out.toString());
+		adjustResponse(builder);
+		return builder.build();		
+	}
+	
+	
+	@GET
+	@Path("/geo/wegvak/{id}")
+	@Produces({ "application/ld+json" })
+	public Response getWegvakGeo(
+			@Context UriInfo uriInfo,
+			@Context Request request,
+			@PathParam("id") String id) throws Exception{
+
+		ResponseBuilder builder = Response.ok();
+		System.out.println("id: "+ id);
+		String restConcept = "http://data.stelselvanbasisregistraties.nl/bag/id/concept/Wegvak";
+		StringWriter out = new StringWriter();
+		Model result = ModelFactory.createDefaultModel();
+
+		DataService ds = Configuration.getDataServiceForClass(restConcept);
+		HashMap<String, String> pathParams = new HashMap<String, String>();
+		pathParams.put("id", id);
+
+		if(ds != null) {
+			result = RmlMapper.convertResult(Util.queryGetRestfullService(pathParams, ds.getHeaders(), ds.getAccessUrl()), ds.getTripleMapping(true), ds.getFormat());	
+			result.add(OrchestrationModel.queryGeoRelatedConcepts(restConcept, result, result.listSubjects().next()));
+		}
+		result.add(Util.addPrefixes());
 		RDFDataMgr.write(out, result, Lang.JSONLD);
 
 		System.out.print("Sending data ("+result.size()+")! \n\n");

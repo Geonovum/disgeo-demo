@@ -7,14 +7,29 @@
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>oeg Maven Webapp</name>
-	<url>http://maven.apache.org</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<rdf4j.version>2.5.0</rdf4j.version>
-		<maven.compiler.source>1.7</maven.compiler.source>
-		<maven.compiler.target>1.7</maven.compiler.target>
+		<tomee.version>8.0.0</tomee.version>
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
+	<build>
+		<finalName>disgeo</finalName>
+		<plugins>
+			<plugin>
+				<version>2.0.2</version>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 	<dependencies>
 		<dependency>
@@ -27,18 +42,27 @@
 			<groupId>org.apache.jena</groupId>
 			<artifactId>jena-core</artifactId>
 			<version>3.7.0</version>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.jena</groupId>
 			<artifactId>jena-arq</artifactId>
 			<version>3.7.0</version>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+			<version>1.4.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-web</artifactId>
+			<version>1.4.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
@@ -65,12 +89,6 @@
 			<groupId>org.eclipse.rdf4j</groupId>
 			<artifactId>rdf4j-rio-binary</artifactId>
 			<version>${rdf4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.taxonic.carml</groupId>
@@ -112,8 +130,85 @@
 			<artifactId>jts-core</artifactId>
 			<version>1.16.1</version>
 		</dependency>
+		<dependency>
+			<groupId>info.firegraph.ui</groupId>
+			<artifactId>core</artifactId>
+			<version>1.0.2-SNAPSHOT</version>
+			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>info.firegraph.ui</groupId>
+			<artifactId>menu</artifactId>
+			<version>1.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
-	<build>
-		<finalName>ROOT</finalName>
-	</build>
+	<profiles>
+		<profile>
+			<id>tomee</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.tomee.maven</groupId>
+						<artifactId>tomee-maven-plugin</artifactId>
+						<version>${tomee.version}</version>
+						<executions>
+							<execution>
+								<id>executable-jar</id>
+								<phase>package</phase>
+								<goals>
+									<goal>exec</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<context>ROOT</context>
+							<tomeeClassifier>microprofile</tomeeClassifier>
+							<webapps>
+					         <webapp>nl.netage.disgeo.custom:api:0.0.1-SNAPSHOT</webapp>
+					      </webapps>
+						</configuration>
+					</plugin>
+					<plugin>
+						<groupId>io.fabric8</groupId>
+						<artifactId>docker-maven-plugin</artifactId>
+						<version>0.20.1</version>
+						<configuration>
+							<images>
+								<image>
+									<name>${project.artifactId}:${project.version}</name>
+									<build>
+										<from>openjdk:8</from>
+										<assembly>
+											<inline>
+												<files>
+													<file>
+														<source>target/disgeo-exec.jar</source>
+													</file>
+
+												</files>
+
+											</inline>
+
+										</assembly>
+										<ports>
+											<port>8080</port>
+										</ports>
+										<cmd>java -jar maven/disgeo-exec.jar</cmd>
+									</build>
+									<run>
+										<ports>
+											<port>8080:8080</port>
+										</ports>
+									</run>
+								</image>
+							</images>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
