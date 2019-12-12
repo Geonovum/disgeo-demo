@@ -5,14 +5,6 @@ var centerZoom = 15;
 var language = 'nl';
 var modus = "relation";
 
-var wmsVboSource = new ol.source.TileWMS({
-	url: 'https://geodata.nationaalgeoregister.nl/bag/wms',
-	title: "Verblijfsobjecten Kaart",
-	params: {'LAYERS': 'verblijfsobject', 'TILED': true, 'VERSION': '1.1.0', 
-		'FORMAT': 'image/png8','CRS': 'EPSG:3857'},
-		serverType: 'geoserver'
-});
-
 var wmsNwbSource = new ol.source.TileWMS({
 	url: 'https://geodata.nationaalgeoregister.nl/nwbwegen/wms',
 	title: "NWB Kaart",
@@ -28,15 +20,6 @@ var wmsNwbSource = new ol.source.TileWMS({
 var container = document.getElementById('popup');
 var content = document.getElementById('popup-content');
 var closer = document.getElementById('popup-closer');
-
-if (typeof wmsVboSource !== 'undefined') {
-	var wmsVboLayer = new ol.layer.Tile({
-		type: 'base',
-		title: 'Verblijfsobjecten',
-		source: wmsVboSource
-	});
-	wmsVboLayer.setOpacity(1.0);
-}
 
 if (typeof wmsNwbSource !== 'undefined') {
 	var wmsNwbLayer = new ol.layer.Tile({
@@ -86,10 +69,19 @@ closer.onclick = function() {
 
 var map = new ol.Map({
 	target : 'map',
-	layers : [new ol.layer.Tile({
-		source : new ol.source.OSM()
-	})	,highlightLayer],
-	view : view
+	layers : [
+		new ol.layer.Tile({
+			source: new ol.source.XYZ({
+				url: 'https://geodata.nationaalgeoregister.nl/tiles/service/wmts/brtachtergrondkaart/EPSG:3857/{z}/{x}/{y}.png',
+				attributions: [
+					new ol.Attribution({
+						html: 'Kaartgegevens &copy; <a href="https://www.kadaster.nl">Kadaster</a>'
+					})
+					]
+			})
+		})
+		,highlightLayer],
+		view : view
 });
 
 if (typeof wmsNwbSource !== 'undefined') {
@@ -97,29 +89,18 @@ if (typeof wmsNwbSource !== 'undefined') {
 	wmsNwbLayer.setVisible(true);
 }
 
-if (typeof wmsVboSource !== 'undefined') {
-	map.addLayer(wmsVboLayer);
-	wmsVboLayer.setVisible(true);
-
-}
-
 //Address searchbox
 //Instantiate with some options and add the Control
 var geocoder = new Geocoder('nominatim', {
-provider: 'osm',
-lang: language,
-placeholder: 'Search for ...',
-limit: 5,
-debug: false,
-autoComplete: true,
-keepOpen: true
+	provider: 'osm',
+	lang: language,
+	placeholder: 'Search for ...',
+	limit: 5,
+	debug: false,
+	autoComplete: true,
+	keepOpen: true
 });
 map.addControl(geocoder);
-
-var layerSwitcher = new ol.control.LayerSwitcher();
-map.addControl(layerSwitcher);
-
-
 
 map.on('singleclick', function(evt) {
 	// @TODO : deselect all features, and select current feature
@@ -137,38 +118,22 @@ map.on('singleclick', function(evt) {
 			evt.coordinate, viewResolution, 'EPSG:3857',
 			{'INFO_FORMAT': 'application/json',});
 	if (url) {
-		
+
 		$.getJSON(url, function(data) {
 			data.features.forEach(function (feature) {
 				var featureModel = new ol.format.GeoJSON().readFeature(feature);
 				vectorSource.clear();
 				vectorSource.addFeature(featureModel);
-				console.log(layer['N']['title']);
-				if(layer['N']['title'] == 'Verblijfsobjecten'){
-					var identificatie = feature.properties['identificatie'];
-					var type = "";
-					if(modus == "relation"){
-						$.get("core/disgeo/verblijfsobject/"+(identificatie+'').padStart(16, "0"),{}).done(function(data) {
-							loadTriplesToModal(data, type);
-						});
-					} else if (modus == "geometric"){
-						$.get("core/disgeo/geo/verblijfsobject/"+(identificatie+'').padStart(16, "0"),{}).done(function(data) {
-							loadTriplesToModal(data, type);
-						});
-					}
-				}
-				else if(layer['N']['title'] == 'Wegvakken'){
-					var identificatie = feature.properties['wvk_id'];
-					var type = "http://data.stelselvanbasisregistraties.nl/bag/id/concept/Wegvak";
-					if(modus == "relation"){
-						$.get("core/disgeo/wegvak/"+identificatie,{}).done(function(data) {
-							loadTriplesToModal(data, type);
-						});
-					} else if (modus == "geometric"){
-						$.get("core/disgeo/geo/wegvak/"+identificatie,{}).done(function(data) {
-							loadTriplesToModal(data, type);
-						});
-					}
+				var identificatie = feature.properties['wvk_id'];
+				var type = "http://data.stelselvanbasisregistraties.nl/bag/id/concept/Wegvak";
+				if(modus == "relation"){
+					$.get("core/disgeo/wegvak/"+identificatie,{}).done(function(data) {
+						loadTriplesToModal(data, type);
+					});
+				} else if (modus == "geometric"){
+					$.get("core/disgeo/geo/wegvak/"+identificatie,{}).done(function(data) {
+						loadTriplesToModal(data, type);
+					});
 				}
 			})
 		});
@@ -181,7 +146,7 @@ function loadTriplesToModal(data, type){
 		if (typeof value == "string" ) {
 			if(value.slice(-1)=='#' || value.slice(-1) == '/')
 				console.log(value);
-				rdf.prefixes[key] = value;
+			rdf.prefixes[key] = value;
 		}
 	});
 

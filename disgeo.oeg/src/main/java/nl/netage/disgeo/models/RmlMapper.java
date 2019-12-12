@@ -36,7 +36,7 @@ public class RmlMapper {
 				.load(RDFFormat.TURTLE, new ByteArrayInputStream(sw.toString().getBytes(Charset.forName("UTF-8"))));
 
 		com.taxonic.carml.engine.RmlMapper mapper = null;
-		
+
 		if(format.equals(JSON)) {
 			mapper = com.taxonic.carml.engine.RmlMapper.newBuilder()
 					.setLogicalSourceResolver(Rdf.Ql.JsonPath, new JsonPathResolver())
@@ -52,12 +52,16 @@ public class RmlMapper {
 		}else {
 			throw new Exception("Formats not able to convert. Only JSON, CSV and XML are allowed.");
 		}
-		
-		mapper.bindInputStream(new ByteArrayInputStream(result.getBytes(Charset.forName("UTF-8"))));
-		sw = new StringWriter();
-		Rio.write(mapper.map(mapping), sw, RDFFormat.TURTLE);
-		
-		Model resultModel = ModelFactory.createDefaultModel();
-		return resultModel.read(new ByteArrayInputStream(sw.toString().getBytes(Charset.forName("UTF-8"))), null, "TTL");
+
+		if(!result.isEmpty()) {
+			mapper.bindInputStream(new ByteArrayInputStream(result.getBytes(Charset.forName("UTF-8"))));
+			sw = new StringWriter();
+			Rio.write(mapper.map(mapping), sw, RDFFormat.TURTLE);
+
+			Model resultModel = ModelFactory.createDefaultModel();
+			return resultModel.read(new ByteArrayInputStream(sw.toString().getBytes(Charset.forName("UTF-8"))), null, "TTL");
+		}else {
+			return ModelFactory.createDefaultModel();
+		}
 	}	
 }

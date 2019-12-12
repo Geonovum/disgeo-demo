@@ -50,7 +50,7 @@ public class Util {
 		m.setNsPrefix("dc","http://purl.org/dc/terms/");
 		m.setNsPrefix("geof", "http://www.opengis.net/def/function/geosparql/");
 		m.setNsPrefix("sc","http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/");
-		m.setNsPrefix("cbs", "http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/");
+		m.setNsPrefix("cbs", "http://data.stelselvanbasisregistraties.nl/cbs/id/gegevenselement/");
 		m.setNsPrefix("rrgs", "http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/");
 		m.setNsPrefix("lrkp", "http://data.stelselvanbasisregistraties.nl/lrkp/id/gegevenselement/");
 		m.setNsPrefix("nwb", "http://data.stelselvanbasisregistraties.nl/nwb/id/gegevenselement/");

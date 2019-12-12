@@ -65,6 +65,15 @@
 	border: 1px solid #eee;
 }
 
+#textPage {
+	width: 98.5%;
+	display: flex;
+	margin: 10px;
+	flex-direction: column;
+	padding: 25px;
+	border: 1px solid #eee;
+}
+
 .content-inner.fullscreen #map {
 	height: calc(100vh - 85px);
 
