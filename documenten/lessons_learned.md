@@ -1,4 +1,5 @@
-# Lessons learned 
+# Lessons learned uit de DisGeo linked data demonstrator
+ 
 (Op basis van [deze github issues](https://github.com/Geonovum/disgeo-demo/issues))
 
 ## 1: API beschikbaarheid, API bruikbaarheid en API compleetheid
@@ -15,15 +16,40 @@ Meer dan 80% van de gebruikte data wordt beschikbaar gesteld als kaartlaag, die 
 ### Compleetheid
 Daarnaast stelt een API niet per definitie alle data beschikbaar. De BAG API stelt bijvoorbeeld het gebruiksdoel van een verblijfsobject niet beschikbaar via de API.
 
-### _Overwegingen voor vervolg_
+### Maturiteit
+Veel APIs scoren niet goed op (al) deze punten:
+
+![Maturiteit-tabel](apimaturiteit.png "API maturiteit")
+
+### _Overwegingen voor vervolg en API strategie_
 * Op de huidige [pas-toe-of-leg-uit-lijst](https://www.forumstandaardisatie.nl/open-standaarden/lijst/verplicht) van Forum Standaardisatie staan nu de Nederlandse profielen van WMS 1.3 en WFS 2.0. Deze ‘verplichting’ staat een andere doorontwikkeling in de weg. Dit zou op een bepaald moment van de lijst af moeten.
 * In plaats daarvan zou op de lijst APIs moeten staan en/of Linked Data.
 * Een deel van de oplossing ligt in het zodanig vernieuwen van de versies van WMS en WFS dat deze als API functioneren. Voor WFS is met WFS 3.0 dit al mogelijk, voor WMS wordt aan een nieuwe versie gewerkt. 
+* Een checklist voor API-maturiteit zou aan de API strategie kunnen woreen toegevoegd.
 
 ## 2: API als datasilo
+Op basis van een API bevraging komt bepaalde data terug. 
+De verwachting is dat de data verwijzingen naar andere objecten doet op basis van een id. Op basis van dit principe kunnen we een generieke oplossing bedenken. 
+
 Eén constatering ten aanzien van APIs lijkt te zijn dat een API gezien kan worden als data silo. De API deelt de data uit de silo en bevat veelal geen enkele relatie naar data (of een dataset) buiten de API. 
 
 Gebruikelijk lijkt te zijn, dat als een API meerdere requests aanbiedt, het antwoord van de ene request verwijst naar een andere request binnen diezelfde API. Zo verwijst de data over een verblijfsobject naar de API request om pand data op te vragen. 
+
+Voorbeeld: bevraging van een specifiek pand in de BAG API. 
+
+Verwacht antwoord:
+
+`"verblijfsobject" : "1895100000022868",`
+
+Daadwerkelijk antwoord:
+
+`"verblijfsobject" : "https://bag.basisregistraties.overheid.nl/api/v1/verblijfsobjecten?pandrelatering=1895100000022868&geldigOp=2019-10-22",`
+
+Om het stelsel, via APIs, in samenhang te kunnen bevragen, moet een API bovendien ook vragen kunnen beantwoorden op basis van identifiers uit andere, eraan gerelateerde datasets. 
+
+Bijvoorbeeld: aan een NHR API vragen stellen op basis van een BAG Verblijfsobject identifier. 
+- Vraag: Welke bedrijven zit er op dit adres? 
+- Vertaald: API, geef mij alle `[NHR object]`en met dit `[BAG verblijfsobject id]` als adres.
 
 ### _Overwegingen voor vervolg of voor opname in API-strategie_
 * Om data uit de datasilo in samenhang beschikbaar te maken, zou er verwezen moeten worden naar identifiers. Hierdoor kan er generiek omgegaan worden met het ophalen van data van verschillende APIs. 
@@ -33,7 +59,7 @@ Gebruikelijk lijkt te zijn, dat als een API meerdere requests aanbiedt, het antw
 * Voor het organiseren (leggen en beheren) van die relaties is governance en budget nodig!
 
 ## 3: Eén en tweezijdige verwijzingen en afwijkingen
-Datamodellen leggen restricties op. Zo legt bijvoorbeeld het BAG datamodel vast dat een verblijfsobject naar een pand verwijst, maar een pand niet naar een verblijfsobject. Echter de API doet dit wel en wijkt daarmee af van het datamodel. Dit maakt het gebruik van een API erg specifiek.
+Datamodellen leggen beperkingen op. Zo legt bijvoorbeeld het BAG datamodel vast dat een verblijfsobject naar een pand verwijst, maar een pand niet naar een verblijfsobject. Echter de API doet dit wel en wijkt daarmee af van het datamodel. Dit maakt het gebruik van een API erg specifiek.
 
 ### _Overwegingen voor vervolg_
 * Een relatie tussen twee objecten moet altijd in twee richtingen uitvraagbaar zijn. 
@@ -49,6 +75,13 @@ Normaliter is dit niet persé een probleem. In dit project vormt dit wel een pro
 
 ## 5: Adresgegevens onvergelijkbaar
 Adresgegevens blijken moeilijke gegevens te zijn. In de verschillende datasets worden adresgegevens gebruikt, echter laten deze zich moeilijk vergelijken. Aannemende dat het Kadaster het meest complexe model op adresgegevens hanteert lijkt dit ook de meest nauwkeurige en daardoor meest bruikbare. Een adres bestaat uit een aantal facetten (woonplaats, straat, huisnummer, huisletter, toevoeging). Echter een groot deel van de datasets/APIs hanteren deze data door elkaar. Hierdoor is het lastig om adresdata te vergelijken. 
+
+### VOORBEELD
+
+De RCE heeft geen directe koppeling met de BAG, wel bevat elk monument een adres. Echter laten de adres gegevens zich moeilijk vergelijken:
+- De BAG beschrijft een huisletter en een huisnummer toevoeging.
+- De RCE kent enkel een toevoeging, die vaak niet met een van de twee BAG velden overeen komt.
+
 
 ### _Overweging voor vervolg of voor opname in API-strategie_
 * Wederom: Om het stelsel en aanpalende gegevensverzamelingen in samenhang te kunnen bevragen moeten APIs verwijzen naar identifiers uit de samenhangende objectenregistratie als die relaties er zijn. Relaties op basis van beschrijvende elementen zoals adres moeten worden uitgesloten. 
@@ -77,8 +110,22 @@ Een API biedt in geen van de gevallen metadata over het object. Het is daardoor 
 ## 9: Configuratielast
 Om de APIs aan elkaar te kunnen relateren, de resultaten van een API om te zetten in een semantisch formaat en om de API configuratie te beschrijven is een enorme configuratielast onontkoombaar. Voor de beperkte APIs op dit moment is er al ruim 4000 regels aan configuratie nodig. Ook het onderhoud van deze configuratie zal een redelijke last met zich mee brengen.
 
+We kunnen verwachten dat de hoeveelheid APIs erg groot wordt. Bovendien is er sprake van toenemende complexiteit per toegevoegde API (geen 2 APIs zijn hetzelfde). 
+
+Een ander nadeel is dat een semantische laag die je op deze manier bouwt, eigen interpretatie bevat: de semantiek van de data in de API zelf is vaak immers niet bekend.
+
+De semantische laag moet het geheel aan kennis bevatten dat je wilt bevragen. Deze laag beschrijft hoe de data in het stelsel zich tot elkaar verhoudt; hieraan wordt gekoppeld welke data in welke API zit. Wie een bredere vraag wil stellen dan de semantische laag afdekt, moet eerst een stukje aan de semantische laag toevoegen. 
+
+“het geheel aan kennis” bestaat in dit geval uit 
+- Basisregistraties
+- Andere overheidsdatasets
+- Vrije datasets
+
+Dus … een open wereld. Het geheel aan kennis beschrijven is niet mogelijk! De semantische orchestratielaag moet daarmee uitbreidbaar zijn.
+
 ### _Overwegingen voor vervolg_
 * Dit pleit er extra voor de orchestratielaag zo compact mogelijk te houden.
+* De orchestratielaag moet uitbreidbaar zijn.
 * NB Linked data maakt dit helemaal overbodig !!!
 
 ## 10: Geografische vraag kenmerkt zich door missende relatie (en waar naar te zoeken)
