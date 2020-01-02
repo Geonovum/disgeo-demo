@@ -36,5 +36,5 @@ var respecConfig = {
   //    "date": "September 2007",
   //    "publisher": "International Organization for Standardization",
   //  },
-  //},
+  },
 };
