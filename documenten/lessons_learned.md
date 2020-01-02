@@ -84,6 +84,7 @@ Eén constatering ten aanzien van APIs lijkt te zijn dat een API gezien kan word
 
 Gebruikelijk lijkt te zijn, dat als een API meerdere requests aanbiedt, het antwoord van de ene request verwijst naar een andere request binnen diezelfde API. Zo verwijst de data over een verblijfsobject naar de API request om pand data op te vragen. 
 
+<aside class="example">
 Voorbeeld: bevraging van een specifiek pand in de BAG API. 
 
 Verwacht antwoord:
@@ -93,12 +94,16 @@ Verwacht antwoord:
 Daadwerkelijk antwoord:
 
 `"verblijfsobject" : "https://bag.basisregistraties.overheid.nl/api/v1/verblijfsobjecten?pandrelatering=1895100000022868&geldigOp=2019-10-22",`
+</aside>
 
 Om het stelsel, via APIs, in samenhang te kunnen bevragen, moet een API bovendien ook vragen kunnen beantwoorden op basis van identifiers uit andere, eraan gerelateerde datasets. 
 
+<aside class="example">
 Bijvoorbeeld: aan een NHR API vragen stellen op basis van een BAG Verblijfsobject identifier. 
+
 - Vraag: Welke bedrijven zit er op dit adres? 
 - Vertaald: API, geef mij alle `[NHR object]`en met dit `[BAG verblijfsobject id]` als adres.
+</aside>
 
 ### _Overwegingen voor vervolg of voor opname in API-strategie_
 * Om data uit de datasilo in samenhang beschikbaar te maken, zou er verwezen moeten worden naar identifiers. Hierdoor kan er generiek omgegaan worden met het ophalen van data van verschillende APIs. 
@@ -125,12 +130,12 @@ Normaliter is dit niet persé een probleem. In dit project vormt dit wel een pro
 ## 5: Adresgegevens onvergelijkbaar
 Adresgegevens blijken moeilijke gegevens te zijn. In de verschillende datasets worden adresgegevens gebruikt, echter laten deze zich moeilijk vergelijken. Aannemende dat het Kadaster het meest complexe model op adresgegevens hanteert lijkt dit ook de meest nauwkeurige en daardoor meest bruikbare. Een adres bestaat uit een aantal facetten (woonplaats, straat, huisnummer, huisletter, toevoeging). Echter een groot deel van de datasets/APIs hanteren deze data door elkaar. Hierdoor is het lastig om adresdata te vergelijken. 
 
-### VOORBEELD
-
+<aside class="example">
 De RCE heeft geen directe koppeling met de BAG, wel bevat elk monument een adres. Echter laten de adres gegevens zich moeilijk vergelijken:
+
 - De BAG beschrijft een huisletter en een huisnummer toevoeging.
 - De RCE kent enkel een toevoeging, die vaak niet met een van de twee BAG velden overeen komt.
-
+</aside>
 
 ### _Overweging voor vervolg of voor opname in API-strategie_
 * Wederom: Om het stelsel en aanpalende gegevensverzamelingen in samenhang te kunnen bevragen moeten APIs verwijzen naar identifiers uit de samenhangende objectenregistratie als die relaties er zijn. Relaties op basis van beschrijvende elementen zoals adres moeten worden uitgesloten. 
