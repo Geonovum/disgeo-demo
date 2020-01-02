@@ -68,3 +68,29 @@ Wie is verantwoordelijk voor het toevoegen en beheren van de **links tussen data
 Deze zijn basisvoorwaarde voor samenhang.
 
 Deze verantwoordelijkheid wordt nu nog niet gevoeld en de links zijn veelal nog niet aangebracht…
+
+## Conclusies en aanbevelingen
+
+Het uitgangspunt was om een demonstrator te bouwen bovenop APIs. Maar daar blijken wel wat haken en ogen aan te zitten. 
+
+### APIs, de nieuwe silo's
+
+De meerderheid van open geodata wordt beschikbaar gesteld als kaartlaag, die zich niet als API laat gebruiken. Er was maar 1 API die goed genoeg scoorde op de maturiteitschecklist om bruikbaar te zijn. De rest van de data die in de demonstrator is gebruikt is tijdens het project in een eigen API gepubliceerd. 
+
+*Aanbeveling*: Vervang op de Lijst Open Standaarden de Nederlandse profielen van WMS 1.3 en WFS 2.0 door de nieuwe OGC API standaarden. WFS 2.0 kan al vervangen worden door [OGC API - Features](https://www.opengeospatial.org/standards/ogcapi-features). 
+
+*Aanbeveling*: Voeg een checklist API maturiteit toe aan de [[NLAPIStrategie]] en zorg dat APIs hier zoveel mogelijk aan voldoen.
+
+Maar zelfs als we een set goed scorende APIs zouden hebben, zou dit geen goed uitgangspunt vormen voor een samenhangende objectenregistratie. APIs zijn daarvoor te beperkt in functionaliteit én ze bieden de data niet samenhangend aan (het zijn silo’s). Een geheel van losstaande APIs kan geschikt gemaakt worden voor samenhangende bevraging over de APIs heen door er een semantische orchestratielaag bovenop te implementeren. Dit vergt echter veel extra code en onderhoud. Beter zou het zijn om een infrastructuur te hebben van een of meerdere “knowledge graphs” waarin de data in samenhang beschikbaar en bevraagbaar is. 
+
+*Aanbeveling*: Zet niet vol in op APIs alleen, maar werk toe naar een infrastructuur van een of meerdere “knowledge graphs” (linked data).
+
+### Samenhang tussen objecten
+
+Datasets zijn in de huidige praktijk meestal niet gekoppeld. In plaats van een BAG identifier, bevatten veel registraties bijvoorbeeld nog velden waar adressen als tekst zijn opgenomen. Deze adressen matchen niet 100% met de BAG. 
+
+Om de objectenregistraties in samenhang te kunnen bevragen, is het een basisvoorwaarde dat de datasets op het niveau van individuele objecten aan elkaar gekoppeld zijn met behulp van identifiers. Bij voorkeur zijn deze opgenomen in de vorm van URIs. 
+
+*Aanbeveling*: Laat APIs verplicht verwijzen naar identifiers uit de samenhangende objectenregistratie als die relaties er zijn. Laat in Linked Data in die gevallen de URIs uit de samenhangende objectenregistratie opnemen.
+
+*Aanbeveling*: Regel de governance voor het eenmalig leggen en vervolgens beheren van deze links - dit kost tijd en geld. 
