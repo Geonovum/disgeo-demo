@@ -19,13 +19,62 @@ Daarnaast stelt een API niet per definitie alle data beschikbaar. De BAG API ste
 ### Maturiteit
 Veel APIs scoren niet goed op (al) deze punten:
 
-![Maturiteit-tabel](apimaturiteit.png "API maturiteit")
+#### Checklist API Maturiteit
+
+| # | Vraag | Verwijzing API Strategie | Verwijzing (Spatial) Data on the Web Best Practices |
+| - | - | - | - |
+| | **Documentatie** | | |
+| 1 | Is er documentatie beschikbaar bij een API? | [7.1.14][1] | |
+| 2 | Wordt er vanuit de API beschrijving en resultaten naar de documentatie gewezen? | [7.1.49][2] | [Metadata 8.2][3] |
+| 3 | Verwijst de documentatie naar Stelsel Catalogus of andere datasets? | | | 
+| 4 | Is er informatie over verandering en oorsprong van data? | | [Data provenance 8.4][4] |
+| |
+| | **API definitie** | | |
+| 5 | Kan je query-parameters meegeven om te filteren? | [7.1.28][5] | |
+| 6 | Bieden id's uit andere datasets een ingang in de API? | | [Data identifiers 8.7][6], [Spatial data identifiers 12.1.1][7] |
+| 7 | Bevat de API alle benodige data/is de data compleet? | | |
+| 8 | Kan je ruimtelijke vragen stellen? | [7.1.34][8] | |
+| 9 | Communiceert de API de CRS van zijn ruimtelijke gegevens? | [7.1.37][9] | [Geometries and coordinate reference systems 12.2.2][10] |
+| 10 | Wordt Geodata als GEOJSON aangeboden? | [7.1.32][11], [7.1.33][12] | |
+| 11 | Worden open standaarden gebruikt voor het beschrijven van de API? | [7.1.14][1]| |
+| 12 | Is er een data model beschikbaar? | | [Data Vocabularies 8.9][13] |
+| |
+| | **Retour formaat** | | |
+| 13 | Is het retourformaat zelfbeschrijvend? | | |
+| 14 | Biedt het retourformaat verwijzingen naar andere datasets? | | |
+| 15 | Worden open standaarden voor het retourformaat en data gebruikt? | [7.1.26][14] | [Data Formats 8.8][15], [Spatial data encoding 12.2.1][16] |
+| |
+| | **API Gebruik** | | | |
+| 16 | Stelt de API gebruiksvoorwaarden? | | [Data licenses 8.3][17] |
+| 17 | Biedt de API caching? | [7.1.41][18] | |
+| 18 | Stelt de API gebruiksbeperkende maatregelen? | [7.1.42][19], [7.1.43][20] | |
+
+[1]: https://docs.geostandaarden.nl/api/API-Strategie/#api-16-use-oas-3-0-for-documentation
+[2]: https://docs.geostandaarden.nl/api/API-Strategie/#api-51-publish-oas-at-the-base-uri-in-json-format
+[3]: https://www.w3.org/TR/dwbp/#metadata
+[4]: https://www.w3.org/TR/dwbp/#provenance
+[5]: https://docs.geostandaarden.nl/api/API-Strategie/#api-30-use-query-parameters-corresponding-to-the-queryable-fields
+[6]: https://www.w3.org/TR/dwbp/#DataIdentifiers
+[7]: https://www.w3.org/TR/sdw-bp/#bp-identifiers
+[8]: https://docs.geostandaarden.nl/api/API-Strategie/#api-36-provide-a-post-endpoint-for-geo-queries
+[9]: https://docs.geostandaarden.nl/api/API-Strategie/#api-39-use-etrs89-as-the-preferred-coordinate-reference-system-crs
+[10]: https://www.w3.org/TR/sdw-bp/#geometry-and-crs
+[11]: https://docs.geostandaarden.nl/api/API-Strategie/#api-34-support-geojson-for-geo-apis
+[12]: https://docs.geostandaarden.nl/api/API-Strategie/#api-35-include-geojson-as-part-of-the-embedded-resource-in-the-json-response
+[13]: https://www.w3.org/TR/dwbp/#dataVocabularies
+[14]: https://docs.geostandaarden.nl/api/API-Strategie/#api-28-send-a-json-response-without-enclosing-envelope
+[15]: https://www.w3.org/TR/dwbp/#dataFormats
+[16]: https://www.w3.org/TR/sdw-bp/#bp-expressing-spatial
+[17]: https://www.w3.org/TR/dwbp/#licenses
+[18]: https://docs.geostandaarden.nl/api/API-Strategie/#api-43-apply-caching-to-improve-performance
+[19]: https://docs.geostandaarden.nl/api/API-Strategie/#api-44-apply-rate-limiting
+[20]: https://docs.geostandaarden.nl/api/API-Strategie/#api-45-provide-rate-limiting-information
 
 ### _Overwegingen voor vervolg en API strategie_
 * Op de huidige [pas-toe-of-leg-uit-lijst](https://www.forumstandaardisatie.nl/open-standaarden/lijst/verplicht) van Forum Standaardisatie staan nu de Nederlandse profielen van WMS 1.3 en WFS 2.0. Deze ‘verplichting’ staat een andere doorontwikkeling in de weg. Dit zou op een bepaald moment van de lijst af moeten.
 * In plaats daarvan zou op de lijst APIs moeten staan en/of Linked Data.
 * Een deel van de oplossing ligt in het zodanig vernieuwen van de versies van WMS en WFS dat deze als API functioneren. Voor WFS is met WFS 3.0 dit al mogelijk, voor WMS wordt aan een nieuwe versie gewerkt. 
-* Een checklist voor API-maturiteit zou aan de API strategie kunnen woreen toegevoegd.
+* Een checklist voor API-maturiteit zou aan de API strategie kunnen worden toegevoegd.
 
 ## 2: API als datasilo
 Op basis van een API bevraging komt bepaalde data terug. 
