@@ -73,7 +73,7 @@ Deze verantwoordelijkheid wordt nu nog niet gevoeld en de links zijn veelal nog 
 
 Het uitgangspunt was om een demonstrator te bouwen bovenop APIs. Maar daar blijken wel wat haken en ogen aan te zitten. 
 
-### APIs, de nieuwe silo's
+### API versus knowledge graph
 
 De meerderheid van open geodata wordt beschikbaar gesteld als kaartlaag, die zich niet als API laat gebruiken. Er was maar 1 API die goed genoeg scoorde op de maturiteitschecklist om bruikbaar te zijn. De rest van de data die in de demonstrator is gebruikt is tijdens het project in een eigen API gepubliceerd. 
 
