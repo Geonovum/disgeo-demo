@@ -21,5 +21,5 @@ De beoogde resultaten zijn:
 2.	Een subset van het begrippenkader en conceptueel begrippenkader vanuit de themagroepen Gebouwen en Wegen
 3.	Verzamelde data van een proefgebied vanuit de themagroepen Gebouwen en Wegen
 4.	Een set API’s met een semantische laag die deze data bevatten
-5.	Een rapportage met lessons learned
+5.	Een rapportage met [lessons learned (werkversie)](https://geonovum.github/io/disgeo-demo).
 6.	Een presentatie
