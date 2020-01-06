@@ -192,7 +192,11 @@ Dit zou echter betekenen dat met een groeiend aantal APIs dit een flinke belasti
 * Oplossingsrichtingen zijn bijvoorbeeld het inbouwen van gerichte zoekpatronen  / manieren om het aantal zoekrichtingen te kanaliseren.
 
 ## 11: Geografische relatie obv GeoSPARQl
-Geografische data laten zich makkelijk in samenhang gebruiken. Geografische data worden in het kader van deze demonstrator in alle gevallen aangeboden in een geo-standaard. Hierdoor kunnen verschillende tools en libraries eenvoudig omgaan met geografische data ongeacht de standaard die toegepast is. Ook tools die semantisch werken kunnen goed met deze data omgaan om dat het eenvoudig te gebruiken is met semantische geostandaarden zoals GeoSPARQL. 
+Geografische data laten zich makkelijk in samenhang gebruiken. Geografische data worden in het kader van deze demonstrator in alle gevallen aangeboden in een geo-standaard. Hierdoor kunnen verschillende tools en libraries eenvoudig omgaan met geografische data ongeacht de standaard die toegepast is. Ook tools die semantisch werken kunnen goed met deze data omgaan om dat het eenvoudig te gebruiken is met semantische (i.e. op Linked Data gebaseerde) geostandaarden zoals GeoSPARQL [[geosparql]]. 
+
+GeoSPARQL is een OGC standaard die een extensie beschrijft van SPARQL[[rdf-sparql-query]], de standaard querytaal voor Linked Data. GeoSPARQL definieert ook een basis vocabulaire voor geodata en kan worden gebruikt om aan te duiden dat een object een geo-object is en om topologische relaties tussen geo-objecten te leggen. 
 
 ### _Overweging voor vervolg_
-* Dit is waardevol, op deze weg blijven doorgaan.
+* Dat geografische data worden aangeboden in een geo-standaard is waardevol, op deze weg blijven doorgaan.
+* Gebruik GeoSPARQL bij het aanbieden van geografische data als linked data.
+* Om de (geo)basisregistraties in samenhang te laten functioneren, is het nodig om door te groeien naar Linked Data. Het groeipad hiernaartoe moet worden uitgestippeld.
