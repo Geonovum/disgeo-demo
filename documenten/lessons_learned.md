@@ -183,7 +183,7 @@ Dus … een open wereld. Het geheel aan kennis beschrijven is niet mogelijk! De 
 * NB Linked data maakt dit helemaal overbodig !!!
 
 ## 10: Geografische vraag kenmerkt zich door missende relatie (en waar naar te zoeken)
-Bij vragen met een geografische component gaat de demonstrator op zoek naar objecten die geen administratieve relatie hebben tot elkaar: deze objecten moet binnen een bepaalde straal van elkaar liggen. Echter zou dit mogelijk zijn op alle objecten die gedefinieerd zijn in de Stelselcatalogus waarvan de gedefinieerde API geografische zoekvfragen ondersteunt. 
+Bij vragen met een geografische component gaat de demonstrator op zoek naar objecten die geen administratieve relatie hebben tot elkaar: deze objecten moet binnen een bepaalde straal van elkaar liggen. Echter zou dit mogelijk zijn op alle objecten die gedefinieerd zijn in de Stelselcatalogus waarvan de gedefinieerde API geografische zoekvragen ondersteunt. 
 
 Dit zou echter betekenen dat met een groeiend aantal APIs dit een flinke belasting op de performance wordt. Daarnaast betekent dit, dat bijvoorbeeld alle panden worden opgevraagd in een bepaalde straal. Dit levert ontzettend veel data op, die in veel gevallen waarschijnlijk niet de vraag van de gebruiker zal beantwoorden. Op dit moment is gekozen om in de configuratie vast te leggen op welke objecten geografisch gezocht moeten worden vanuit een bepaald start object. Hierdoor kan er sturing plaats vinden.
 
