@@ -71,14 +71,12 @@ var map = new ol.Map({
 	target : 'map',
 	layers : [
 		new ol.layer.Tile({
-			source: new ol.source.XYZ({
-				url: 'https://geodata.nationaalgeoregister.nl/tiles/service/wmts/brtachtergrondkaart/EPSG:3857/{z}/{x}/{y}.png',
-				attributions: [
-					new ol.Attribution({
-						html: 'Kaartgegevens &copy; <a href="https://www.kadaster.nl">Kadaster</a>'
-					})
-					]
-			})
+		    title: 'OSM',
+		    type: 'base',
+		    visible: true,
+		    source: new ol.source.XYZ({
+		    	url: 'https://{a-c}.tile.opentopomap.org/{z}/{x}/{y}.png'
+		    })
 		})
 		,highlightLayer],
 		view : view
@@ -146,7 +144,6 @@ function loadTriplesToModal(data, type){
 	$.each(context, function(key, value) {
 		if (typeof value == "string" ) {
 			if(value.slice(-1)=='#' || value.slice(-1) == '/')
-				console.log(value);
 			rdf.prefixes[key] = value;
 		}
 	});
@@ -168,7 +165,6 @@ function loadTriplesToModal(data, type){
 				$('<a>').html(triple.subject.toString())
 				.attr('name',"#"+triple.subject.toString().split("#")[1])
 				.css({ 'font-weight': 'bold' })
-				.attr('class', 'derefUri')
 				.attr('href',encodeURIComponent(triple.subject.toString()))
 				.appendTo(subjectCell);					
 			}
@@ -207,6 +203,9 @@ function loadTriplesToModal(data, type){
 				}
 				break;
 			default:
+				if(isFloat(parseFloat(triple.object.toString())))
+					objCell.html(parseFloat(triple.object.toString()).toFixed(2));
+				else
 				objCell.html(triple.object.toString());                
 			}
 		});
@@ -216,9 +215,12 @@ function loadTriplesToModal(data, type){
 
 $("input[name=questionType]:radio").change(function () {
 	selected_value = $("input[name='questionType']:checked").val();
-	console.log(selected_value);
 	modus = selected_value;
 });
+
+function isFloat(n){
+	return n != "" && !isNaN(n) && Math.round(n) != n;
+}
 
 //react to size changes
 $(document).ready(function () {

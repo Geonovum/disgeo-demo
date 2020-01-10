@@ -8,7 +8,7 @@ var modus = "relation";
 var wmsNwbSource = new ol.source.TileWMS({
 	url: 'https://geodata.nationaalgeoregister.nl/nwbwegen/wms',
 	title: "NWB Kaart",
-	params: {'LAYERS': 'wegvakken', 'TILED': true, 'VERSION': '1.3.0',
+	params: {'LAYERS': 'wegvakken', 'STYLE':'wegvakken', 'TILED': true, 'VERSION': '1.3.0',
 		'FORMAT': 'image/png','CRS': 'EPSG:3857'},
 		serverType: 'geoserver'
 });
@@ -71,14 +71,12 @@ var map = new ol.Map({
 	target : 'map',
 	layers : [
 		new ol.layer.Tile({
-			source: new ol.source.XYZ({
-				url: 'https://geodata.nationaalgeoregister.nl/tiles/service/wmts/brtachtergrondkaart/EPSG:3857/{z}/{x}/{y}.png',
-				attributions: [
-					new ol.Attribution({
-						html: 'Kaartgegevens &copy; <a href="https://www.kadaster.nl">Kadaster</a>'
-					})
-					]
-			})
+		    title: 'OSM',
+		    type: 'base',
+		    visible: true,
+		    source: new ol.source.XYZ({
+		    	url: 'https://{a-c}.tile.opentopomap.org/{z}/{x}/{y}.png'
+		    })
 		})
 		,highlightLayer],
 		view : view
@@ -206,12 +204,20 @@ function loadTriplesToModal(data, type){
 				}
 				break;
 			default:
-				objCell.html(triple.object.toString());                
+				if(isFloat(parseFloat(triple.object.toString())))
+					objCell.html(parseFloat(triple.object.toString()).toFixed(2));
+				else
+					objCell.html(triple.object.toString());                
 			}
 		});
 		$('#propertyObject').modal();	
 	});
 }
+
+function isFloat(n){
+	return n != "" && !isNaN(n) && Math.round(n) != n;
+}
+
 
 $("input[name=questionType]:radio").change(function () {
 	selected_value = $("input[name='questionType']:checked").val();

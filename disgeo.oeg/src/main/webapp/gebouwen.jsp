@@ -12,7 +12,7 @@
 <link rel="stylesheet" href='css/ol3-layerswitcher.css' type='text/css'>
 <link href='css/disgeo.css' rel='stylesheet' type='text/css' />
 <link href='css/ol-geocoder.min.css' rel='stylesheet' type='text/css' />
-
+ 
 </head>
 <body>
 	<div class="page">

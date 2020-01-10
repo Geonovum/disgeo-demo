@@ -1,0 +1,25 @@
+# Systemd unit file for tomee
+[Unit]
+Description=Apache Tomee Web Application Container
+After=syslog.target network.target
+
+[Service]
+Type=forking
+
+Environment=CATALINA_PID=/var/run/tomee.pid
+Environment=CATALINA_HOME=/opt/apache-tomee
+Environment=CATALINA_BASE=/opt/apache-tomee
+Environment='CATALINA_OPTS=-Xms512M -Xmx1024M -server -XX:+UseParallelGC'
+Environment='JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom'
+
+ExecStart=/opt/apache-tomee/bin/startup.sh
+WorkingDirectory=/opt/apache-tomee
+ExecStop=/bin/kill -15 $MAINPID
+
+User=tomee
+Group=tomee
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
