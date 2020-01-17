@@ -9,7 +9,7 @@ De applicatielaag staat volledig los van de databronnen.
 -	Als er vragen over API’s heen worden gesteld dan wordt er waar nodig in een orchestratielaag een voorziening gerealiseerd waarmee deze vragen kunnen worden bediend.
 -	Bij het beantwoorden van een user story wordt minimaal één object uit de basisregistraties gebruikt.
 
-![demonstratorarchitectuur]media/architectuur.png
+![demonstrator_architectuur](media/architectuur.png)
 
 ## User Stories
 Er zijn een aantal userstories gedefinieerd gericht op de thema’s Gebouwen en Wegen. Deze userstories zijn in drie categorieën onderverdeeld met een toename in complexiteit:
@@ -18,16 +18,16 @@ Er zijn een aantal userstories gedefinieerd gericht op de thema’s Gebouwen en 
 3.	Analyse – Gegevens opvragen op basis van meedere variabelen
 In onderstaand schema zijn de userstories beschreven. In het onderzoek van de demonstrator zijn deze opgepakt en zijn de mogelijkheden van de huidige technologieën onderzocht.
 
-![userstories]media/userstories.png
+![user_stories](media/userstories.png)
 
 ## Databronnen
 Voor de user stories zijn een aantal databronnen gebruikt die in onderstaande plaat zijn weergegeven:
 
-![databronnen]media/databronnen.png
+![databronnen](media/databronnen.png)
 
 ## Samenwerking Kadaster met betrekking tot Knowledge Graph
 In dit kader is er ook samengewerkt met het Kadaster. Het Kadaster is innoverend bezig om nieuwe technologieën te onderzoeken om gegevens uit de gegevensverzamelingen van het Kadaster te bevragen. Een van die technologieën is het ontwikkelen van ene knowlwdge grapg en ondermeer het bevragen van gegevens door middel van een chatbot. Het Kadaster heeft voor de user story 'energieadviseur' een knwolegde grapg ontwikkeld.
 
-![samenwerkingKadaster]media/samenwerkingkadaster.png
+![samenwerking_Kadaster](media/samenwerkingkadaster.png)
 
 
