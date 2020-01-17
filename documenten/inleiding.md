@@ -2,6 +2,7 @@
 
 ## Doel van de demonstrator
 Het ministerie van BZK beoogt met het traject Doorontwikkeling in Samenhang (DiS Geo) meer samenhang te krijgen in het stelsel van geo(basis)registraties waarbij de focus ligt op semantische harmonisatie van registraties en informatiemodellen, en alternatieve methoden van gegevensuitwisseling en bijhouding (meer centraal, minder kopiëren).
+![samenhangende objectenregistratie informatiekundig](C:\Users\dkrijtenburg\Documents\GitHub\disgeo-demo\documenten)
 
 Gebruikers denken immers meestal niet in datasets, maar in data die op allerlei manieren verbanden met elkaar heeft en te combineren is. In het NEN3610 stelsel en het stelsel van basisregistraties is tot nu toe wél gedacht in datasets. Informatiemodellen zijn in zekere zin silo’s die alleen de semantiek van een bepaalde sector standaardiseren, maar niet in samenhang met de informatie van andere sectoren zijn gemodelleerd. Deze samenhang is er in werkelijkheid echter wel. Linked data is een uitermate geschikte techniek om deze semantische samenhang vast te leggen zodat de data zelf ook geïntegreerd kan worden.
 
