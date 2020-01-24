@@ -97,6 +97,6 @@ Om de objectenregistraties in samenhang te kunnen bevragen, is het een basisvoor
 
 ### Best Practices voor Data Publicatie
 
-Er is internationaal verband, veelal ondersteund vanuit de EU, al een hoop werk verricht rond het opstellen en documenteren van Best Practices voor data publicatie [[DWBP]] [[SDWBP]], de maturiteits tabel in hoofdstuk 4 is hier op gebaseerd. Ook de [[NLAPIStrategie]] refereert hier nadrukkelijk aan. Het gebruik van deze Best Practices scheelt een hoop werk bij het opstellen van nieuwe standaarden en afspraken
+Er is internationaal verband, veelal ondersteund vanuit de EU, al een hoop werk verricht rond het opstellen en documenteren van Best Practices voor data publicatie [[DWBP]] [[SDW-BP]], de maturiteits tabel in hoofdstuk 4 is hier op gebaseerd. Ook de [[NLAPIStrategie]] refereert hier nadrukkelijk aan. Het gebruik van deze Best Practices scheelt een hoop werk bij het opstellen van nieuwe standaarden en afspraken
 
 *Aanbeveling*: Neem de beschikbare Best Practices over in relevante documenten
