@@ -23,8 +23,11 @@ In onderstaand schema zijn de userstories beschreven. In het onderzoek van de de
 ## Demonstrator
 De demonstrator maakt gebruik van de stelselcatalogus basis registraties. Hierin staan de relaties beschreven tussen de verschillende objecten binnen de basisregistraties. De demonstrator vindt op basis van skos:related gerelateerde objecten.
 Datasets die niet beschreven worden in de stelselcatalogus, worden toegevoegd aan een zogenaamde extensie. Deze extensie bevat de data die niet in de stelselcatalogus zit, maar volgt wel dezelfde structuur. 
+
 Welke objecten uit de stelselcatalogus door welke API geleverd worden, is beschreven in een configuratie bestand. In de configuratie is daarnaast beschreven hoe dat de resultaten van een API omgezet moeten worden naar JSON-LD, dit een semantisch rijk formaat. Hiervoor wordt CARML gebruikt, ontwikkeld mede door het kadaster. 
+
 In de demonstrator zijn webservices voor gebouwen (Verblijfsobjecten) en wegen toegevoegd. Als ingang in het proces wordt de URI voor het type meegegeven zoals deze in de stelselcatalogus staat. Hierop worden de relaties gevolgd naar andere objecten en op basis van de configuratie kan zo van API naar API gezocht worden. 
+
 Geografisch zoeken gaat op een net iets andere maar vergelijkbare manier. Bij geografisch zoeken, wordt op de geselecteerde locatie of object een circkel gemaakt met een straal van 500 meter. Op basis van geografische relaties in de extensie op de stelselcatalogus wordt bepaald welke objecten geografisch gerelateerd mogen worden. Dit wordt op basis van geof:relate gedaan, een Geo-SPARQL property. Dit voorkomt dat alle objecten binnen deze straal gezocht worden. Uiteindelijk zou dit de demonstrator onbruikbaar maken. De gevonden objecten worden wederom omgezet naar linked data en gekoppeld aan het begin object met een geof:nearby relatie.
 
 ## Databronnen
