@@ -72,11 +72,11 @@ Door het ontbreken van een semantische laag [[JSON-LD]] op de meeste API's is he
 </aside>
 
 ## Governance op het snijvlak
-Wie is verantwoordelijk voor het toevoegen en beheren van de **links tussen datasets**? 
-
-Deze zijn basisvoorwaarde voor samenhang.
-
-Deze verantwoordelijkheid wordt nu nog niet gevoeld en de links zijn veelal nog niet aangebracht…
+Wie is verantwoordelijk voor het toevoegen en beheren van de **links tussen datasets**? Deze zijn basisvoorwaarde voor samenhang. 
+Deze verantwoordelijkheid wordt nu nog niet gevoeld en de links zijn veelal nog niet aangebracht. E.a. is direct te herleiden aan de opdracht die de verschillende data eigenaren hebben, zelfs binnen organisaties. Er is bijvoorbeeld geen formele link tussen percelen en panden, aangezien de betreffende afdelingen binnen het kadaster het onderhouden van deze link niet als opdracht hebben, en derhalve geen tijd en budget beschikbaar hebben om e.a. te verwezenlijken. Het beheer van deze links moet dus met beleid, en derhalve budget, ondersteund worden. Hoewel er al een *plicht* is om bij gebruik van gegevens uit de basis registraties de juistheid van die gegevens te waarborgen wordt hier niet op toegezien.
+Een belangrijk element van deze governance is dat er goed nagedacht moet worden op welk niveau het bijhouden van deze links gelegd wordt, het verdient de aanbeveling dat e.a. zo dicht mogelijk bij de data eigenaar komt te liggen, bijv gemeentes die zorg dragen voor de juist link tussen nieuwe panden en percelen. Hoewel de uiteindelijk data door het kadaster gepubliceerd wordt is het onderhoud dus dicht bij de oorsprong van de links uitgevoerd.
+Naast het daadwerkelijk aanbrengen van de links is ook de semantische duiding van deze link een belangrijk onderwerp wat behandeld moet worden. De huidige modelering van gegevens binnen de *eigen silo* zorgt voor een bepaalde vrijheid bij het modeleren, wanneer echter verwezen wordt naar gegevens van andere partijen is ook goverance over de betekenis van deze verwijzing noodzakelijk.
+Het ontbreekt op dit moment aan een uniforme wijze om externe data te laten verwijzen naar een object in basis registraties. Als er bij het publiceren van een dataset bijvoorbeeld gerefereerd moet worden aan een BAG pand is er geen aanwijzing hoe deze link genoemd moet worden. Dit resulteerd er in dat het bij externe dataset moeilijk is om direct te begrijpen naar welke dataset ze verwijzen.
 
 ## 5 Sterren model voor Linked Open Data
 Een stappen plan om een aantal van bovengenoemde problemen aan te pakken is het **5 sterren Linked Open Data** model, waarbij er aan elke toevoeging van kenmerken aan de gepubliceerde data een waardering wordt toegekend.
@@ -113,6 +113,8 @@ Om de objectenregistraties in samenhang te kunnen bevragen, is het een basisvoor
 *Aanbeveling*: Laat APIs verplicht verwijzen naar identifiers uit de samenhangende objectenregistratie als die relaties er zijn. Laat in Linked Data in die gevallen de URIs uit de samenhangende objectenregistratie opnemen.
 
 *Aanbeveling*: Regel de governance voor het eenmalig leggen en vervolgens beheren van deze links - dit kost tijd en geld. 
+
+*Aanbeveling*: Regel de governance over de semantiek van de verbindingen, wat implicieert de aanwezigheid van een link tussen 2 elementen
 
 ### Best Practices voor Data Publicatie
 
