@@ -61,8 +61,17 @@ Oók in APIs moeten links op een uniforme manier worden uitgedrukt. Een afspraak
 
 ## Eigenaarschap van data
 Hoe kun je aan een API / de data uit een API zien van wie de data afkomstig is?
+Door het ontbreken van een semantische laag [[JSON-LD]] op de meeste API's is het na het ophalen van data niet duidelijk wat de data betekend en wie er eigenaar van is, bij vragen die beantwoord worden door het samenvoegen van resultaten van verschillende API's is het in het antwoord niet te herleiden wie de eigenaar is voor welk deel van het antwoord.
 
-### Governance op het snijvlak
+<aside class="example">
+
+**Vraag**: Welk Monument heeft het grootste oppervlak 
+
+**Antwoord**: Monument Status komt uit 1 dataset, de oppervlakt uit een ander. Dit is niet ter herleiden op basis van de huidige API antwoorden.
+
+</aside>
+
+## Governance op het snijvlak
 Wie is verantwoordelijk voor het toevoegen en beheren van de **links tussen datasets**? 
 
 Deze zijn basisvoorwaarde voor samenhang.
