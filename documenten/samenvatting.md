@@ -69,6 +69,16 @@ Deze zijn basisvoorwaarde voor samenhang.
 
 Deze verantwoordelijkheid wordt nu nog niet gevoeld en de links zijn veelal nog niet aangebracht…
 
+## 5 Sterren model voor Linked Open Data
+Een stappen plan om een aantal van bovengenoemde problemen aan te pakken is het **5 sterren Linked Open Data** model, waarbij er aan elke toevoeging van kenmerken aan de gepubliceerde data een waardering wordt toegekend.
+1. Beschikbaar op het web, met een open licentie
+2. Data  is machine leesbaar en bevat een open licentie
+3. De dataset is beschikbaar in een open bestandsformaat
+4. Bovenstaande + gebruik open standaarden van het W3C (RDF en SPARQL) om objecten in de data te identificeren, zodat anderen naar die objecten kunnen verwijzen.
+5. Bovenstaande + link je data aan data van anderen, om meer context te verstrekken.
+
+Dit in beschouwing nemend zijn de huidige API's niet meer als 3 sterren data, het is beschikbaar in een open formaat, de enige uitzondering is Kadaster Linked Data via PDOK wat als 4 sterren data beschouwd kan worden.
+
 ## Conclusies en aanbevelingen
 
 Het uitgangspunt was om een demonstrator te bouwen bovenop APIs. Maar daar blijken wel wat haken en ogen aan te zitten. 
@@ -100,3 +110,5 @@ Om de objectenregistraties in samenhang te kunnen bevragen, is het een basisvoor
 Er is internationaal verband, veelal ondersteund vanuit de EU, al een hoop werk verricht rond het opstellen en documenteren van Best Practices voor data publicatie [[DWBP]] [[SDW-BP]], de maturiteits tabel in hoofdstuk 4 is hier op gebaseerd. Ook de [[NLAPIStrategie]] refereert hier nadrukkelijk aan. Het gebruik van deze Best Practices scheelt een hoop werk bij het opstellen van nieuwe standaarden en afspraken
 
 *Aanbeveling*: Neem de beschikbare Best Practices over in relevante documenten
+
+*Aanbeveling*: Neem in een stelsel van samen hangende registraties **5 Sterren Linked Open Data** als uitgangspunt, het ontbreken van de 5e ster impliceert automatisch het ontbreken van samenhang
