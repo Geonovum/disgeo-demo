@@ -149,69 +149,194 @@ function loadTriplesToModal(data, type){
 	});
 
 	JsonLdParser.parse(data,function(result,data){
-		$('#resultHead').empty();
-		$('#resultBody').empty();
-
-		row = $('<tr>').appendTo("#resultHead");
-		$('<th>').html('Property').appendTo(row);
-		$('<th>').html('Value').appendTo(row);
-		var baseSubject = "";
+		$('#report').empty();
 
 		data.forEach(function(triple){
-			if(baseSubject == ""){
-				baseSubject = triple.subject.toString();
-				row = $('<tr>').appendTo("#resultBody");
-				var subjectCell = $('<td>').attr('colspan', 2).appendTo(row);
-				$('<a>').html(triple.subject.toString())
-				.attr('name',"#"+triple.subject.toString().split("#")[1])
-				.css({ 'font-weight': 'bold' })
-				.attr('class', 'derefUri')
-				.attr('href',encodeURIComponent(triple.subject.toString()))
-				.appendTo(subjectCell);					
+			if(triple.object.toString() == "http://data.stelselvanbasisregistraties.nl/bag/id/concept/Wegvak"){
+				var obj =  "<h4>Wegvak</h4><table class=\"table table-striped kro-table\">";
+				data.forEach(function(numTriple){
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_begindatum-Wegvak"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Begindatum wegvak</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_dienstnaam-Wegvak"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Dienstnaam</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_maximumSnelheid-Wegvak"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Maximum snelheid</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_rijrichting-Wegvak"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Rijrichting</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_straatnaam-Wegvak"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Straatnaam</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_wegbeheerder-Wegvak"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Wegbeheerder</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_wegnr_wegenlijst-Wegvak"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Wegnummer wegenlijst</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_wegnummer-Wegvak"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Wegnummer</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_wegnummer_hectometerpaal-Wegvak"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Wegnummer hectometerpaal</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_wegtypering-Wegvak"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Wegtypering</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvak_woonplaatsnaam-Wegvak"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Woonplaatsnaam</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvakid-Wegvak"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Wegvak identificatienummer</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}					
+				});
+				obj +=  "</table>";
+				$("#report").append(obj);
 			}
-			if(baseSubject != triple.subject.toString()){
-				baseSubject = triple.subject.toString();
-				row = $('<tr>').appendTo("#resultBody");
-				var subjectCell = $('<td>').attr('colspan', 2).appendTo(row);
-				$('<a>').html(triple.subject.toString())
-				.attr('name',triple.subject.toString().split("#")[1])
-				.css({ 'font-weight': 'bold' })
-				.attr('href',encodeURIComponent(triple.subject.toString()))
-				.appendTo(subjectCell);	
+			
+
+			if(triple.object.toString() == "http://data.stelselvanbasisregistraties.nl/bag/id/concept/Kunstwerk"){
+				var obj =  "<h4>Kunstwerk</h4><table class=\"table table-striped kro-table\">";
+				data.forEach(function(numTriple){
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Kunstwerk_hoofdrijbaan-Kunstwerk"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Hoofdrijbaan</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}	
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Kunstwerk_omschrijving-Kunstwerk"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Omschrijving kunstwerk</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Kunstwerk_type-Kunstwerk"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Kunstwerk type</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Kunstwerk_doorrijhoogte-Kunstwerk"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Doorrijhoogte</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}
+					if(numTriple.predicate.toString() == "http://purl.org/dc/elements/1.1/identifier"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Kunstwerk identificatie</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}
+				});
+				obj +=  "</table>";
+				$("#report").append(obj);
 			}
-
-			row = $('<tr>').appendTo("#resultBody")
-			var predQname = rdf.prefixes.shrink(triple.predicate.toString());
-			var predCell = $('<td>').appendTo(row);
-			$('<a>').html(predQname)
-			.attr('href',triple.predicate.toString())
-			.appendTo(predCell);
-
-			var objCell = $('<td>').appendTo(row);
-			switch(triple.object.interfaceName)
-			{
-			case "NamedNode":
-				if(triple.object.toString().split("#")[1]) {
-					$('<a>').html(triple.object.toString())
-					.attr('target','_blank')
-					.attr('href',triple.object.toString())
-					.appendTo(objCell);
-				} else {
-					$('<a>').html(triple.object.toString())
-					.attr('target','_blank')
-					.attr('href',triple.object.toString())
-					.appendTo(objCell);
-				}
-				break;
-			default:
-				if(isFloat(parseFloat(triple.object.toString())))
-					objCell.html(parseFloat(triple.object.toString()).toFixed(2));
-				else
-					objCell.html(triple.object.toString());                
+			
+			if(triple.object.toString() == "http://data.stelselvanbasisregistraties.nl/bag/id/concept/Hectometerpaal"){
+				var obj =  "<h4>Hectometerpaal</h4><table class=\"table table-striped kro-table\">";
+				data.forEach(function(numTriple){
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Afstand-Hectometerpaal"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Afstand hectometerpaal</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}	
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Hectometrering-Hectometerpaal"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Hectometrering</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Wegvakid-Hectometerpaal"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Hectometerpaal wegvak identificatie</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/bag/id/gegevenselement/Zijde-Hectometerpaal"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Zijde</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}
+				});
+				obj +=  "</table>";
+				$("#report").append(obj);
+			}
+			
+			if(triple.object.toString() == "http://data.stelselvanbasisregistraties.nl/rrgs/id/concept/KwetsbaarObject"){
+				var obj =  "<h4>Kwetsbaarobject</h4><table class=\"table table-striped kro-table\">";
+				data.forEach(function(numTriple){
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_bagid-RRGS"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Bag identificatienummer</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}	
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_huisnummer-RRGS"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Huisnummer</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_kwetsbaarobject_code-RRGS"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Kwetsbaarobject identifcatie nummer</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_locatie_omschrijving-RRGS"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Risico Omschrijving</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_naam-RRGS"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Naam</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_omschrijving-RRGS"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Omschrijving</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_plaatsnaam-RRGS"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Plaatsnaam</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_postcode-RRGS"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Postcode</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_straatnaam-RRGS"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Straatnaam</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_type-RRGS"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Type</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}
+					if(numTriple.predicate.toString() == "http://data.stelselvanbasisregistraties.nl/rrgs/id/gegevenselement/KO_url-RRGS"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>Risico rapport</td><td><a href=\""+retrieveValue(numTriple)+"\">"+retrieveValue(numTriple)+"</a></td></tr>";
+					}
+					
+				});
+				obj +=  "</table>";
+				$("#report").append(obj);
+			}
+			
+			if(triple.object.toString() == "http://www.opengis.net/ont/geosparql#Geometry"){
+				var obj =  "<h4>Geometrie</h4><table class=\"table table-striped kro-table\">";
+				data.forEach(function(numTriple){
+					if(numTriple.predicate.toString() == "http://www.opengis.net/ont/geosparql#asWKT"
+						&& numTriple.subject.toString() == triple.subject.toString()){
+						obj +=  "<tr><td>WKT</td><td>"+retrieveValue(numTriple)+"</td></tr>";
+					}				
+				});
+				obj +=  "</table>";
+				$("#report").append(obj);
 			}
 		});
+
+		
 		$('#propertyObject').modal();	
 	});
+}
+
+function retrieveValue(triple){
+	if(isFloat(parseFloat(triple.object.toString())))
+		return parseFloat(triple.object.toString()).toFixed(2);
+	else
+	 return triple.object.toString();      
 }
 
 function isFloat(n){

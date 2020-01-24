@@ -60,16 +60,7 @@
 							</button>
 						</div>
 						<div class="modal-body">
-							<table id="dataTable" class="table table-striped kro-table">
-								<tr>
-								<thead id="resultHead">
-									<!-- Generated and autofilled from resultTable.js and servlet -->
-								</thead>
-								</tr>
-								<tbody id="resultBody">
-									<!-- Generated and autofilled from resultTable.js and servlet -->
-								</tbody>
-							</table>
+							<div id="report"></div>
 						</div>
 						<div class="modal-footer">
 
