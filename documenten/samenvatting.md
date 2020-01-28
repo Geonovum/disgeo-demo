@@ -82,13 +82,13 @@ Naast het daadwerkelijk aanbrengen van de links is ook de semantische duiding va
 
 Het ontbreekt op dit moment aan een uniforme wijze om externe data te laten verwijzen naar een object in basis registraties. Als er bij het publiceren van een dataset bijvoorbeeld gerefereerd moet worden aan een BAG pand is er geen aanwijzing hoe deze link genoemd moet worden. Dit resulteert er in dat het bij externe dataset moeilijk is om direct te begrijpen naar welke dataset ze verwijzen.
 
-## 5 Sterren model voor Linked Open Data
-Een stappen plan om een aantal van bovengenoemde problemen aan te pakken is het **5 sterren Linked Open Data** model, waarbij er aan elke toevoeging van kenmerken aan de gepubliceerde data een waardering wordt toegekend.
+## 5 Sterren model voor Open Data
+Een stappen plan om een aantal van bovengenoemde problemen aan te pakken is het **5 sterren Open Data** model, waarbij er aan elke toevoeging van kenmerken aan de gepubliceerde data een waardering wordt toegekend.
 1. Beschikbaar op het web, met een open licentie
 2. Data  is machine leesbaar en bevat een open licentie
 3. De dataset is beschikbaar in een open bestandsformaat
-4. Bovenstaande + gebruik open standaarden van het W3C (RDF en SPARQL) om objecten in de data te identificeren, zodat anderen naar die objecten kunnen verwijzen.
-5. Bovenstaande + link je data aan data van anderen, om meer context te verstrekken.
+4. Bovenstaande + gebruik open standaarden van het W3C [[JSON-LD]] om objecten in de data te identificeren, zodat anderen naar die objecten kunnen verwijzen.
+5. Bovenstaande + link je data aan data van anderen, dit creëert samenhang tussen data sets.
 
 Dit in beschouwing nemend zijn de huidige API's niet meer als 3 sterren data, het is beschikbaar in een open formaat, de enige uitzondering is Kadaster Linked Data via PDOK wat als 4 sterren data beschouwd kan worden.
 
@@ -126,4 +126,4 @@ Er is internationaal verband, veelal ondersteund vanuit de EU, al een hoop werk 
 
 *Aanbeveling*: Neem de beschikbare Best Practices over in relevante documenten
 
-*Aanbeveling*: Neem in een stelsel van samen hangende registraties **5 Sterren Linked Open Data** als uitgangspunt, het ontbreken van de 5e ster impliceert automatisch het ontbreken van samenhang
+*Aanbeveling*: Neem in een stelsel van samen hangende registraties **5 Sterren Open Data** als uitgangspunt, het ontbreken van de 5e ster impliceert automatisch het ontbreken van samenhang
