@@ -15,4 +15,4 @@ Het doel van deze demonstrator is om te beproeven en aan een breed publiek te la
 ## Doel van dit document
 Tijdens het ontwikkelen van de demonstrator is er veel ervaring opgedaan met data uit basisregistraties en andere overheidsregistraties, met APIs en andere web services, met semantiek en onderlinge verwijzingen tussen datasets. Voordat het stelsel van overheidsregistraties in samenhang kan worden gebruikt en bevraagd, moeten er nog heel wat stappen gezet worden. 
 
-De ontwikkeling van de demonstrator heeft waardevolle inzichten opgeleverd over vraagstukken rondom techniek, semantiek en governance, die zijn samengevat in dit Lessons Learned document. 
+De ontwikkeling van de demonstrator heeft waardevolle inzichten opgeleverd over vraagstukken rondom techniek, semantiek en governance, die zijn samengevat in dit Lessons Learned document. Hoofdstuk 2 vat de belangrijkste inzichten samen. Hoofdstuk 3 beschrijft de opzet van het onderzoek waarin de demonstrator ontwikkeld is. Hoofdstuk 4 tenslotte geeft het volledige overzicht van de geleerde lessen. 
