@@ -10,6 +10,20 @@ var respecConfig = {
       url: "https://www.geonovum.nl",
     }  
   ],
+  authors: [
+    {
+      name: "Bart van Leeuwen",
+      url: "https://www.netage.nl",
+    }, 
+    {
+      name: "Dick Krijtenburg",
+      url: "https://www.geonovum.nl",
+    }, 
+    {
+      name: "Nicky van Oorschot",
+      url: "https://www.netage.nl",
+    }
+  ],
   shortName: "dll",
   pubDomain: "disgeo",
   github: "https://github.com/geonovum/disgeo-demo",
