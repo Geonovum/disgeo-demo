@@ -1,7 +1,7 @@
 # Samenvatting
 
 ## APIs zijn de nieuwe silo’s…
-APIs (en dan bedoelen we in dit document meer specifiek REST APIs, zoals gedefinieerd in de [[NLAPIStrategie]]) zijn bedoeld voor het stellen van veelgestelde vragen of het doen van veelgevraagde acties op data. Ze zijn daarmee per definitie gelimiteerd in datamodel en functionaliteit. Dit is in veel gevallen handig, want de API is erop toegespitst om veel voorkomende vragen snel en eenvoudig af te handelen. 
+APIs (en dan bedoelen we in dit document meer specifiek de huidige REST APIs, zoals gedefinieerd in de [[NLAPIStrategie]]) zijn bedoeld voor het stellen van veelgestelde vragen of het doen van veelgevraagde acties op data. Ze zijn daarmee per definitie gelimiteerd in datamodel en functionaliteit. Dit is in veel gevallen handig, want de API is erop toegespitst om veel voorkomende vragen snel en eenvoudig af te handelen. 
 
 Maar...
 - Wat als je geen veelgestelde vraag hebt, maar een minder vaak voorkomende? 
@@ -38,7 +38,14 @@ De semantische laag beschrijft hoe de data in het stelsel zich tot elkaar verhou
 De stelselcatalogus zou hier in theorie voor gebruikt kunnen worden, mits deze wordt geïntegreerd met de daadwerkelijke definities van semantische modellen zoals die van de BAG, die als linked data beschikbaar is.
 
 ## Samenhang op dataniveau
-De data in APIs heeft veelal geen links naar data in andere APIs. Maar om het stelsel (via APIs) in samenhang te kunnen bevragen, moet een API ook identifiers kunnen teruggeven van eraan gekoppelde basisregistraties. Bijvoorbeeld: aan een NHR API vragen stellen op basis van een BAG Verblijfsobject identifier. 
+De data in APIs heeft veelal geen links naar data in andere APIs. Dit is een probleem van de onderliggende data: de verwijzingen tussen individuele objecten, uit verschillende datasets, ontbreken nog. 
+
+Om het stelsel (via APIs) in samenhang te kunnen bevragen, is het nodig dat 
+
+1. Er verwijzingen *tussen* datasets worden aangelegd,
+2. APIs ook identifiers kunnen teruggeven van eraan gekoppelde basisregistraties. 
+
+Bijvoorbeeld: aan een NHR API vragen stellen op basis van een BAG Verblijfsobject identifier. 
 
 <aside class="example">
 
@@ -83,7 +90,7 @@ Het ontbreekt op dit moment aan een uniforme wijze om externe data te laten verw
 
 Mogelijke oplossing hiervoor is een gestandaardiseerde naam voor de verwijzing, bijvoorbeeld ``gerelateerdBAGPand``. 
 
-## 5 Sterren model voor Open Data
+## Het 5-Sterren model voor Open Data
 Een stappenplan om een aantal van bovengenoemde problemen aan te pakken is het **5 sterren Open Data** model, waarbij er aan elke toevoeging van kenmerken aan de gepubliceerde data een waardering wordt toegekend.
 1. Beschikbaar op het web, met een open licentie
 2. Data is machine leesbaar en bevat een open licentie
@@ -105,9 +112,9 @@ De meerderheid van open geodata wordt beschikbaar gesteld als kaartlaag, die zic
 
 *Aanbeveling*: Voeg een checklist API maturiteit toe aan de [[NLAPIStrategie]] en zorg dat APIs hier zoveel mogelijk aan voldoen.
 
-Maar zelfs als we een set goed scorende APIs zouden hebben, zou dit nog geen goed uitgangspunt vormen voor een samenhangende objectenregistratie. APIs zijn daarvoor te beperkt in functionaliteit én ze bieden de data niet samenhangend aan (het zijn silo’s). Een geheel van losstaande APIs kan geschikt gemaakt worden voor samenhangende bevraging over de APIs heen door er een semantische orchestratielaag bovenop te implementeren. Dit vergt echter veel extra code en onderhoud. Beter zou het zijn om een infrastructuur te hebben van een of meerdere “knowledge graphs” waarin de data in samenhang beschikbaar en bevraagbaar is. 
+Een geheel van losstaande APIs kan geschikt gemaakt worden voor samenhangende bevraging over de APIs heen door er een semantische orchestratielaag bovenop te implementeren. Dit is gemakkelijker als we een set goed op maturiteit scorende APIs zouden hebben. Deze semantische orchestratielaag vergt echter veel extra code en onderhoud. Beter zou het zijn om een infrastructuur te hebben van een of meerdere “knowledge graphs” waarin de data in samenhang beschikbaar en bevraagbaar is. De samenhang is dan geregeld in de datalaag. APIs kunnen daarbovenop fungeren als eenvoudige toegang tot de data. Voor de geavanceerdere toepassingen en vragen waarbij de samenhang essentieel is, kan de knowledge graph direct benaderd worden via SPARQL.
 
-*Aanbeveling*: Zet niet vol in op APIs alleen, maar werk toe naar een infrastructuur van een of meerdere “knowledge graphs” (linked data).
+*Aanbeveling*: Zorg dat APIs gaan voldoen aan de maturiteitscheck. Zet daarnaast niet vol in op APIs alleen. Werk, om de doelstellingen van DisGeo te realiseren, toe naar een infrastructuur van een of meerdere “knowledge graphs” (linked data). 
 
 ### Samenhang tussen objecten
 
@@ -115,17 +122,17 @@ Datasets zijn in de huidige praktijk meestal niet gekoppeld. Bijvoorbeeld bevatt
 
 Om de objectenregistraties in samenhang te kunnen bevragen, is het een *basisvoorwaarde* dat de datasets op het niveau van individuele objecten aan elkaar gekoppeld zijn met behulp van identifiers. Bij voorkeur zijn deze opgenomen in de vorm van URIs. 
 
-*Aanbeveling*: Laat APIs verplicht verwijzen naar identifiers uit de samenhangende objectenregistratie als die relaties er zijn. Laat in Linked Data in die gevallen de URIs uit de samenhangende objectenregistratie opnemen.
-
 *Aanbeveling*: Regel de governance voor het eenmalig leggen en vervolgens beheren van deze links - dit kost tijd en geld. 
-
-*Aanbeveling*: Leg afspraken over het vormen en beheren van URIs vast in een landelijke URI strategie of bredere linked data strategie, gebaseerd op de [[NLURIStrategie]] die hier al een aanzet voor biedt. 
 
 *Aanbeveling*: Regel de governance over de semantiek van de verbindingen.
 
+*Aanbeveling*: Leg afspraken over het vormen en beheren van URIs vast in een landelijke URI strategie of bredere linked data strategie, gebaseerd op de [[NLURIStrategie]] die hier al een aanzet voor biedt. 
+
+*Aanbeveling*: Laat APIs verplicht verwijzen naar identifiers uit de samenhangende objectenregistratie als die relaties er zijn. Laat in Linked Data in die gevallen de URIs uit de samenhangende objectenregistratie opnemen.
+
 ### Best Practices voor Data Publicatie
 
-Er is internationaal verband, veelal ondersteund vanuit de EU, al een hoop werk verricht rond het opstellen en documenteren van Best Practices voor data publicatie [[DWBP]] [[SDW-BP]], de maturiteitstabel in hoofdstuk 4 is hier op gebaseerd. Ook de [[NLAPIStrategie]] refereert hier nadrukkelijk aan. Het gebruik van deze Best Practices scheelt een hoop werk bij het opstellen van nieuwe standaarden en afspraken.
+Er is in internationaal verband, veelal ondersteund vanuit de EU, al een hoop werk verricht rond het opstellen en documenteren van Best Practices voor data publicatie [[DWBP]] [[SDW-BP]], de maturiteitstabel in hoofdstuk 4 is hier op gebaseerd. Ook de [[NLAPIStrategie]] refereert hier nadrukkelijk aan. Het gebruik van deze Best Practices scheelt een hoop werk bij het opstellen van nieuwe standaarden en afspraken.
 
 *Aanbeveling*: Neem de beschikbare Best Practices over in relevante documenten.
 
