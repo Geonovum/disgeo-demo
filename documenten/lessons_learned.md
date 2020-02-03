@@ -1,6 +1,6 @@
 # Lessons learned uit de DisGeo linked data demonstrator
 
-Dit hoofdstuk beschrijft de geleerde lessen uit het onderzoek. Terwijl de demonstrator werd ontwikkeld, hebben we de problemen waar we tegenaan liepen geregistreerd als [issues in github](https://github.com/Geonovum/disgeo-demo/issues). 
+Dit hoofdstuk beschrijft de geleerde lessen uit het onderzoek. Terwijl de demonstrator werd ontwikkeld, hebben we de problemen waar we tegenaan liepen geregistreerd als [issues in github](https://github.com/Geonovum/disgeo-demo/issues). De lessen staan in dit hoofdstuk één voor één opgesomd zoals we ze zijn tegengekomen. Lees voor de samenvatting en conclusies [hoofdstuk 2](#samenvatting). 
 
 ## API beschikbaarheid, API bruikbaarheid en API compleetheid
 
@@ -145,7 +145,7 @@ De Rijksdienst Cultureel Erfgoed heeft geen directe koppeling met de BAG. Elk mo
 ### _Overweging voor vervolg
 * Om het stelsel en aanpalende gegevensverzamelingen in samenhang te kunnen bevragen moeten objecten in datasets verwijzen naar identifiers uit de samenhangende objectenregistratie als die relaties er zijn. Relaties op basis van beschrijvende elementen zoals een ingetypt adres moeten worden uitgesloten. 
 
-## 6.: Stelselcatalogus geen relatie met bron
+## Stelselcatalogus geen relatie met bron
 Om de semantische relatie tussen de data van de verschillende APIs te ontdekken, moet in de semantische orchestratielaag gedefinieerd worden hoe data zich tot elkaar verhoudt. Dit wordt prima gedaan door de al bestaande stelselcatalogus. 
 
 Een deel van de data uit basisregistraties is ook al beschikbaar als semantische data bij de bron, i.e. Linked Data, inclusief een semantisch model. Echter is er geen relatie tussen de elementen van het semantisch model bij de bron en de equivalente elementen in de stelselcatalogus. Hierdoor is het onmogelijk om de al bestaande stelselcatalogus te gebruiken als basis voor de orchestratielaag en hiermee de reeds beschikbare semantische data op te vragen en aan de demonstrator toe te voegen. Als deze semantische 'brug' tussen de stelselcatalogus en al gepubliceerde semantische data er al was geweest, had dit het bouwen van de demonstrator aanzienlijk kunnen vereenvoudigen.
@@ -153,20 +153,20 @@ Een deel van de data uit basisregistraties is ook al beschikbaar als semantische
 ### _Overweging voor vervolg_ 
 * De semantische relaties van de samenhangende objectenregistratie (opvolger van de stelselcatalogus, in ieder geval voor de geo-basisregistraties) moeten altijd gerelateerd zijn aan het semantische model van de datasets. Dit is een relatief eenvoudig te zetten stap die helpt om de orchestratielaag compact en  beheersbaar te houden. 
 
-## 7: Wat als data van meerdere bronnen komt?
+## Wat als data van meerdere bronnen komt?
 Tijdens het ontwikkelen van de DisGeo demonstrator is de aanname gedaan dat data over één object geleverd wordt door één enkele API. Data omtrent een verblijfsobject zal altijd van het kadaster komen. Op het moment data deze aanname ongeldig wordt, treedt het probleem op dat het haast onmogelijk is om te achterhalen waar een bepaald object opgevraagd moet worden.
 
 ### _Overweging voor vervolg_ 
 * Basisgegevens moeten enkel en alleen bij de samenhangende objectenregistratie worden opgehaald. Dit blijft een uitgangspunt!
 
-## 8: Herkomst van data
+## Herkomst van data
 Een API biedt in geen van de gevallen metadata over het object. Het is daardoor onmogelijk om de herkomst, actualiteit, nauwkeurigheid en betrouwbaarheid van data te valideren. 
 
 ### _Overwegingen voor vervolg of voor opname in API-strategie_
 * Onderzocht moet worden of APIs hiervoor geschikt te maken zijn.
 * Linked data biedt hiervoor goed de mogelijkheid.
 
-## 9: Configuratielast
+## Configuratielast
 Om de APIs aan elkaar te kunnen relateren, de resultaten van een API om te zetten in een semantisch formaat en om de API configuratie te beschrijven is een enorme configuratielast onontkoombaar. Voor de beperkte APIs op dit moment is er al ruim 4000 regels aan configuratie nodig. Ook het onderhoud van deze configuratie zal een redelijke last met zich mee brengen.
 
 We kunnen verwachten dat de hoeveelheid APIs erg groot wordt. Bovendien is er sprake van toenemende complexiteit per toegevoegde API (geen twee APIs zijn hetzelfde). 
@@ -187,7 +187,7 @@ Dus … een open wereld. Het geheel aan kennis beschrijven is niet mogelijk! De 
 * De orchestratielaag moet uitbreidbaar zijn.
 * Linked data maakt het hebben van een orchestratielaag grotendeels of geheel overbodig. Op termijn hiernaartoe groeien 
 
-## 10: Geografische vraag kenmerkt zich door missende relatie (en waar naar te zoeken)
+## Geografische vraag kenmerkt zich door missende relatie (en waar naar te zoeken)
 Bij vragen met een geografische component gaat de demonstrator op zoek naar objecten die geen administratieve relatie hebben tot elkaar: deze objecten moet binnen een bepaalde straal van elkaar liggen. Dit zou mogelijk zijn op alle objecten die gedefinieerd zijn in de Stelselcatalogus, waarvan de gedefinieerde API geografische zoekvragen ondersteunt. 
 
 Bij een groeiend aantal APIs zou dit echter een flinke belasting op de performance betekenen. Het opvragen van bijvoorbeeld alle panden binnen een bepaalde straal levert bovendien in potentie ontzettend veel data op, die in veel gevallen waarschijnlijk niet de vraag van de gebruiker zal beantwoorden. Op dit moment is gekozen om in de configuratie vast te leggen op welke objecten geografisch gezocht moeten worden vanuit een bepaald start object. Hierdoor kan er sturing plaats vinden.
@@ -196,7 +196,7 @@ Bij een groeiend aantal APIs zou dit echter een flinke belasting op de performan
 * Nader onderzoek is nodig naar wat de balans is tussen op alles te kunnen zoeken en het aantal resultaten hanteerbaar te houden. 
 * Oplossingsrichtingen zijn bijvoorbeeld het inbouwen van gerichte zoekpatronen, filters of andere manieren om het aantal zoekrichtingen te kanaliseren.
 
-## 11: Geografische relatie obv GeoSPARQl
+## Geografische relatie obv GeoSPARQl
 Geografische data laten zich makkelijk in samenhang gebruiken. Geografische data worden in het kader van deze demonstrator in alle gevallen aangeboden in een geo-standaard. Hierdoor kunnen verschillende tools en softwarebibliotheken eenvoudig omgaan met geografische data. Ook tools die semantisch werken kunnen goed met deze data omgaan doordat semantische (i.e. op Linked Data gebaseerde) geostandaarden zoals GeoSPARQL [[geosparql]] zijn toegepast. 
 
 GeoSPARQL is een OGC standaard die een extensie beschrijft van SPARQL[[rdf-sparql-query]], de standaard querytaal voor Linked Data. GeoSPARQL definieert ook een basisvocabulaire voor geodata en kan worden gebruikt om aan te duiden dat een object een geo-object is en om topologische relaties tussen geo-objecten te leggen. 
