@@ -9,7 +9,7 @@ A number of principles have been identified:
 - If questions are asked about APIs, a provision will be created in an orchestration layer where necessary to serve these questions.
 - When answering a user story, at least one object from the basic registrations is used.
 
-! [demonstrator_architectuur] (media / architecture.png)
+![demonstrator_architectuur](media/architectuur.png)
 
 ## User Stories
 A number of user stories have been defined focusing on the themes of Buildings and Roads. These user stories are divided into three categories with an increase in complexity:
@@ -19,7 +19,7 @@ A number of user stories have been defined focusing on the themes of Buildings a
 
 The user stories are described in the diagram below. In the demonstrator's research, these were taken up and the possibilities of current technologies were investigated.
 
-! [user_stories] (media / userstories.png)
+![user_stories](media/userstories.png)
 
 ## Demonstrator
 The demonstrator uses the system catalog of basic registrations. This describes the relationships between the various objects within the basic registrations. The demonstrator finds related related objects based on skos.
@@ -34,9 +34,9 @@ Geographical searching is done in a slightly different but comparable way. Geogr
 ## Data sources
 A number of data sources have been used for the user stories, which are shown in the picture below:
 
-! [data sources] (media / data sources.png)
+![databronnen](media/databronnen.png)
 
 ## Cooperation Land Registry regarding Knowledge Graph
 In the context of this investigation, there was also collaboration with Kadaster. Kadaster is innovating and is researching new technologies to query data from Kadaster's data collections. One of those technologies is the development of a knowledge graph, which can be queried by means of a chatbot. Kadaster has developed a knowledge graph for the user story 'energy advisor'.
 
-! [cooperation_ Cadastre] (media / cooperation cadastre.png)
+![samenwerking_Kadaster](media/samenwerkingkadaster.png)

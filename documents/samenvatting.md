@@ -1,7 +1,7 @@
 # Resume
 
 ## APIs are the new silos…
-APIs (and in this document we mean more specifically the current REST APIs, as defined in the [[NLAPIS strategy]]) are intended for asking frequently asked questions or taking frequently requested actions on data. They are therefore by definition limited in data model and functionality. This is useful in many cases, because the API is focused on dealing with common questions quickly and easily.
+APIs (and in this document we mean more specifically the current REST APIs, as defined in the [[NLAPIStrategie]]) are intended for asking frequently asked questions or taking frequently requested actions on data. They are therefore by definition limited in data model and functionality. This is useful in many cases, because the API is focused on dealing with common questions quickly and easily.
 
 But...
 - What if you don't have a frequently asked question, but a less common one?
@@ -57,9 +57,9 @@ For example: asking questions to an NHR API based on a BAG Accommodation Object 
 
 Thus, references, ** links **, must be made at the data instance level - from one object to another, where the objects are in different registrations.
 
-These links can best be expressed in the form of URIs, in accordance with a national agreement such as the URI strategy [[NLURIS strategy]]; based on identifiers from the basic registrations.
+These links can best be expressed in the form of URIs, in accordance with a national agreement such as the URI strategy [[NLURIStrategie]]; based on identifiers from the basic registrations.
 
-Also in APIs links should be expressed in a uniform manner. An appointment for this can be included in the API strategy for the Dutch government [[NLAPIS strategy]].
+Also in APIs links should be expressed in a uniform manner. An appointment for this can be included in the API strategy for the Dutch government [[NLAPIStrategie]].
 
 ## Ownership of data
 How can you see from an API / the data from an API from whom the data comes?
@@ -80,7 +80,7 @@ Apart from the technology, there is also an essential organizational question he
 
 "** Who is responsible for adding and managing the links between datasets **?"
 
-These links are a basic condition for coherence. However, this responsibility for creating and managing it is not yet felt and the links have often not yet been added. This can be traced directly to the assignment that the different data owners have, even within organizations. For example, there is no formal link between parcels and buildings, as the relevant departments within Kadaster do not have the task of maintaining this link, and therefore do not have the time and budget available to realize this. The management of these links must therefore be supported with policy, and therefore budget. Although there is already a * duty * to [ensure the correctness of that data when using data from the basic registrations] (https://www.digitaleoverheid.nl/overzicht-van-alle-onderwerpen/gegevens/naar-een- data landscape / themes / twelve-requirement-system-of-basic-registrations /) is not monitored.
+These links are a basic condition for coherence. However, this responsibility for creating and managing it is not yet felt and the links have often not yet been added. This can be traced directly to the assignment that the different data owners have, even within organizations. For example, there is no formal link between parcels and buildings, as the relevant departments within Kadaster do not have the task of maintaining this link, and therefore do not have the time and budget available to realize this. The management of these links must therefore be supported with policy, and therefore budget. Although there is already a * duty * to [ensure the correctness of that data when using data from the basic registrations](https://www.digitaleoverheid.nl/overzicht-van-alle-onderwerpen/gegevens/naar-een-gegevenslandschap/themas/twaalf-eisen-stelsel-van-basisregistraties/) is not monitored.
 
 An important element of this governance is that it is important to carefully consider the level at which these links are maintained. It is recommended that this be as close as possible to the data owner. For example, let municipalities ensure the correct link between new buildings and plots. Although the final data is published by the land registry, the maintenance is then carried out close to the origin of the links.
 
@@ -110,7 +110,7 @@ The majority of open geodata is made available as a map layer, which cannot be u
 
 * Recommendation *: Replace the Dutch profiles of WMS 1.3 and WFS 2.0 on the Open Standards List with the new OGC API standards. WFS 2.0 can already be replaced by [OGC API - Features] (https://www.opengeospatial.org/standards/ogcapi-features). These new OGC API standards ensure a good score on maturity.
 
-* Recommendation *: Add a checklist API maturity to the [[NLAPIS strategy]] and make sure that APIs meet this as much as possible.
+* Recommendation *: Add a checklist API maturity to the [[NLAPIStrategie]] and make sure that APIs meet this as much as possible.
 
 A set of standalone APIs can be made suitable for coherent querying across the APIs by implementing a semantic orchestration layer on top. This is easier if we had a set of APIs that score well on maturity. However, this semantic orchestration layer requires a lot of extra code and maintenance. It would be better to have an infrastructure of one or more “knowledge graphs” in which the data is available and queryable in conjunction. The coherence is then regulated in the data layer. In addition, APIs can act as easy access to the data. For the more advanced applications and questions where coherence is essential, the knowledge graph can be directly accessed via SPARQL.
 
@@ -126,13 +126,13 @@ In order to be able to query the object registrations in a coherent manner, it i
 
 * Recommendation *: Arrange governance over the semantics of the connections.
 
-* Recommendation *: Establish agreements on the formation and management of URIs in a national URI strategy or broader linked data strategy, based on the [[NLURIS strategy]] that already provides an impetus for this.
+* Recommendation *: Establish agreements on the formation and management of URIs in a national URI strategy or broader linked data strategy, based on the [[NLURIStrategie]] that already provides an impetus for this.
 
 * Recommendation *: Require APIs to refer to identifiers from the related object registry if those relationships exist. In these cases, have the URIs included in the related object registration in Linked Data.
 
 ### Best Practices for Data Publication
 
-In the international context, mostly supported by the EU, a lot of work has already been done on drawing up and documenting Best Practices for data publication [[DWBP]] [[SDW-BP]], the maturity table in chapter 4 is based on this . The [[NLAPIS strategy]] also refers explicitly to this. The use of these Best Practices saves a lot of work in setting new standards and agreements.
+In the international context, mostly supported by the EU, a lot of work has already been done on drawing up and documenting Best Practices for data publication [[DWBP]] [[SDW-BP]], the maturity table in chapter 4 is based on this . The [[NLAPIStrategie]] also refers explicitly to this. The use of these Best Practices saves a lot of work in setting new standards and agreements.
 
 * Recommendation *: Copy the available Best Practices into relevant documents.
 

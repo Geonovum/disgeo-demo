@@ -70,9 +70,9 @@ Many APIs do not score well on (all) of these points:
 [19]: https://docs.geostandaarden.nl/api/API-Strategie/#api-44-apply-rate-limiting
 [20]: https://docs.geostandaarden.nl/api/API-Strategie/#api-45-provide-rate-limiting-information
 
-### _ Considerations for follow-up and API strategy_
+### _Considerations for follow-up and API strategy_
 * The current [apply-or-explain-list-list] (https://www.forumstandaardisatie.nl/open-standaarden/lijst/ver obligation) of Forum Standardization now contains the Dutch profiles of WMS 1.3 and WFS 2.0 . This "obligation" stands in the way of further development. The solution lies in replacing these standards on the Open Standards List with the new OGC API standards. WFS 2.0 can already be replaced by OGC API - Features. These new OGC API standards ensure a good score on maturity.
-* The checklist for API maturity would be a good addition to the Dutch API strategy [[NLAPIS strategy]].
+* The checklist for API maturity would be a good addition to the Dutch API strategy [[NLAPIStrategie]].
 
 ## APIs and data silos
 Certain data is returned based on an API query. In a system of data that is to be used in conjunction, it is necessary that the data make references to other objects based on a unique and persistent identifier. Based on this principle, we can come up with a generic solution.
@@ -110,7 +110,7 @@ Of course, an API cannot offer more than the data source it provides. If the sou
 
 The underlying problem is therefore that the datasets do not record and manage these links structurally. If datasets did, the APIs on top of that could be improved to offer links between individual objects and make them searchable in a useful way.
 
-### _ Considerations for follow-up or inclusion in API strategy_
+### _Considerations for follow-up or inclusion in API strategy_
 * In order to make data from the data silo available in conjunction, reference should be made to identifiers. This allows generic handling of data from different APIs.
 * In addition, APIs should refer to identifiers of objects from other APIs. For example, the data from the National Cultural Heritage Agency (RCE) describes addresses on monuments, but these have been literally introduced instead of linked to the BAG and are therefore difficult to compare. This involves gross margins of error. Ideally, the RCE API should (also) refer to an address identifier available within the BAG.
 * In order to query the system and related data collections in conjunction, APIs must refer to identifiers from the related object registry if those relationships exist. This is a problem that originates from the underlying data, the API is only an access to this.
@@ -120,7 +120,7 @@ The underlying problem is therefore that the datasets do not record and manage t
 ## One and two-sided references and deviations
 Data models impose limitations. For example, the BAG data model records that a residential object refers to a property, but a property does not refer to a residential object. However, the API does do this and therefore deviates from the data model. This makes the use of an API very specific.
 
-### _ Considerations for continuation_
+### _Considerations for continuation_
 * A relationship between two objects must always be retrievable in two directions.
 * The semantic model must be so robust that any orchestration layer across APIs is kept as compact as possible.
 
@@ -129,7 +129,7 @@ An API can return results in a structure that is different if the results are di
 
 Normally this is not necessarily a problem, but it was problematic when building the demonstrator. The results of an API are converted to a semantic format. This is done by means of a mapping. How the instances are bundled, i.e. how the result of an API is structured, must be processed in the mapping, otherwise it cannot be executed properly. If this structure can differ, this means a more extensive mapping.
 
-### _ Consideration for follow-up or inclusion in API strategy_
+### _Consideration for follow-up or inclusion in API strategy_
 * It may be considered to include in the API strategy that an answer that may contain one or more results is always bundled, even if a specific question only yields one result. This keeps the semantic orchestration layer small and compact.
 
 ## Address details incomparable
@@ -142,7 +142,7 @@ The Cultural Heritage Agency of the Netherlands has no direct link with the BAG.
 - The RCE only has an addition, which often does not correspond to one of the two BAG fields.
 </aside>
 
-### _Consideration for continuation
+### _Consideration for continuation_
 * In order to be able to query the system and related data collections in conjunction, objects in data sets must refer to identifiers from the related object registration if those relationships exist. Relationships based on descriptive elements such as a typed address should be excluded.
 
 ## System catalog not related to source
@@ -150,7 +150,7 @@ To discover the semantic relationship between the data of the different APIs, it
 
 Some of the data from basic registrations is also already available as semantic data at the source, i.e. Linked Data, including a semantic model. However, there is no relationship between the elements of the semantic model at the source and the equivalent elements in the system catalog. This makes it impossible to use the already existing system catalog as the basis for the orchestration layer and to request the already available semantic data and add it to the demonstrator. If there had been this semantic 'bridge' between the system catalog and already published semantic data, this could have considerably simplified the building of the demonstrator.
 
-### _ Consideration for continuation_
+### _Consideration for continuation_
 * The semantic relations of the coherent object registration (successor to the system catalog, at least for the geo-basic registrations) must always be related to the semantic model of the data sets. This is a relatively easy step to take to help keep the orchestration layer compact and manageable.
 
 ## What if data comes from multiple sources?
@@ -159,13 +159,13 @@ During the development of the DisGeo demonstrator, it was assumed that data abou
 ## What if data comes from multiple sources?
 During the development of the DisGeo demonstrator, it was assumed that data about one object is provided by a single API. Data about a residence object will always come from the land registry. When this assumption becomes invalid, the problem arises that it is almost impossible to find out where a specific object has to be requested.
 
-### _ Consideration for continuation_
+### _Consideration for continuation_
 * Basic data should only be retrieved from the related object registration. This remains a starting point!
 
 ## Origin of data
 In no case does an API provide metadata about the object. It is therefore impossible to validate the origin, timeliness, accuracy and reliability of data.
 
-### _ Considerations for follow-up or inclusion in API strategy_
+### _Considerations for follow-up or inclusion in API strategy_
 * It must be investigated whether APIs can be made suitable for this.
 * Linked data offers good opportunities for this.
 
@@ -185,7 +185,7 @@ The semantic layer must contain all the knowledge you want to question. This lay
 
 So ... an open world. Describing the whole of knowledge is not possible! The semantic orchestration layer must therefore be expandable.
 
-### _ Considerations for continuation_
+### _Considerations for continuation_
 * This argues extra for keeping the orchestration layer as compact as possible.
 * The orchestration layer must be expandable.
 * Linked data makes having an orchestration layer largely or completely unnecessary. Grow here in the long term
@@ -195,7 +195,7 @@ For questions with a geographical component, the demonstrator searches for objec
 
 However, with a growing number of APIs, this would put a significant burden on performance. Requesting all properties within a certain radius, for example, also potentially yields a great deal of data, which in many cases is unlikely to answer the user's question. At this time, it has been decided to define in the configuration on which objects to be searched geographically from a specific starting object. This allows control to take place.
 
-### _ Considerations for continuation_
+### _Considerations for continuation_
 * Further research is needed into the balance between being able to search for everything and keeping the number of results manageable.
 * Solution directions include building in targeted search patterns, filters or other ways to channel the number of search directions.
 
@@ -204,7 +204,7 @@ Geographical data can easily be used in conjunction. Geographic data is in all c
 
 GeoSPARQL is an OGC standard that describes an extension of SPARQL [[rdf-sparql-query]], the default query language for Linked Data. GeoSPARQL also defines a basic vocabulary for geo data and can be used to indicate that an object is a geo object and to establish topological relationships between geo objects.
 
-### _ Consideration for continuation_
+### _Consideration for continuation_
 * That geographic data is provided in a geo standard is valuable, continue this way.
 * Use GeoSPARQL when offering geographic data as linked data.
 * In order for the (geo) basic registers to function in conjunction, it is necessary to progress to Linked Data. The growth path to this must be mapped out.

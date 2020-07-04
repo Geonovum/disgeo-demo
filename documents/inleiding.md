@@ -2,7 +2,7 @@
 
 ## Purpose of the demonstrator
 The Ministry of the Interior and Kingdom Relations aims to improve the coherence of the system of geo (basic) registrations, with a focus on semantic harmonization of registrations and information models, and alternative methods of data exchange and updating (more central) with the Continued development in Cohesion (DiS Geo) process. , copy less).
-! [coherent object registration information science] (media / coherent object registration information science.png)
+![samenhangende objectenregistratie informatiekundig](media/samenhangendeobjectenregistratieinformatiekundig.png)
 
 After all, users usually do not think in data sets, but in data that is related to each other in various ways and can be combined. In the NEN3610 system and the system of basic registrations, data sets have so far been considered. Information models are in a sense silos that only standardize the semantics of a particular sector, but are not modeled in conjunction with the information of other sectors. However, this connection is actually there. Linked data is an extremely suitable technique for capturing this semantic coherence so that the data itself can also be integrated.
 
