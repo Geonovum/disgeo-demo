@@ -14,7 +14,7 @@ However, practice shows that APIs are not (yet) widely available. The BAG has a 
 More than 80% of the data used is made available as a map layer (i.e. WMS (T) or WFS old style, or a non-standardized variant of this), which cannot be used as an API. The BAG API is the only API that can be queried geographically.
 
 ### Completeness
-In addition, an API does not necessarily make * all * data available. For example, the BAG API does not make the purpose of use of a residence object available through the API.
+In addition, an API does not necessarily make *all* data available. For example, the BAG API does not make the purpose of use of a residence object available through the API.
 
 ### Maturity
 Many APIs do not score well on (all) of these points:
@@ -23,13 +23,13 @@ Many APIs do not score well on (all) of these points:
 
 | # | Question | Referral API Strategy | Reference (Spatial) Data on the Web Best Practices |
 | - | - | - | - |
-| | ** Documentation ** | | |
+| | **Documentation** | | |
 | 1 | Is documentation available with an API? | [7.1.14] [1] | |
 | 2 | Is there reference from the API description and results to the documentation? | [7.1.49] [2] | [Metadata 8.2] [3] |
 | 3 | Does the documentation refer to System Catalog or other datasets? | | |
 | 4 | Is there information about the change and origin of data? | | [Data provenance 8.4] [4] |
 | |
-| | ** API definition ** | | |
+| | **API definition** | | |
 | 5 | Can you provide query parameters to filter? | [7.1.28] [5] | |
 | 6 | Do identifiers from other datasets provide an entry into the API? | | [Data identifiers 8.7] [6], [Spatial data identifiers 12.1.1] [7] |
 | 7 | Does the API contain all necessary data / is the data complete? | | |
@@ -39,12 +39,12 @@ Many APIs do not score well on (all) of these points:
 | 11 | Are open standards used to describe the API? | [7.1.14] [1] | |
 | 12 | Is a data model available? | | [Data Vocabularies 8.9] [13] |
 | |
-| | ** Return format ** | | |
+| | **Return format** | | |
 | 13 | Is the return format self-descriptive? | | |
 | 14 | Does the return format provide references to other datasets? | | |
 | 15 | Are open standards for the return format and data used? | [7.1.26] [14] | [Data Formats 8.8] [15], [Spatial data encoding 12.2.1] [16] |
 | |
-| | ** API Use ** | | | |
+| | **API Use** | | | |
 | 16 | Does the API set terms of use? | | [Data licenses 8.3] [17] |
 | 17 | Does the API offer caching? | [7.1.41] [18] | |
 | 18 | Does the API impose restrictions on use? | [7.1.42] [19], [7.1.43] [20] | |
@@ -86,14 +86,14 @@ Example: querying a specific property in the BAG API.
 
 Expected answer:
 
-`" Related Property ":" 1895100000022868 ",`
+`"Related Property":"1895100000022868",`
 
 Actual answer:
 
-`" relatedPand ":" https://bag.basicregistrations.overheid.nl/api/v1/verblijfsobjecten?pandrelatering=1895100000022868&valigOp=2019-10-22 ","
+`"relatedPand" : "https://bag.basicregistrations.overheid.nl/api/v1/verblijfsobjecten?pandrelatering=1895100000022868&valigOp=2019-10-22 ","`
 </aside>
 
-This is useful on the one hand, but if you want to query a * different * registration on the basis of the BAG Property id obtained, in order to retrieve more information about that property, you as a programmer must obtain the id from the API URL. 'cut', which requires knowledge of the specific URL structure of this API. It is not possible to generically cut an ID from a URL.
+This is useful on the one hand, but if you want to query a *different* registration on the basis of the BAG Property id obtained, in order to retrieve more information about that property, you as a programmer must obtain the id from the API URL. 'cut', which requires knowledge of the specific URL structure of this API. It is not possible to generically cut an ID from a URL.
 
 Moreover, in order to query the system in conjunction via APIs, an API must also be able to answer questions based on identifiers from other related data sets.
 
