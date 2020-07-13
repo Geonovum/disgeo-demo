@@ -17,9 +17,13 @@ A number of user stories have been defined focusing on the themes of Buildings a
 2. Spatial relationship - Request data about objects in the vicinity of a specific object.
 3. Analysis - Request data based on multiple variables.
 
-The user stories are described in the diagram below. In the demonstrator's research, these were implemented and the possibilities of current technologies were investigated.
+The user stories are described in the table below. They are listed in order of increasing complexity. In the demonstrator's research, these were implemented and the possibilities of current technologies were investigated.
 
-![user_stories](media/userstories.png)
+| | Buildings | Roads |
+|-|-----------|-------|
+| Category 1: administrative relationships | _As an **energy advisor** I want_ data about e.g. the surface area, age / building year, functions, monumental status, value, maintenance status of a building, _so that I_ can give good advice about making this building more sustainable.| _As a **planner of heavy transport** I want_ data about e.g. vehicle type, travel direction, clearance height and width, the maximum load, speed and laws and regulations of this part of the road, _so that I_ know whether I can plan my route with this vehicle along this part of the road.|
+| Category 2: spatial relationships |_As a **potential buyer of a home**, I want_ information about noise pollution, public green spaces, parking spaces, shops, risk objects, schools, coffee shops, _so that I_ know whether the surroundings of this home suit me.|_As an **emergency service**, I want_ information about (surface) water, schools, childcare locations, vital infrastructure in the vicinity of an incident on public roads with a dangerous substance, _so that I_ know which organizations I should warn.|
+| Category 3: analysis |_As an **advisor for the living environment / spatial planning**, I want_ information about the accessibility / distance of basic facilities (public transport, schools, shops, health care) in a certain area or relative to the number of households and the age structure, _so that I_ know in which places I have to make which investments.|_As a **day tourist** with an electric car, I want_ to know where I can charge my car along my route and eat outside and specify my restaurant preferences (for example eating in a monumental building, eating with children) so that I can continue my route fully charged and with new energy.|
 
 ## Demonstrator
 The demonstrator uses the data definition catalog of the base registries of base registries. This describes the relationships between the various objects within the base registries. The demonstrator finds related objects based on SKOS.
